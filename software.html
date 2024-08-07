@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RPCS3 - PlayStation 3 Emulator</title>
-    <link rel="stylesheet" href="style.css">
+    <title>FrogeeSoft</title>
 </head>
 
 <style>
-    body {
+body {
     font-family: 'Roboto', sans-serif;
     background-color: #181818;
     color: white;
@@ -23,7 +22,7 @@
 
 header {
     background-color: #2E865F;
-    padding: 15px 0;
+    padding: 30px 0;
 }
 
 .logo {
@@ -112,13 +111,11 @@ main {
 }
 
 .features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
+padding: 10px 10px;
 }
 
 .feature {
-    padding: 20px;
+    padding: 20px 10px;
     border-radius: 10px;
     background-color: #34C759;
 }
@@ -167,15 +164,24 @@ footer {
 footer p {
     margin: 0;
 }
+.logo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 10px;
+}
+
+.logo img {
+    width: 45px; /* adjust the width and height to your liking */
+    height: 45px;
+}
 </style>
 <body>
     <header>
         <div class="container">
             <div class="logo">
-                <a href="#">
-                    <svg viewBox="0 0 100 100">
-                        <path d="M50,10 L50,90" stroke="white" stroke-width="10" />
-                    </svg>
+                <a href="forgesoft.html">
+                    <img src="logo.jpg" alt="FrogeeSoft Logo">
                 </a>
             </div>
             <nav>
@@ -198,7 +204,7 @@ footer p {
 
         <section class="features">
             <div class="container">
-                <h2>Features</h2>
+                <h2>Products</h2>
                 <div class="features-grid">
                     <div class="feature">
                         <h3>Feature 1</h3>
@@ -221,10 +227,9 @@ footer p {
                 <h2>Join our Community</h2>
                 <p>Connect with other RPCS3 users and developers on our forums, Discord server, and social media.</p>
                 <div class="community-links">
-                    <a href="#github" class="btn"><img src="github-logo.svg" alt="GitHub"></a>
-                    <a href="#discord" class="btn"><img src="discord.svg" alt="Discord"></a>
+                    <a href="#github" class="btn"><img src="github.svg" alt="GitHub"></a>
+                    <a href="https://discord.gg/3uDWxXUj" class="btn"><img src="discord.svg" alt="Discord"></a>
                     <a href="#forum" class="btn"><img src="forum-logo.svg" alt="Forum"></a>
-                    <a href="#patreon" class="btn"><img src="patreon-logo.svg" alt="Patreon"></a>
                 </div>
             </div>
         </section>
