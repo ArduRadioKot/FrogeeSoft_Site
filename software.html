@@ -3,7 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FrogeeSoft</title>
+    <meta name="description" content="FrogeeSoft Software Products - Professional Development Tools">
+    <meta name="theme-color" content="#2E865F">
+    <title>FrogeeSoft Software Products</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 
 <style>
@@ -180,7 +186,7 @@ footer p {
     <header>
         <div class="container">
             <div class="logo">
-                <a href="forgesoft.html">
+                <a href="index.html">
                     <img src="logo.jpg" alt="FrogeeSoft Logo">
                 </a>
             </div>
@@ -189,48 +195,62 @@ footer p {
                     <li><a href="#blog">Blog</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#products">Products</a></li>
-                    <li><a href="#software">Software</a></li>
+                    <li><a href="software.html">Software</a></li>
                     <li><a href="#sell">Sell</a></li>
                     <li><a href="#faqs">FAQs</a></li>
                     <li><a href="#wiki">Wiki</a></li>
-                    <li><a href="https://discord.gg/3uDWxXUj">Discord</a></li>
-                  
+                    <li><a href="https://discord.gg/3uDWxXUj" class="btn">Join Discord</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-text">
+                    <h1>Our Software Products</h1>
+                    <p>Discover our suite of professional development tools designed to enhance your productivity</p>
+                </div>
+            </div>
+        </section>
 
         <section class="features">
             <div class="container">
-                <h2>Products</h2>
+                <h2>Development Tools</h2>
                 <div class="features-grid">
                     <div class="feature">
                         <h3>FrogeeCodeIDE</h3>
-                        <p>Poverfull multi-language IDE.
-                            <form action="forgecode.html" target="_blank">
-                                <button>Get</button>
-                               </form>
-                             
-                        </p>
+                        <p>A powerful multi-language IDE with advanced features for modern development. Experience enhanced performance, intelligent code completion, and seamless debugging.</p>
+                        <ul style="list-style: none; padding: 0; margin: 20px 0;">
+                            <li>✓ Multi-language support</li>
+                            <li>✓ Advanced debugging</li>
+                            <li>✓ Git integration</li>
+                            <li>✓ Customizable themes</li>
+                        </ul>
+                        <a href="forgecode.html" class="btn">Learn More</a>
                     </div>
                     <div class="feature">
                         <h3>FrogeeEngine</h3>
-                        <p>The Block Game Engine is a lightweight, open-source game engine designed specifically for the CH32V003 portable game console. The engine is built around a block-based architecture, allowing developers to create engaging and interactive games with ease..
-                            <form action="frogeEngine.html" target="_blank">
-                                <button>Get</button>
-                               </form>
-                             
-                        </p>
+                        <p>A lightweight, open-source game engine designed specifically for the CH32V003 portable game console. Create engaging games with our intuitive block-based architecture.</p>
+                        <ul style="list-style: none; padding: 0; margin: 20px 0;">
+                            <li>✓ Block-based architecture</li>
+                            <li>✓ Optimized performance</li>
+                            <li>✓ Rich documentation</li>
+                            <li>✓ Active community</li>
+                        </ul>
+                        <a href="frogeEngine.html" class="btn">Learn More</a>
                     </div>
                     <div class="feature">
                         <h3>LogicCircuitSimulator</h3>
-                        <p>Logic scheme simulator.
-                            <form action="frogeSim.html" target="_blank">
-                                <button>Get</button>
-                               </form>
-                        </p>
+                        <p>An intuitive and powerful logic circuit simulator for designing and testing complex digital circuits. Perfect for students, educators, and professionals.</p>
+                        <ul style="list-style: none; padding: 0; margin: 20px 0;">
+                            <li>✓ Real-time simulation</li>
+                            <li>✓ Extensive component library</li>
+                            <li>✓ Export capabilities</li>
+                            <li>✓ Educational resources</li>
+                        </ul>
+                        <a href="frogeSim.html" class="btn">Learn More</a>
                     </div>
                 </div>
             </div>
@@ -239,11 +259,11 @@ footer p {
         <section class="community">
             <div class="container">
                 <h2>Join our Community</h2>
-                <p>Connect with other RPCS3 users and developers on our forums, Discord server, and social media.</p>
+                <p>Connect with other developers, share ideas, and stay updated with the latest developments.</p>
                 <div class="community-links">
-                    <a href="#github" class="btn"><img src="github.svg" alt="GitHub"></a>
-                    <a href="https://discord.gg/3uDWxXUj" class="btn"><img src="discord.svg" alt="Discord"></a>
-                    <a href="#forum" class="btn"><img src="forum-logo.svg" alt="Forum"></a>
+                    <a href="#github" class="btn"><img src="github.svg" alt="GitHub"> GitHub</a>
+                    <a href="https://discord.gg/3uDWxXUj" class="btn"><img src="discord.svg" alt="Discord"> Discord</a>
+                    <a href="#forum" class="btn"><img src="forum-logo.svg" alt="Forum"> Forum</a>
                 </div>
             </div>
         </section>
@@ -251,7 +271,37 @@ footer p {
 
     <footer>
         <div class="container">
-            <p>&copy; 2023 RPCS3 Project</p>
+            <div>
+                <h4>Main</h4>
+                <p><a href="#blog">Blog</a></p>
+                <p><a href="#about">About</a></p>
+                <p><a href="#products">Products</a></p>
+                <p><a href="software.html">Software</a></p>
+                <p><a href="#sell">Sell</a></p>
+                <p><a href="#faqs">FAQs</a></p>
+                <p><a href="#wiki">Wiki</a></p>
+            </div>
+            <div>
+                <h4>Products</h4>
+                <p><a href="forgecode.html">FrogeeCodeIDE</a></p>
+                <p><a href="frogeEngine.html">FrogeeEngine</a></p>
+                <p><a href="frogeSim.html">LogicCircuitSimulator</a></p>
+            </div>
+            <div>
+                <h4>Community</h4>
+                <p><a href="https://discord.gg/3uDWxXUj">Discord</a></p>
+                <p><a href="#forum">Forum</a></p>
+                <p><a href="#github">GitHub</a></p>
+            </div>
+            <div>
+                <h4>Legal</h4>
+                <p><a href="#privacy">Privacy Policy</a></p>
+                <p><a href="#terms">Terms of Service</a></p>
+                <p><a href="#license">License</a></p>
+            </div>
+        </div>
+        <div class="container" style="margin-top: 40px; text-align: center;">
+            <p>&copy; 2024 FrogeeSoft. All rights reserved.</p>
         </div>
     </footer>
 

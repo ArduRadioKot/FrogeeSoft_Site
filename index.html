@@ -3,14 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FrogeeSoft</title>
+    <meta name="description" content="FrogeeSoft - Innovative Software Solutions">
+    <meta name="theme-color" content="#2E865F">
+    <title>FrogeeSoft - Innovative Software Solutions</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
         <div class="container">
             <div class="logo">
-                <a href="forgesoft.html">
+                <a href="index.html">
                     <img src="logo.jpg" alt="FrogeeSoft Logo">
                 </a>
             </div>
@@ -23,8 +28,7 @@
                     <li><a href="#sell">Sell</a></li>
                     <li><a href="#faqs">FAQs</a></li>
                     <li><a href="#wiki">Wiki</a></li>
-                    <li><a href="https://discord.gg/3uDWxXUj">Discord</a></li>
-                  
+                    <li><a href="https://discord.gg/3uDWxXUj" class="btn">Join Discord</a></li>
                 </ul>
             </nav>
         </div>
@@ -34,30 +38,34 @@
         <section class="hero">
             <div class="container">
                 <div class="hero-text">
-                    <h1>FrogeeSoft</h1>
-                    <p>    </p>
+                    <h1>Innovative Software Solutions</h1>
+                    <p>Discover our cutting-edge software products designed to enhance your digital experience</p>
+                    <a href="#products" class="btn">Explore Products</a>
                 </div>
                 <div class="hero-image">
-                    <img src="" >
+                    <img src="hero-image.png" alt="FrogeeSoft Products">
                 </div>
             </div>
         </section>
 
         <section class="features">
             <div class="container">
-                <h2>News</h2>
+                <h2>Latest News</h2>
                 <div class="features-grid">
                     <div class="feature">
-                        <h3>Feature 1</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+                        <h3>FrogeeCodeIDE Update</h3>
+                        <p>Experience the latest features in our powerful multi-language IDE. Enhanced performance and new tools await.</p>
+                        <a href="forgecode.html" class="btn">Learn More</a>
                     </div>
                     <div class="feature">
-                        <h3>Feature 2</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+                        <h3>FrogeeEngine Release</h3>
+                        <p>Introducing our lightweight, open-source game engine for the CH32V003 portable game console.</p>
+                        <a href="frogeEngine.html" class="btn">Learn More</a>
                     </div>
                     <div class="feature">
-                        <h3>Feature 3</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+                        <h3>LogicCircuitSimulator</h3>
+                        <p>Create and simulate complex logic circuits with our intuitive and powerful simulator.</p>
+                        <a href="frogeSim.html" class="btn">Learn More</a>
                     </div>
                 </div>
             </div>
@@ -66,11 +74,11 @@
         <section class="community">
             <div class="container">
                 <h2>Join our Community</h2>
-                <p>Connect with other RPCS3 users and developers on our forums, Discord server, and social media.</p>
+                <p>Connect with other developers, share ideas, and stay updated with the latest developments.</p>
                 <div class="community-links">
-                    <a href="#github" class="btn"><img src="github.svg" alt="GitHub"></a>
-                    <a href="https://discord.gg/3uDWxXUj" class="btn"><img src="discord.svg" alt="Discord"></a>
-                    <a href="#forum" class="btn"><img src="forum-logo.svg" alt="Forum"></a>
+                    <a href="#github" class="btn"><img src="github.svg" alt="GitHub"> GitHub</a>
+                    <a href="https://discord.gg/3uDWxXUj" class="btn"><img src="discord.svg" alt="Discord"> Discord</a>
+                    <a href="#forum" class="btn"><img src="forum-logo.svg" alt="Forum"> Forum</a>
                 </div>
             </div>
         </section>
@@ -78,25 +86,37 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 FrogeeSoft</p>
-            <h4>Main</h4>
-            <p> Blogt</p>
-            <p> About</p>
-            <p> Products</p>
-            <p> Software</p>
-            <p> Sell</p>
-            <p> FAQs</p>
-            <p> Wiki</p>
-
-            <h4>GitHub</h4>
-            <p> Web site</p>
-            <p> LogicCircuitSimulator</p>
-            <p> FrogeeEngine</p>
-
-            <h4>Social</h4>
-            <p><a href="https://discord.gg/3uDWxXUj"> Discord</a></p>
-            <p> <a href="https://discord.gg/3uDWxXUj">Forum</a></p>
-
+            <div>
+                <h4>Main</h4>
+                <p><a href="#blog">Blog</a></p>
+                <p><a href="#about">About</a></p>
+                <p><a href="#products">Products</a></p>
+                <p><a href="software.html">Software</a></p>
+                <p><a href="#sell">Sell</a></p>
+                <p><a href="#faqs">FAQs</a></p>
+                <p><a href="#wiki">Wiki</a></p>
+            </div>
+            <div>
+                <h4>Products</h4>
+                <p><a href="forgecode.html">FrogeeCodeIDE</a></p>
+                <p><a href="frogeEngine.html">FrogeeEngine</a></p>
+                <p><a href="frogeSim.html">LogicCircuitSimulator</a></p>
+            </div>
+            <div>
+                <h4>Community</h4>
+                <p><a href="https://discord.gg/3uDWxXUj">Discord</a></p>
+                <p><a href="#forum">Forum</a></p>
+                <p><a href="#github">GitHub</a></p>
+            </div>
+            <div>
+                <h4>Legal</h4>
+                <p><a href="#privacy">Privacy Policy</a></p>
+                <p><a href="#terms">Terms of Service</a></p>
+                <p><a href="#license">License</a></p>
+            </div>
+        </div>
+        <div class="container" style="margin-top: 40px; text-align: center;">
+            <p>&copy; 2024 FrogeeSoft. All rights reserved.</p>
         </div>
     </footer>
 
