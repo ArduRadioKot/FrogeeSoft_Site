@@ -1,125 +1,265 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="ru" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="FrogeeSoft - Innovative Software Solutions">
-    <meta name="theme-color" content="#2E865F">
-    <title>FrogeeSoft - Innovative Software Solutions</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>FrogeeSoft — программы, устройства и сервисы команды S.I.T</title>
+  <meta name="description" content="FrogeeSoft — команда S.I.T из университета «Сириус». Бесплатные программы для macOS, Windows и Linux, трекер для сноуборда FG-Track, ИИ-репетитор Ясно и образовательный проект S.I.T Education.">
+  <meta name="theme-color" content="#090c0a">
+  <link rel="icon" href="assets/brand/logo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="assets/theme.js"></script>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="logo">
-                <a href="index.html">
-                    <img src="logo.jpg" alt="FrogeeSoft Logo">
-                </a>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="#blog">Blog</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#products">Products</a></li>
-                    <li><a href="software.html">Software</a></li>
-                    <li><a href="#sell">Sell</a></li>
-                    <li><a href="#faqs">FAQs</a></li>
-                    <li><a href="#wiki">Wiki</a></li>
-                    <li><a href="https://discord.gg/3uDWxXUj" class="btn">Join Discord</a></li>
-                </ul>
-            </nav>
+  <a class="skip-link" href="#main">К содержанию</a>
+
+  <header class="site-header" id="header">
+    <a class="brand" href="index.html" aria-label="FrogeeSoft, на главную">
+      <img class="brand-logo brand-logo--dark" src="assets/brand/frogeesoft-logo-dark.png" width="155" height="43" alt="FrogeeSoft">
+      <img class="brand-logo brand-logo--light" src="assets/brand/frogeesoft-logo-light.png" width="155" height="43" alt="" aria-hidden="true">
+    </a>
+    <nav class="header-pill" aria-label="Разделы">
+      <a href="#products">Продукты</a>
+      <a href="#education">Обучение</a>
+      <a href="team.html">Команда</a>
+      <a href="shop.html">Магазин</a>
+      <a href="#contact">Контакты</a>
+    </nav>
+    <div class="header-actions">
+      <a class="button button-primary header-cta" href="#contact">Связаться</a>
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Сменить тему">
+        <svg class="sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="moon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/></svg>
+      </button>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Открыть меню"><span></span><span></span></button>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobile-menu" hidden>
+    <nav aria-label="Разделы">
+      <a href="#products">Продукты</a>
+      <a href="#education">Обучение</a>
+      <a href="team.html">Команда</a>
+      <a href="shop.html">Магазин</a>
+      <a href="#contact">Контакты</a>
+    </nav>
+    <a class="button button-primary mobile-menu-cta" href="mailto:frogeesoft.team@gmail.com">Написать нам ↗</a>
+  </div>
+
+    <main id="main">
+    <section class="section hero" id="top" aria-labelledby="hero-title">
+      <div class="hero-top">
+        <h1 id="hero-title">Создаём <span>программы</span>, устройства и&nbsp;сервисы</h1>
+        <div class="hero-side">
+          <p class="hero-lead">FrogeeSoft — инженерная команда S.I.T из Научно-технологического университета «Сириус». Делаем бесплатный софт для компьютера, электронику и веб-сервисы, а ещё учим этому в S.I.T Education.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#products">Наши продукты ↓</a>
+            <a class="button button-secondary" href="#contact">Связаться ↘</a>
+          </div>
         </div>
-    </header>
+      </div>
 
-    <main>
-        <section class="hero">
-            <div class="container">
-                <div class="hero-text">
-                    <h1>Innovative Software Solutions</h1>
-                    <p>Discover our cutting-edge software products designed to enhance your digital experience</p>
-                    <a href="#products" class="btn">Explore Products</a>
-                </div>
-                <div class="hero-image">
-                    <img src="hero-image.png" alt="FrogeeSoft Products">
-                </div>
-            </div>
-        </section>
-
-        <section class="features">
-            <div class="container">
-                <h2>Latest News</h2>
-                <div class="features-grid">
-                    <div class="feature">
-                        <h3>FrogeeCodeIDE Update</h3>
-                        <p>Experience the latest features in our powerful multi-language IDE. Enhanced performance and new tools await.</p>
-                        <a href="forgecode.html" class="btn">Learn More</a>
-                    </div>
-                    <div class="feature">
-                        <h3>FrogeeEngine Release</h3>
-                        <p>Introducing our lightweight, open-source game engine for the CH32V003 portable game console.</p>
-                        <a href="frogeEngine.html" class="btn">Learn More</a>
-                    </div>
-                    <div class="feature">
-                        <h3>LogicCircuitSimulator</h3>
-                        <p>Create and simulate complex logic circuits with our intuitive and powerful simulator.</p>
-                        <a href="frogeSim.html" class="btn">Learn More</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="community">
-            <div class="container">
-                <h2>Join our Community</h2>
-                <p>Connect with other developers, share ideas, and stay updated with the latest developments.</p>
-                <div class="community-links">
-                    <a href="#github" class="btn"><img src="github.svg" alt="GitHub"> GitHub</a>
-                    <a href="https://discord.gg/3uDWxXUj" class="btn"><img src="discord.svg" alt="Discord"> Discord</a>
-                    <a href="#forum" class="btn"><img src="forum-logo.svg" alt="Forum"> Forum</a>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <div>
-                <h4>Main</h4>
-                <p><a href="#blog">Blog</a></p>
-                <p><a href="#about">About</a></p>
-                <p><a href="#products">Products</a></p>
-                <p><a href="software.html">Software</a></p>
-                <p><a href="#sell">Sell</a></p>
-                <p><a href="#faqs">FAQs</a></p>
-                <p><a href="#wiki">Wiki</a></p>
-            </div>
-            <div>
-                <h4>Products</h4>
-                <p><a href="forgecode.html">FrogeeCodeIDE</a></p>
-                <p><a href="frogeEngine.html">FrogeeEngine</a></p>
-                <p><a href="frogeSim.html">LogicCircuitSimulator</a></p>
-            </div>
-            <div>
-                <h4>Community</h4>
-                <p><a href="https://discord.gg/3uDWxXUj">Discord</a></p>
-                <p><a href="#forum">Forum</a></p>
-                <p><a href="#github">GitHub</a></p>
-            </div>
-            <div>
-                <h4>Legal</h4>
-                <p><a href="#privacy">Privacy Policy</a></p>
-                <p><a href="#terms">Terms of Service</a></p>
-                <p><a href="#license">License</a></p>
-            </div>
+      <div class="collage" aria-label="Продукты FrogeeSoft">
+        <figure class="collage-window collage-main">
+          <div class="collage-bar" aria-hidden="true"><span></span><span></span><span></span><small>FgSNotes</small></div>
+          <img src="assets/products/fgsnotes/hero-glass.webp" width="1800" height="1125" alt="Окно FgSNotes в режиме Liquid Glass: заметка и готовый документ рядом">
+        </figure>
+        <figure class="collage-window collage-back">
+          <div class="collage-bar" aria-hidden="true"><span></span><span></span><span></span><small>FrogeeCodeIDE</small></div>
+          <img src="assets/products/frogeecode/hero.webp" width="1800" height="1078" alt="Окно FrogeeCodeIDE с кодом и чатом ИИ">
+        </figure>
+        <figure class="collage-device">
+          <img src="assets/products/fgtrack/tracker-closeup.webp" width="618" height="392" alt="Трекер FG-Track на снегу">
+          <figcaption>FG-Track <span>трекер для сноуборда</span></figcaption>
+        </figure>
+        <div class="collage-dock" aria-hidden="true">
+          <img src="assets/products/fgsnotes/icon.png" width="48" height="48" alt="">
+          <img src="assets/products/renvert/icon.png" width="48" height="48" alt="">
+          <img src="assets/products/frogeecode/icon.png" width="48" height="48" alt="">
+          <img src="assets/products/fllama/icon.png" width="48" height="48" alt="">
+          <img src="assets/products/logic/icon.png" width="48" height="45" alt="">
         </div>
-        <div class="container" style="margin-top: 40px; text-align: center;">
-            <p>&copy; 2024 FrogeeSoft. All rights reserved.</p>
-        </div>
-    </footer>
+      </div>
 
-    <script src="script.js"></script>
+      <div class="partners">
+        <p>Проекты и конкурсы вместе с</p>
+        <ul>
+          <li>Яндекс</li>
+          <li>ГК&nbsp;«Геоскан»</li>
+          <li>Альфа-Банк</li>
+          <li>Университет «Сириус»</li>
+          <li>Большие вызовы</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section products" id="products" aria-labelledby="products-title">
+      <div class="section-heading reveal">
+        <span class="section-number">01</span>
+        <h2 id="products-title">Продукты</h2>
+        <p>Программы, сервисы и устройства FrogeeSoft. Программы бесплатны, а кнопка «Скачать» сама подбирает файл под вашу систему.</p>
+      </div>
+
+      <article class="project-featured reveal" data-program="fgsnotes">
+        <a class="project-visual" href="programs/fgsnotes.html" tabindex="-1" aria-hidden="true">
+          <img src="assets/products/fgsnotes/app-dark.webp" width="1800" height="1125" alt="" loading="lazy" decoding="async">
+        </a>
+        <div class="project-info">
+          <p class="project-org">Программа · macOS, Windows, Linux, телефон</p>
+          <h3>FgSNotes</h3>
+          <p>Markdown-редактор с живым предпросмотром, формулами LaTeX, 22 темами и плагинами. ИИ-помощник исправляет, сокращает и переводит текст — на вашем компьютере через Ollama или в облаке по вашему ключу.</p>
+          <div class="tags"><span>Electron</span><span>Markdown</span><span>Ollama</span><span>Версия 2.5.5</span></div>
+          <div class="card-actions">
+            <a class="button button-primary" data-download>Скачать</a>
+            <a class="button button-secondary" href="programs/fgsnotes.html">О программе ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <div class="product-grid">
+        <article class="product-card reveal" data-program="renvert">
+          <a class="product-media" href="programs/renvert.html" tabindex="-1" aria-hidden="true"><img src="assets/products/renvert/head.webp" width="1800" height="696" alt="" loading="lazy" decoding="async"></a>
+          <p class="project-org">Программа · macOS 14+</p>
+          <h3>Renvert</h3>
+          <p>Переименуйте photo.heic в photo.jpg прямо в Finder — и файл сконвертируется. Резервные копии и отмена.</p>
+          <div class="card-actions"><a class="button button-primary" data-download>Скачать</a><a class="button button-secondary" href="programs/renvert.html">Подробнее ↗</a></div>
+        </article>
+        <article class="product-card reveal" data-program="frogeecode">
+          <a class="product-media" href="programs/frogeecode.html" tabindex="-1" aria-hidden="true"><img src="assets/products/frogeecode/hero.webp" width="1800" height="1078" alt="" loading="lazy" decoding="async"></a>
+          <p class="project-org">Программа · macOS, Windows, Linux</p>
+          <h3>FrogeeCodeIDE</h3>
+          <p>Лёгкая IDE с ИИ на вашем компьютере: чат видит проект и предлагает правки, которые можно оставить или откатить.</p>
+          <div class="card-actions"><a class="button button-primary" data-download>Исходники</a><a class="button button-secondary" href="programs/frogeecode.html">Подробнее ↗</a></div>
+        </article>
+        <article class="product-card reveal" data-program="fllama">
+          <a class="product-media" href="programs/fllama.html" tabindex="-1" aria-hidden="true"><img src="assets/products/fllama/screen1.webp" width="1800" height="1124" alt="" loading="lazy" decoding="async"></a>
+          <p class="project-org">Программа · macOS, Windows, Linux</p>
+          <h3>Fllama</h3>
+          <p>Чат с нейросетями Ollama — Llama, Gemma, Qwen — без интернета и подписок.</p>
+          <div class="card-actions"><a class="button button-primary" data-download>Скачать</a><a class="button button-secondary" href="programs/fllama.html">Подробнее ↗</a></div>
+        </article>
+        <article class="product-card reveal" data-program="logic">
+          <a class="product-media" href="programs/logic.html" tabindex="-1" aria-hidden="true"><img src="assets/products/logic/header.webp" width="1800" height="670" alt="" loading="lazy" decoding="async"></a>
+          <p class="project-org">Программа · macOS · ранняя версия</p>
+          <h3>Logic Circuit Simulator</h3>
+          <p>Схемы из элементов И, ИЛИ, НЕ и исключающего ИЛИ с кнопками и светодиодами. Переводит схему в выражение.</p>
+          <div class="card-actions"><a class="button button-primary" data-download>Скачать</a><a class="button button-secondary" href="programs/logic.html">Подробнее ↗</a></div>
+        </article>
+        <article class="product-card reveal">
+          <a class="product-media" href="https://yasnenko.ru" target="_blank" rel="noreferrer" tabindex="-1" aria-hidden="true"><img src="assets/brand/project-yasno.webp" width="1800" height="1010" alt="" loading="lazy" decoding="async"></a>
+          <p class="project-org">Веб-сервис</p>
+          <h3>Ясно</h3>
+          <p>ИИ-репетитор для подготовки к ОГЭ и ЕГЭ: объясняет темы и разбирает задания.</p>
+          <div class="card-actions"><a class="button button-primary" href="https://yasnenko.ru" target="_blank" rel="noreferrer">Открыть yasnenko.ru ↗</a></div>
+        </article>
+        <article class="product-card reveal">
+          <a class="product-media" href="https://x200l.github.io/MarketLog/" target="_blank" rel="noreferrer" tabindex="-1" aria-hidden="true"><img src="assets/brand/project-marketlog.webp" width="1800" height="1026" alt="" loading="lazy" decoding="async"></a>
+          <p class="project-org">Веб-сервис · Яндекс · Большие вызовы</p>
+          <h3>Яндекс Топология</h3>
+          <p>Проектирование роботизированного склада по плану помещения.</p>
+          <div class="card-actions"><a class="button button-primary" href="https://x200l.github.io/MarketLog/" target="_blank" rel="noreferrer">Открыть сервис ↗</a></div>
+        </article>
+      </div>
+
+      <article class="project-featured project-featured--reverse reveal">
+        <a class="project-visual project-visual--device" href="http://fgtrack.ru" target="_blank" rel="noreferrer" tabindex="-1" aria-hidden="true">
+          <img src="assets/products/fgtrack/tracker-closeup.webp" width="618" height="392" alt="" loading="lazy" decoding="async">
+        </a>
+        <div class="project-info">
+          <p class="project-org">Устройство · в разработке</p>
+          <h3>FG-Track</h3>
+          <p>Компактный трекер для сноуборда. Закрепите датчик на доске, подключите к смартфону и смотрите время в воздухе, вращения до 720°, скорость и маршрут. 100 замеров движения в секунду, Bluetooth LE, зарядка по USB-C.</p>
+          <div class="tags"><span>ARM Cortex-M4</span><span>Bluetooth LE</span><span>iOS 16.4+</span><span>Android</span></div>
+          <div class="card-actions">
+            <a class="button button-primary" href="http://fgtrack.ru" target="_blank" rel="noreferrer">Сайт fgtrack.ru ↗</a>
+            <a class="button button-secondary" href="https://github.com/ArduRadioKot/FG-Track-public" target="_blank" rel="noreferrer">GitHub ↗</a>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="section education" id="education" aria-labelledby="education-title">
+      <article class="team-card reveal">
+        <div class="team-card-brand">
+          <span class="brand-logo-switch" aria-hidden="true">
+            <img class="brand-logo brand-logo--dark" src="assets/brand/frogeesoft-logo-dark.png" width="309" height="85" alt="">
+            <img class="brand-logo brand-logo--light" src="assets/brand/frogeesoft-logo-light.png" width="309" height="85" alt="">
+          </span>
+          <span>Образовательный проект FrogeeSoft</span>
+        </div>
+        <div class="team-card-copy">
+          <span class="section-number">02</span>
+          <h2 id="education-title">S.I.T Education</h2>
+          <p>S.I.T Education — <strong>образовательный проект FrogeeSoft</strong>. Статьи, справочники и курсы для тех, кто учится программировать и собирать электронику. Пишем с сентября 2023 года.</p>
+          <p>Курсы «Arduino и электроника» (20 уроков) и «Frontend-разработка» (25 уроков) начинаются с нуля, а VIM-тренажёр учит работать без мыши.</p>
+          <div class="team-directions"><span>Arduino</span><span>Электроника</span><span>Frontend</span><span>VIM</span><span>Олимпиады</span><span>База знаний</span></div>
+          <div class="team-links">
+            <a href="https://sit-edu.ru" target="_blank" rel="noreferrer">Платформа <b>↗</b></a>
+            <a href="https://github.com/X200L/SITeducation" target="_blank" rel="noreferrer">GitHub <b>↗</b></a>
+            <a href="https://t.me/SIT_team" target="_blank" rel="noreferrer">Telegram <b>↗</b></a>
+            <a href="https://youtube.com/@frogeesoft" target="_blank" rel="noreferrer">YouTube <b>↗</b></a>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="section links-pair" aria-label="Команда и магазин">
+      <a class="link-card reveal" href="team.html">
+        <span class="faces" aria-hidden="true">
+          <img src="assets/team/Alex.webp" width="641" height="800" alt="">
+          <img src="assets/team/nick.webp" width="800" height="732" alt="">
+          <img src="assets/team/art.webp" width="600" height="800" alt="">
+          <img src="assets/team/artem2.webp" width="635" height="635" alt="">
+        </span>
+        <strong>Команда</strong>
+        <span>Кто делает FrogeeSoft: роли, опыт и победы</span>
+        <b aria-hidden="true">↗</b>
+      </a>
+      <a class="link-card reveal" href="shop.html">
+        <span class="shop-teaser" aria-hidden="true"><img src="assets/brand/logo.png" width="248" height="182" alt=""></span>
+        <strong>Магазин</strong>
+        <span>Программы бесплатно, скоро — FG-Track, электроника, мерч и книги</span>
+        <b aria-hidden="true">↗</b>
+      </a>
+    </section>
+
+    <section class="section contact" id="contact" aria-labelledby="contact-title">
+      <div class="contact-card reveal">
+        <div class="contact-copy">
+          <span class="section-number">03</span>
+          <h2 id="contact-title">Давайте <em>обсудим</em></h2>
+          <p>Нашли ошибку в программе, хотите предложить идею или позвать нас на хакатон — пишите на почту или в Telegram.</p>
+        </div>
+        <div class="contact-actions">
+          <a class="contact-link contact-link-primary" href="mailto:frogeesoft.team@gmail.com"><span>Почта</span><strong>frogeesoft.team@gmail.com</strong><b>↗</b></a>
+          <a class="contact-link" href="https://t.me/SIT_team" target="_blank" rel="noreferrer"><span>Telegram</span><strong>@SIT_team</strong><b>↗</b></a>
+          <a class="contact-link" href="https://github.com/ArduRadioKot" target="_blank" rel="noreferrer"><span>GitHub</span><strong>ArduRadioKot</strong><b>↗</b></a>
+          <a class="contact-link" href="https://youtube.com/@frogeesoft" target="_blank" rel="noreferrer"><span>YouTube</span><strong>@frogeesoft</strong><b>↗</b></a>
+          <a class="contact-link" href="https://sit-edu.ru" target="_blank" rel="noreferrer"><span>Обучение</span><strong>sit-edu.ru</strong><b>↗</b></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <a class="brand" href="index.html">
+      <img class="brand-logo brand-logo--dark" src="assets/brand/frogeesoft-logo-dark.png" width="124" height="34" alt="FrogeeSoft">
+      <img class="brand-logo brand-logo--light" src="assets/brand/frogeesoft-logo-light.png" width="124" height="34" alt="" aria-hidden="true">
+    </a>
+    <nav class="footer-links" aria-label="Страницы">
+      <a href="team.html">Команда</a>
+      <a href="shop.html">Магазин</a>
+      <a href="https://sit-edu.ru" target="_blank" rel="noreferrer">S.I.T Education</a>
+      <a href="http://fgtrack.ru" target="_blank" rel="noreferrer">FG-Track</a>
+      <a href="https://yasnenko.ru" target="_blank" rel="noreferrer">Ясно</a>
+    </nav>
+    <p>© <span data-year>2026</span> FrogeeSoft · команда S.I.T</p>
+  </footer>
+
+  <script src="assets/downloads.js"></script>
+  <script src="script.js" defer></script>
 </body>
 </html>

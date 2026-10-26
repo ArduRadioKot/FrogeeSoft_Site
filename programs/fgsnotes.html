@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="ru" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FgSNotes — Markdown-редактор, который не мешает писать</title>
+  <meta name="description" content="FgSNotes — бесплатный редактор Markdown для macOS, Windows, Linux и телефона: живой предпросмотр, формулы LaTeX, 22 темы, плагины и ИИ-помощник на вашем компьютере.">
+  <link rel="icon" href="../assets/products/fgsnotes/icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="../assets/theme.js"></script>
+  <style>
+    /* The page is a desktop, sections are islands, like the app and its own site. */
+    :root {
+      --wall: #090c0a; --island: #111713; --island-2: #161d18; --raised: #1d2620; --inset: #0c110e;
+      --text: #f1f5ef; --muted: #98a398; --line: rgba(240, 255, 238, .13);
+      --accent: #21aabe; --accent-hi: #62c7d4; --mint: #91e48b; --on-accent: #061316;
+      --syn-k: #cf8e6d; --syn-s: #6aab73; --syn-n: #2aacb8; --syn-c: #7a7e85; --syn-f: #56a8f5;
+      --radius: 14px; --gap: 8px; --sx: clamp(20px, 4.5vw, 64px); --sy: clamp(40px, 6vw, 88px);
+      --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+      color-scheme: dark;
+    }
+    [data-theme="light"] {
+      --wall: #eef2e9; --island: #f8faf4; --island-2: #e8eee2; --raised: #dde5d6; --inset: #e4eade;
+      --text: #121713; --muted: #5e695f; --line: rgba(18, 23, 19, .13);
+      --accent: #147889; --accent-hi: #147889; --mint: #2e8a3c; --on-accent: #ffffff;
+      --syn-k: #0033b3; --syn-s: #067d17; --syn-n: #1750eb; --syn-c: #8c8c8c; --syn-f: #00627a;
+      color-scheme: light;
+    }
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; overflow-x: clip; scroll-behavior: smooth; scroll-padding-top: 84px; }
+    body { margin: 0; background: var(--wall); color: var(--text); font: 400 17px/1.6 Inter, ui-sans-serif, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; }
+    img { display: block; max-width: 100%; height: auto; }
+    h1, h2, h3, p, ul, ol, figure, table { margin: 0; }
+    ul, ol { padding: 0; list-style: none; }
+    :focus-visible { outline: 2px solid var(--accent-hi); outline-offset: 3px; border-radius: 6px; }
+    code, kbd, pre { font-family: var(--mono); }
+
+    .nav {
+      position: absolute; z-index: 20; top: 0; left: 0; right: 0;
+      height: 68px; display: flex; align-items: center; gap: 24px; padding: 0 calc(var(--gap) + var(--sx));
+      background: transparent;
+    }
+    .nav-brand { display: flex; align-items: center; gap: 10px; font-weight: 800; letter-spacing: -0.02em; text-decoration: none; }
+    .nav-brand img { width: 28px; height: 28px; border-radius: 8px; }
+    .nav-links { display: flex; gap: 24px; margin-left: auto; }
+    .nav-links a { position: relative; padding: 8px 0; color: var(--muted); font-size: 15px; font-weight: 500; text-decoration: none; transition: color .2s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; border-radius: 2px; background: var(--accent); transform: scaleX(0); transition: transform .25s; }
+    .nav-links a:hover::after { transform: scaleX(1); }
+    .nav-end { margin-left: 8px; display: flex; align-items: center; gap: 8px; }
+    .nav .crumbs .mark { font-size: 18px; }
+    .nav .crumbs .mark img { width: 30px; height: 30px; }
+    .icon-btn { width: 40px; height: 40px; border: 0; border-radius: 10px; display: grid; place-items: center; background: var(--island-2); color: var(--text); cursor: pointer; }
+    .icon-btn .moon { display: none; } [data-theme="light"] .icon-btn .sun { display: none; } [data-theme="light"] .icon-btn .moon { display: block; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 0 18px; border: 0; border-radius: 10px; background: var(--accent); color: var(--on-accent); font: 700 15px Inter, sans-serif; text-decoration: none; cursor: pointer; transition: filter .2s, transform .2s; }
+    .btn:hover { filter: brightness(1.1); transform: translateY(-1px); }
+    .btn-big { min-height: 54px; padding: 0 24px; font-size: 16px; border-radius: 12px; }
+    .btn-ghost { background: var(--island-2); color: var(--text); }
+
+    .page { padding: 68px var(--gap) var(--gap); display: grid; gap: var(--gap); }
+    .island { background: var(--island); border-radius: var(--radius); padding: var(--sy) var(--sx); overflow: hidden; }
+    .row { display: grid; gap: var(--gap); }
+    .row-2 { grid-template-columns: 1fr 1fr; }
+    .row-3 { grid-template-columns: 1.3fr 1fr 1fr; }
+    .island h2 { font-size: clamp(1.9rem, 3.6vw, 3.2rem); line-height: 1.04; letter-spacing: -0.045em; font-weight: 900; max-width: 18ch; }
+    .island h3 { font-size: clamp(1.3rem, 2vw, 1.75rem); line-height: 1.15; letter-spacing: -0.03em; font-weight: 800; }
+    .island h2 + p, .island h3 + p { margin-top: 14px; color: var(--muted); max-width: 58ch; }
+    .island .mono-mark { color: var(--muted); font: 400 0.55em var(--mono); vertical-align: 0.35em; margin-right: 0.3em; }
+
+    /* Hero */
+    .hero { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: clamp(28px, 4vw, 64px); align-items: center; }
+    .hero h1 { font-size: clamp(2.6rem, 5.4vw, 5.2rem); line-height: 0.96; letter-spacing: -0.06em; font-weight: 900; }
+    .hero p { margin-top: 22px; font-size: clamp(17px, 1.4vw, 20px); color: var(--muted); max-width: 40ch; }
+    .hero-actions { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+    .hero-actions small { width: 100%; color: var(--muted); font: 400 13px var(--mono); }
+    .hero-shot { border-radius: 12px; overflow: hidden; box-shadow: 0 0 0 1px var(--line); }
+
+    /* Feature islands */
+    .feature { display: grid; gap: 18px; align-content: start; }
+    .code { padding: 16px 18px; border-radius: 10px; background: var(--inset); font-size: 14px; line-height: 1.75; overflow-x: auto; white-space: pre; }
+    .k { color: var(--syn-k); } .s { color: var(--syn-s); } .n { color: var(--syn-n); } .c { color: var(--syn-c); } .f { color: var(--syn-f); }
+    .cell-out { margin-top: 6px; padding: 12px 18px; border-radius: 10px; background: var(--island-2); font: 400 14px/1.7 var(--mono); }
+    .cell-out b { color: var(--mint); font-weight: 500; }
+    .files { display: grid; gap: 6px; }
+    .files li { display: flex; justify-content: space-between; padding: 10px 14px; border-radius: 10px; background: var(--island-2); font: 400 14px var(--mono); }
+    .files li span { color: var(--muted); }
+    .keys { display: grid; gap: 6px; }
+    .keys li { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--line); }
+    .keys li:last-child { border-bottom: 0; }
+    kbd { font-size: 12.5px; padding: 3px 8px; border-radius: 6px; background: var(--raised); white-space: nowrap; }
+    .big-num { font-size: clamp(3.4rem, 7vw, 6rem); line-height: 0.9; letter-spacing: -0.06em; font-weight: 900; color: var(--mint); }
+
+    .themes { margin-top: 32px; display: grid; grid-template-columns: repeat(6, 1fr); gap: var(--gap); }
+    .themes figure { border-radius: 10px; overflow: hidden; background: var(--island-2); }
+    .themes img { aspect-ratio: 16 / 10; object-fit: cover; width: 100%; transition: transform .4s; }
+    .themes figure:hover img { transform: scale(1.05); }
+    .themes figcaption { padding: 8px 10px; font-size: 13px; color: var(--muted); }
+
+    .ai { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: clamp(24px, 4vw, 56px); align-items: start; }
+    .points { margin-top: 24px; display: grid; gap: 14px; }
+    .points b { font-weight: 800; }
+    .providers { margin-top: 24px; width: 100%; border-collapse: collapse; font-size: 15px; }
+    .providers th, .providers td { text-align: left; padding: 10px 12px 10px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+    .providers th { color: var(--muted); font-weight: 500; font-size: 13px; }
+    .shot { border-radius: 12px; overflow: hidden; box-shadow: 0 0 0 1px var(--line); }
+    .shot + .shot { margin-top: var(--gap); }
+
+    .phones { margin-top: 32px; display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--gap); }
+    .phones img { border-radius: 22px; box-shadow: 0 0 0 1px var(--line); }
+    .phones figcaption { margin-top: 10px; font-size: 14px; color: var(--muted); }
+
+    .plugins { margin-top: 24px; display: flex; flex-wrap: wrap; gap: 6px; }
+    .plugins span { padding: 8px 12px; border-radius: 9px; background: var(--island-2); font-size: 14px; font-weight: 500; }
+
+    .dl-grid { margin-top: 32px; display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gap); }
+    .dl-group { padding: 20px; border-radius: 12px; background: var(--island-2); display: grid; gap: 8px; align-content: start; }
+    .dl-group h3 { font-size: 18px; margin-bottom: 4px; }
+    .dl { display: grid; grid-template-columns: 1fr auto; gap: 2px 12px; padding: 14px 16px; border-radius: 10px; background: var(--island); text-decoration: none; transition: background .2s; }
+    .dl:hover { background: var(--raised); }
+    .dl.is-yours { background: var(--accent); color: var(--on-accent); }
+    .dl-label { font-weight: 700; }
+    .dl-file { font: 400 12px var(--mono); opacity: .75; }
+    .dl-size { grid-column: 2; grid-row: 1 / 3; align-self: center; font: 500 13px var(--mono); }
+    .phone-build { font-size: 15px; color: var(--muted); }
+    .unsigned { margin-top: 24px; padding: 16px 18px; border-radius: 12px; background: var(--inset); color: var(--muted); font-size: 15px; }
+    .unsigned b { color: var(--text); }
+
+    footer.island { padding: 28px var(--sx); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; color: var(--muted); font-size: 15px; }
+
+    @media (max-width: 1100px) {
+      .themes { grid-template-columns: repeat(4, 1fr); }
+      .row-3 { grid-template-columns: 1fr 1fr; }
+      .row-3 > :first-child { grid-column: 1 / -1; }
+    }
+    @media (max-width: 900px) {
+      .hero, .ai, .row-2 { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .nav-end { margin-left: auto; }
+      .dl-grid { grid-template-columns: 1fr; }
+      .phones { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 620px) {
+      .row-3 { grid-template-columns: 1fr; }
+      .themes { grid-template-columns: 1fr 1fr; }
+      .nav .btn { display: none; }
+    }
+    @media (prefers-reduced-motion: reduce) { * { transition: none !important; } html { scroll-behavior: auto; } }
+
+    .crumbs { display: flex; align-items: center; gap: 14px; min-width: 0; }
+    .fs-home { display: flex; flex: none; }
+    .fs-home img { height: 30px; width: auto; }
+    .fs-light { display: none; }
+    [data-theme="light"] .fs-dark { display: none; }
+    [data-theme="light"] .fs-light { display: block; }
+    .crumbs-sep { width: 1px; height: 26px; background: currentColor; opacity: .3; flex: none; }
+    .crumbs .mark { white-space: nowrap; }
+    @media (max-width: 520px) { .fs-home img { height: 24px; } .crumbs { gap: 10px; } }
+  </style>
+</head>
+<body>
+  <nav class="nav" aria-label="Навигация">
+    <div class="crumbs">
+        <a class="fs-home" href="../index.html" aria-label="FrogeeSoft, на главную"><img class="fs-dark" src="../assets/brand/frogeesoft-logo-dark.png" width="124" height="34" alt="FrogeeSoft"><img class="fs-light" src="../assets/brand/frogeesoft-logo-light.png" width="124" height="34" alt="" aria-hidden="true"></a>
+        <span class="crumbs-sep" aria-hidden="true"></span>
+        <a class="mark nav-brand" href="#"><img src="../assets/products/fgsnotes/icon.png" width="28" height="28" alt="">FgSNotes</a>
+      </div>
+    <div class="nav-links">
+      <a href="#features">Возможности</a>
+      <a href="#ai">Чат</a>
+      <a href="#phone">Телефон</a>
+      <a href="#themes">Темы</a>
+      <a href="#plugins">Плагины</a>
+    </div>
+    <div class="nav-end">
+            <button class="icon-btn" type="button" data-theme-toggle aria-label="Сменить тему">
+        <svg class="sun" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="moon" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/></svg>
+      </button>
+      <a class="btn" href="#download">Скачать</a>
+    </div>
+  </nav>
+
+  <main class="page">
+    <section class="island hero" aria-labelledby="title">
+      <div>
+        <h1 id="title">Markdown-редактор, который не мешает писать</h1>
+        <p>FgSNotes открывает обычные .md файлы, показывает результат рядом, считает формулы LaTeX и помогает с текстом через ИИ — на вашем компьютере или в облаке. Есть версия для телефона, а оформление меняется одним CSS-файлом.</p>
+        <div class="hero-actions">
+          <a class="btn btn-big" id="get-main" href="#download">Скачать</a>
+          <a class="btn btn-big btn-ghost" href="https://github.com/ArduRadioKot/FgSNotes">GitHub</a>
+          <small>Версия 2.5.5 · бесплатно · GPL-2.0</small>
+        </div>
+      </div>
+      <figure class="hero-shot"><img src="../assets/products/fgsnotes/hero-glass.webp" width="1800" height="1125" alt="FgSNotes в режиме Liquid Glass: полупрозрачное окно с заметкой и предпросмотром"></figure>
+    </section>
+
+    <div class="row row-3" id="features">
+      <section class="island feature" aria-labelledby="glass-title">
+        <h3 id="glass-title">Стеклянное окно</h3>
+        <p>В режиме Liquid Glass панели становятся стеклянными, а на macOS окно полупрозрачно целиком: сквозь него виден рабочий стол. Прозрачность регулируется ползунком, стекло выключается в один клик.</p>
+        <figure class="shot"><img src="../assets/products/fgsnotes/app-settings.webp" width="1800" height="1125" alt="Настройки FgSNotes с ползунком прозрачности" loading="lazy" decoding="async"></figure>
+      </section>
+      <section class="island feature" aria-labelledby="hl-title">
+        <h3 id="hl-title">Подсветка без интернета</h3>
+        <p>Markdown и блоки кода раскрашиваются прямо в редакторе: JS, Python, Go, Rust, SQL, JSON и другие.</p>
+<pre class="code"><span class="c">// Подсветка прямо в редакторе</span>
+<span class="k">async function</span> <span class="f">loadTheme</span>(name) {
+  <span class="k">const</span> css = <span class="k">await</span> <span class="f">fetch</span>(<span class="s">`themes/${name}.css`</span>);
+  <span class="k">return</span> css.<span class="f">text</span>();
+}</pre>
+      </section>
+      <section class="island feature" aria-labelledby="files-title">
+        <h3 id="files-title">Обычные файлы</h3>
+        <p>Открывайте и сохраняйте .md как есть: без облака и своего формата. Черновики сохраняются сами.</p>
+        <ul class="files"><li>README.md<span>2 КБ</span></li><li>План недели.md<span>1 КБ</span></li><li>Идеи.md<span>4 КБ</span></li></ul>
+      </section>
+    </div>
+
+    <div class="row row-2">
+      <section class="island feature" aria-labelledby="cell-title">
+        <h3 id="cell-title">Запускаемый JavaScript прямо в заметке</h3>
+        <p>Блок <code>js-cell</code> работает как ячейка в Jupyter: запустите его — и результат появится сразу под кодом. Переменные живут между ячейками одной заметки. Запуск — <kbd>Shift Enter</kbd>, работает и на телефоне.</p>
+        <div>
+<pre class="code"><span class="k">const</span> prices = [<span class="n">120</span>, <span class="n">340</span>, <span class="n">95</span>];
+<span class="k">const</span> total = prices.<span class="f">reduce</span>((a, b) =&gt; a + b);
+console.<span class="f">log</span>(<span class="s">`Итого: ${total}`</span>);
+total / prices.length</pre>
+          <div class="cell-out">Итого: 555<br><b>185</b></div>
+        </div>
+      </section>
+      <section class="island feature" aria-labelledby="keys-title">
+        <p class="big-num">27</p>
+        <h3 id="keys-title">действий без мыши</h3>
+        <p>Любое сочетание меняется в настройках и работает на русской раскладке. <kbd>Tab</kbd> ставит отступ.</p>
+        <ul class="keys">
+          <li>Сохранить<kbd>Ctrl / ⌘ S</kbd></li>
+          <li>Жирный<kbd>Ctrl / ⌘ B</kbd></li>
+          <li>Режимы: редактор, живой, рядом, просмотр<kbd>Ctrl / ⌘ 1–4</kbd></li>
+          <li>Чат с ИИ<kbd>Ctrl / ⌘ J</kbd></li>
+        </ul>
+      </section>
+    </div>
+
+    <section class="island" id="ai" aria-labelledby="ai-title">
+      <div class="ai">
+        <div>
+          <h2 id="ai-title">Чат с ИИ работает у вас на компьютере</h2>
+          <p>Выделите абзац и нажмите <kbd>Ctrl / ⌘ J</kbd>: текст прикрепится к чату, а чат исправит ошибки, сократит, переведёт или продолжит его.</p>
+          <div class="points">
+            <p><b>Чат рядом с текстом.</b> Третья панель в режиме «Рядом», ширина меняется мышью. Ответ заменяет выделение, вставляется в заметку или копируется.</p>
+            <p><b>Быстрые действия.</b> Продолжить, улучшить, исправить ошибки, сократить, перевести, резюме, список задач, заголовки.</p>
+            <p><b>Мастер установки Ollama.</b> Три шага: установка, запуск, модель. Окно само замечает, что шаг пройден, и показывает прогресс скачивания.</p>
+          </div>
+          <table class="providers">
+            <thead><tr><th>Где работает модель</th><th>Провайдеры</th></tr></thead>
+            <tbody>
+              <tr><td>На компьютере, без интернета</td><td>Ollama, LM Studio</td></tr>
+              <tr><td>В облаке, по вашему ключу</td><td>OpenAI, Claude, Gemini, OpenRouter, Groq</td></tr>
+              <tr><td>Свой сервер</td><td>Любой с API как у OpenAI</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <figure class="shot"><img src="../assets/products/fgsnotes/app-ai.webp" width="1800" height="1125" alt="Панель чата с ИИ рядом с заметкой" loading="lazy" decoding="async"></figure>
+          <figure class="shot"><img src="../assets/products/fgsnotes/app-ai-setup.webp" width="1800" height="1125" alt="Мастер установки Ollama в FgSNotes с выбором модели" loading="lazy" decoding="async"></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="island" id="phone" aria-labelledby="phone-title">
+      <h2 id="phone-title">FgSNotes и на телефоне</h2>
+      <p>Те же заметки, предпросмотр и чат. Небольшие модели — Qwen 3.5, Ministral 3, Phi-3.5 mini — скачиваются прямо в приложение и работают без интернета.</p>
+      <div class="phones">
+        <figure><img src="../assets/products/fgsnotes/phone-notes.webp" width="740" height="1600" alt="Список заметок на телефоне" loading="lazy" decoding="async"><figcaption>Заметки</figcaption></figure>
+        <figure><img src="../assets/products/fgsnotes/phone-editor.webp" width="740" height="1600" alt="Редактор заметки на телефоне" loading="lazy" decoding="async"><figcaption>Редактор</figcaption></figure>
+        <figure><img src="../assets/products/fgsnotes/phone-ai.webp" width="740" height="1600" alt="Чат с ИИ на телефоне" loading="lazy" decoding="async"><figcaption>Чат с ИИ</figcaption></figure>
+        <figure><img src="../assets/products/fgsnotes/phone-settings.webp" width="740" height="1600" alt="Настройки приложения на телефоне" loading="lazy" decoding="async"><figcaption>Настройки</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="island" id="themes" aria-labelledby="themes-title">
+      <h2 id="themes-title">22 темы в одном CSS-файле</h2>
+      <p>Dracula, Nord, GitHub, Solarized и другие. Своя тема — это один файл.</p>
+      <div class="themes">
+        <figure><img src="../assets/products/fgsnotes/themes/dracula.webp" width="800" height="500" alt="" loading="lazy" decoding="async"><figcaption>Dracula</figcaption></figure>
+        <figure><img src="../assets/products/fgsnotes/themes/nord.webp" width="800" height="500" alt="" loading="lazy" decoding="async"><figcaption>Nord</figcaption></figure>
+        <figure><img src="../assets/products/fgsnotes/themes/github-dark.webp" width="800" height="500" alt="" loading="lazy" decoding="async"><figcaption>GitHub Dark</figcaption></figure>
+        <figure><img src="../assets/products/fgsnotes/themes/one-dark.webp" width="800" height="500" alt="" loading="lazy" decoding="async"><figcaption>One Dark</figcaption></figure>
+        <figure><img src="../assets/products/fgsnotes/themes/solarized-light.webp" width="800" height="500" alt="" loading="lazy" decoding="async"><figcaption>Solarized Light</figcaption></figure>
+        <figure><img src="../assets/products/fgsnotes/themes/github-light.webp" width="800" height="500" alt="" loading="lazy" decoding="async"><figcaption>GitHub Light</figcaption></figure>
+        <figure><img src="../assets/products/fgsnotes/themes/midnight-pro.webp" width="800" height="500" alt="" loading="lazy" decoding="async"><figcaption>Midnight Pro</figcaption></figure>
+        <figure><img src="../assets/products/fgsnotes/themes/cyberpunk.webp" width="800" height="500" alt="" loading="lazy" decoding="async"><figcaption>Cyberpunk</figcaption></figure>
+        <figure><img src="../assets/products/fgsnotes/themes/paper.webp" width="800" height="500" alt="" loading="lazy" decoding="async"><figcaption>Paper</figcaption></figure>
+        <figure><img src="../assets/products/fgsnotes/themes/monokai.webp" width="800" height="500" alt="" loading="lazy" decoding="async"><figcaption>Monokai</figcaption></figure>
+        <figure><img src="../assets/products/fgsnotes/themes/aurora.webp" width="800" height="500" alt="" loading="lazy" decoding="async"><figcaption>Aurora</figcaption></figure>
+        <figure><img src="../assets/products/fgsnotes/themes/zen.webp" width="800" height="500" alt="" loading="lazy" decoding="async"><figcaption>Zen</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="island" id="plugins" aria-labelledby="plugins-title">
+      <h2 id="plugins-title">Плагины: рисунок, календарь, Word</h2>
+      <p>Один файл .js добавляет кнопку на левую панель. Свой плагин написать несложно, а ставить стоит только те, которым доверяете: плагин видит все заметки.</p>
+      <div class="plugins"><span>Exildraw</span><span>Календарь</span><span>Экспорт в Word, HTML и PDF</span><span>Поиск по заметкам</span><span>Шаблоны</span><span>Импорт из HTML</span><span>Распознавание текста</span></div>
+    </section>
+
+    <section class="island" id="download" aria-labelledby="download-title">
+      <h2 id="download-title">Скачать FgSNotes</h2>
+      <p>Версия 2.5.5 от 17 октября 2026 года. Выделенный файл подходит вашей системе.</p>
+      <div class="dl-grid">
+        <div class="dl-group"><h3>macOS</h3><div class="dl-slot" data-os="mac"></div></div>
+        <div class="dl-group"><h3>Windows и Linux</h3><div class="dl-slot" data-os="other"></div></div>
+        <div class="dl-group">
+          <h3>iPhone и Android</h3>
+          <p class="phone-build">Готовых сборок в сторах пока нет. Соберите приложение сами: iOS — в Xcode, Android — в Android Studio, по <a href="https://github.com/ArduRadioKot/FgSNotes">инструкции на GitHub</a>.</p>
+        </div>
+      </div>
+      <p class="unsigned"><b>Сборки пока не подписаны.</b> На macOS при первом запуске откройте приложение через контекстное меню → «Открыть». На Windows в окне SmartScreen нажмите «Подробнее» → «Выполнить в любом случае». На Mac с M1 и новее берите arm64: версия x64 работает через Rosetta в несколько раз медленнее.</p>
+    </section>
+
+    <footer class="island">
+      <span>FgSNotes · <a href="../index.html">FrogeeSoft</a> · <a href="https://arduradiokot.github.io/FgSNotes/">сайт программы</a></span>
+      <a href="mailto:frogeesoft.team@gmail.com">frogeesoft.team@gmail.com</a>
+    </footer>
+  </main>
+
+  <script src="../assets/downloads.js"></script>
+  <script>
+    (() => {
+      const dl = window.FROGEE_DOWNLOADS;
+      if (dl) {
+        const p = dl.programs.fgsnotes;
+        const mine = dl.pick('fgsnotes');
+        const slots = { mac: p.files.filter((f) => f.os.startsWith('mac')), other: p.files.filter((f) => !f.os.startsWith('mac')) };
+        document.querySelectorAll('.dl-slot').forEach((slot) => {
+          slot.style.display = 'grid'; slot.style.gap = '8px';
+          slots[slot.dataset.os].forEach((f) => {
+            const a = document.createElement('a');
+            a.className = 'dl' + (f === mine ? ' is-yours' : '');
+            a.href = f.url;
+            [['dl-label', f.label], ['dl-file', f.file], ['dl-size', dl.size(f.mb)]].forEach(([c, t]) => { const s = document.createElement('span'); s.className = c; s.textContent = t; a.append(s); });
+            slot.append(a);
+          });
+        });
+        if (mine) {
+          const btn = document.getElementById('get-main');
+          btn.href = mine.url;
+          btn.textContent = `Скачать для ${dl.osNames[dl.detectOS()] || mine.label}`;
+        }
+      }
+
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="ru" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Renvert — конвертер файлов через переименование для macOS</title>
+  <meta name="description" content="Renvert — утилита для macOS: переименуйте photo.heic в photo.jpg в Finder, и файл сконвертируется. Бесплатно, от FrogeeSoft.">
+  <link rel="icon" href="../assets/products/renvert/icon.png">
+  <script src="../assets/theme.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ground: #101316;
+      --paper: #191d21;
+      --ink: #eef1f3;
+      --soft: #a3adb5;
+      --teal: #2ab4c8;
+      --teal-bright: #3fd0e4;
+      --select: #4d82f0;
+      --warn: #ff8a6b;
+      --file: #e9edf0;
+      --file-line: #3a4148;
+      --field: #0c0f12;
+      --chip: #23292f;
+      --try-bg: #12343a;
+      --try-ink: #8fe6f2;
+      --rule: #2a3036;
+      --band: #070a0c;
+      --band-text: #eef1f3;
+      --band-soft: #a9b3ba;
+      --band-cell: #12171b;
+      --cta: #2ab4c8;
+      --cta-ink: #04161a;
+      --btn-bg: #23292f; --btn-ink: #eef1f3;
+      color-scheme: dark;
+    }
+    [data-theme="light"] {
+      --ground: #e6e9eb;
+      --paper: #f7f8f9;
+      --ink: #14181b;
+      --soft: #4f585f;
+      --teal: #0c7383;
+      --teal-bright: #1fb4c9;
+      --select: #2a62d8;
+      --warn: #b4472d;
+      --file: #ffffff;
+      --file-line: #c9cfd4;
+      --field: #ffffff;
+      --chip: #e6e9eb;
+      --try-bg: #dff2f5;
+      --try-ink: #064a55;
+      --rule: #d3d8dc;
+      --band: #14181b;
+      --band-text: #f7f8f9;
+      --band-soft: #b9c2c8;
+      --band-cell: #1d2327;
+      --cta: #14181b;
+      --cta-ink: #f7f8f9;
+      --btn-bg: #dfe3e6; --btn-ink: #14181b;
+      color-scheme: light;
+    }
+    :root {
+      --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+      --gutter: clamp(16px, 4vw, 56px);
+    }
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body { margin: 0; background: var(--ground); color: var(--ink); font: 400 17px/1.55 Onest, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; }
+    img { display: block; max-width: 100%; height: auto; }
+    h1, h2, h3, p, ul, ol { margin: 0; }
+    ul, ol { padding: 0; list-style: none; }
+    :focus-visible { outline: 3px solid var(--select); outline-offset: 3px; }
+
+    .top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 20px var(--gutter); font-size: 15px; }
+    .theme-btn { width: 40px; height: 40px; border: 0; border-radius: 50%; display: inline-grid; place-items: center; vertical-align: middle; margin-left: 12px; background: var(--btn-bg); color: var(--btn-ink); cursor: pointer; }
+    .theme-btn .moon { display: none; } [data-theme="light"] .theme-btn .sun { display: none; } [data-theme="light"] .theme-btn .moon { display: block; }
+    .top a { text-decoration: none; font-weight: 500; }
+    .top a:hover { text-decoration: underline; }
+    .mark { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 18px; letter-spacing: -0.02em; }
+    .mark img { width: 34px; height: 34px; border-radius: 9px; }
+
+    /* Hero: the filename is the interface */
+    .hero { padding: clamp(32px, 6vw, 72px) var(--gutter) 64px; display: grid; justify-items: center; text-align: center; }
+    .hero h1 { font-size: clamp(2.4rem, 6.4vw, 5.6rem); line-height: 0.98; letter-spacing: -0.045em; font-weight: 800; max-width: 20ch; }
+    .hero > p { margin-top: 20px; max-width: 46ch; font-size: clamp(17px, 1.5vw, 20px); color: var(--soft); }
+
+    .desk { margin-top: clamp(40px, 6vw, 72px); width: min(760px, 100%); padding: clamp(28px, 5vw, 56px) 20px 28px; border-radius: 28px; background: var(--paper); display: grid; justify-items: center; gap: 22px; }
+    .file { position: relative; width: 132px; height: 164px; transition: transform .35s cubic-bezier(.3,.7,.3,1); }
+    .file svg { width: 100%; height: 100%; }
+    .file .badge { position: absolute; left: 50%; bottom: 26px; transform: translateX(-50%); padding: 4px 10px; border-radius: 6px; font: 700 15px var(--mono); color: #fff; background: var(--badge, var(--ink)); letter-spacing: 0.02em; text-transform: uppercase; white-space: nowrap; transition: background .3s; }
+    .file.is-converting { animation: flip .6s cubic-bezier(.3,.7,.3,1); }
+    @keyframes flip { 45% { transform: scale(.92) rotateY(80deg); } 100% { transform: none; } }
+
+    .rename { display: flex; align-items: center; justify-content: center; max-width: 100%; }
+    .rename label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+    .rename input {
+      width: min(560px, 100%); min-width: 0; padding: 10px 14px; border: 0; border-radius: 10px;
+      font: 500 clamp(18px, 2.6vw, 28px) var(--mono); text-align: center; color: var(--ink);
+      background: var(--field); box-shadow: inset 0 0 0 2px var(--select);
+    }
+    .rename input::selection { background: var(--select); color: #fff; }
+    .hint { font-size: 14px; color: var(--soft); }
+    .hint kbd { font: 700 13px var(--mono); padding: 2px 6px; border-radius: 5px; background: var(--chip); }
+
+    .sources, .tries { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+    .sources button, .tries button {
+      border: 0; cursor: pointer; padding: 9px 13px; border-radius: 999px;
+      font: 500 14px var(--mono); color: var(--ink); background: var(--chip);
+      transition: background .2s, color .2s, transform .2s;
+    }
+    .sources button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+    .tries button:hover, .sources button:hover { transform: translateY(-2px); }
+    .tries button { background: var(--try-bg); color: var(--try-ink); }
+    .result { min-height: 3.2em; max-width: 52ch; font-size: 17px; font-weight: 500; }
+    .result.is-off { color: var(--warn); }
+    .result b { font-family: var(--mono); font-weight: 700; color: var(--teal); }
+    .result.is-off b { color: inherit; }
+    .group-label { font-size: 13px; color: var(--soft); margin-bottom: -10px; }
+
+    .get { margin-top: 36px; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 14px 20px; }
+    .button { display: inline-flex; align-items: center; justify-content: center; min-height: 54px; padding: 0 26px; border-radius: 14px; background: var(--cta); color: var(--cta-ink); font-weight: 700; text-decoration: none; transition: transform .2s, background .2s; }
+    .button:hover { filter: brightness(1.12); transform: translateY(-2px); }
+    .get small { color: var(--soft); font-size: 14px; }
+
+    /* Sections */
+    .band { padding: clamp(72px, 10vw, 140px) var(--gutter); }
+    .band--paper { background: var(--paper); }
+    .band--ink { background: var(--band); color: var(--band-text); }
+    .band h2 { font-size: clamp(2rem, 4.4vw, 3.6rem); line-height: 1; letter-spacing: -0.04em; font-weight: 800; max-width: 18ch; }
+    .band h2 + p { margin-top: 18px; max-width: 56ch; color: var(--soft); font-size: 18px; }
+    .band--ink h2 + p { color: var(--band-soft); }
+
+    .grammar { margin-top: 48px; width: 100%; border-collapse: collapse; }
+    .grammar th { text-align: left; font-size: 14px; font-weight: 500; color: var(--soft); padding: 0 0 12px; }
+    .grammar td { padding: 18px 0; border-top: 1px solid var(--rule); vertical-align: baseline; }
+    .grammar td:first-child { width: 42%; padding-right: 24px; font: 500 clamp(17px, 2vw, 24px) var(--mono); white-space: nowrap; }
+    .grammar td:first-child em { font-style: normal; color: var(--teal); }
+
+    .pairs { margin-top: 48px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+    .pairs li { padding: 26px 24px; background: var(--band-cell); display: grid; gap: 6px; }
+    .pairs b { font: 700 clamp(20px, 2.2vw, 28px) var(--mono); letter-spacing: -0.02em; }
+    .pairs b i { font-style: normal; color: var(--teal-bright); padding: 0 .25em; }
+    .pairs span { color: var(--band-soft); font-size: 15px; }
+    .pairs-note { margin-top: 20px; font-size: 15px; color: var(--band-soft); max-width: 70ch; }
+
+    .flow { margin-top: 48px; display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: start; }
+    .steps { counter-reset: s; display: grid; gap: 22px; }
+    .steps li { counter-increment: s; display: grid; grid-template-columns: 44px 1fr; gap: 14px; font-size: 18px; }
+    .steps li::before { content: counter(s); display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; background: var(--teal); color: var(--paper); font-weight: 700; font-size: 15px; }
+    .steps code, .facts code { font: 500 0.9em var(--mono); background: var(--chip); padding: 1px 6px; border-radius: 5px; }
+    .shot { border-radius: 18px; overflow: hidden; background: #2c3136; }
+
+    .facts { margin-top: 48px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px 48px; }
+    .facts h3 { font-size: 20px; letter-spacing: -0.02em; margin-bottom: 6px; }
+    .facts p { color: var(--soft); }
+
+    .download { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 5vw, 80px); align-items: start; }
+    .dl { display: grid; grid-template-columns: 1fr auto; gap: 4px 16px; padding: 22px 24px; border-radius: 18px; background: var(--teal-bright); color: #04161a; text-decoration: none; transition: transform .2s, filter .2s; }
+    .dl:hover { transform: translateY(-3px); filter: brightness(1.08); }
+    .dl-label { font-weight: 700; font-size: 20px; }
+    .dl-file { font: 500 14px var(--mono); opacity: .85; grid-column: 1; }
+    .dl-size { grid-column: 2; grid-row: 1 / 3; align-self: center; font-weight: 700; }
+    .download-notes { display: grid; gap: 14px; color: var(--band-soft); }
+    .download-notes b { color: var(--band-text); font-weight: 700; }
+
+    footer { padding: 28px var(--gutter) 40px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 14px; color: var(--soft); }
+    footer a { font-weight: 500; }
+
+    @media (max-width: 860px) {
+      .pairs { grid-template-columns: 1fr 1fr; }
+      .flow, .facts, .download { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 560px) {
+      body { font-size: 16px; }
+      .pairs { grid-template-columns: 1fr; }
+      .grammar td:first-child { white-space: normal; width: auto; display: block; padding-bottom: 4px; border: 0; }
+      .grammar tr { display: block; border-top: 1px solid var(--rule); padding: 14px 0; }
+      .grammar td { display: block; padding: 0; border: 0; }
+      .grammar thead { display: none; }
+      .file { width: 104px; height: 130px; }
+    }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+
+    .crumbs { display: flex; align-items: center; gap: 14px; min-width: 0; }
+    .fs-home { display: flex; flex: none; }
+    .fs-home img { height: 30px; width: auto; }
+    .fs-light { display: none; }
+    [data-theme="light"] .fs-dark { display: none; }
+    [data-theme="light"] .fs-light { display: block; }
+    .crumbs-sep { width: 1px; height: 26px; background: currentColor; opacity: .3; flex: none; }
+    .crumbs .mark { white-space: nowrap; }
+    @media (max-width: 520px) { .fs-home img { height: 24px; } .crumbs { gap: 10px; } }
+  </style>
+</head>
+<body>
+  <header class="top">
+    <div class="crumbs">
+        <a class="fs-home" href="../index.html" aria-label="FrogeeSoft, на главную"><img class="fs-dark" src="../assets/brand/frogeesoft-logo-dark.png" width="124" height="34" alt="FrogeeSoft"><img class="fs-light" src="../assets/brand/frogeesoft-logo-light.png" width="124" height="34" alt="" aria-hidden="true"></a>
+        <span class="crumbs-sep" aria-hidden="true"></span>
+        <a class="mark" href="#"><img src="../assets/products/renvert/icon.png" width="34" height="34" alt="">Renvert</a>
+      </div>
+    <nav><a href="../index.html#programs">Все программы</a><button class="theme-btn" type="button" data-theme-toggle aria-label="Сменить тему">
+        <svg class="sun" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="moon" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/></svg>
+      </button></nav>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="title">
+      <h1 id="title">Смените расширение — Renvert сменит формат</h1>
+      <p>Утилита в строке меню macOS. Переименуйте файл в Finder, и он сконвертируется: без окон, без загрузки в интернет.</p>
+
+      <div class="desk">
+        <p class="group-label" id="src-label">Возьмите файл</p>
+        <div class="sources" role="group" aria-labelledby="src-label">
+          <button type="button" data-src="heic" aria-pressed="true">отпуск.heic</button>
+          <button type="button" data-src="docx" aria-pressed="false">договор.docx</button>
+          <button type="button" data-src="wav" aria-pressed="false">интервью.wav</button>
+          <button type="button" data-src="mov" aria-pressed="false">запись.mov</button>
+          <button type="button" data-src="xlsx" aria-pressed="false">бюджет.xlsx</button>
+        </div>
+
+        <div class="file" aria-hidden="true">
+          <svg viewBox="0 0 132 164"><path d="M8 4h82l38 38v114a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V8a4 4 0 0 1 4-4Z" style="fill:var(--file);stroke:var(--file-line)" stroke-width="2"/><path d="M90 4v34a4 4 0 0 0 4 4h34" style="fill:var(--chip);stroke:var(--file-line)" stroke-width="2"/></svg>
+          <span class="badge">heic</span>
+        </div>
+
+        <form class="rename" autocomplete="off">
+          <label for="name">Имя файла</label>
+          <input id="name" name="name" value="отпуск.heic" spellcheck="false">
+        </form>
+        <p class="hint">Допишите новое расширение и нажмите <kbd>Enter</kbd>, как в Finder</p>
+
+        <div class="tries" role="group" aria-label="Попробовать">
+          <button type="button" data-try=".jpg">.jpg</button>
+          <button type="button" data-try="+q80.jpg">+q80.jpg</button>
+          <button type="button" data-try=".jpg!">.jpg!</button>
+          <button type="button" data-try=".mp3">.mp3</button>
+        </div>
+        <p class="result" aria-live="polite">Это фото с iPhone. Попробуйте назвать его <b>отпуск.jpg</b>.</p>
+      </div>
+
+      <div class="get">
+        <a class="button" id="get-main" href="https://github.com/ArduRadioKot/RenVert/releases/download/v1.0/Renvert-1.0.0.dmg">Скачать для macOS</a>
+        <small>Версия 1.0 · 18,7 МБ · macOS 14 и новее</small>
+      </div>
+    </section>
+
+    <section class="band band--paper" aria-labelledby="grammar-title">
+      <h2 id="grammar-title">Всё управление — в имени файла</h2>
+      <p>Добавьте к имени короткую пометку, и Renvert поймёт, как именно конвертировать. Пометка в готовый файл не попадает.</p>
+      <table class="grammar">
+        <thead><tr><th>Новое имя</th><th>Что получится</th></tr></thead>
+        <tbody>
+          <tr><td>photo<em>.jpg</em></td><td>Фото HEIC станет JPEG. Формат определяется по содержимому, а не по старому расширению.</td></tr>
+          <tr><td>photo<em>+q80</em>.jpg</td><td>JPEG с качеством 80%.</td></tr>
+          <tr><td>photo<em>+min</em>.png</td><td>Самый маленький файл, который ещё хорошо выглядит.</td></tr>
+          <tr><td>clip<em>+mute</em>.mp4</td><td>Видео без звуковой дорожки.</td></tr>
+          <tr><td>book<em>+page2-5</em>.png</td><td>Только страницы со 2-й по 5-ю из PDF.</td></tr>
+          <tr><td>photo.png<em>,webp</em></td><td>Сразу два файла: PNG и WebP.</td></tr>
+          <tr><td>Photos.folder<em>,zip</em></td><td>Папка превратится в ZIP-архив.</td></tr>
+          <tr><td>photo.jpg<em>!</em></td><td>Конвертировать сразу, даже если включён режим «Сначала спросить».</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="band band--ink" aria-labelledby="pairs-title">
+      <h2 id="pairs-title">Что умеет версия 1.0</h2>
+      <p>Каждая пара проверена тестами на настоящих файлах: тесты смотрят на байты внутри, а не на расширение.</p>
+      <ul class="pairs">
+        <li><b>HEIC<i>↔</i>JPEG</b><span>Фото с iPhone для любых сайтов и программ</span></li>
+        <li><b>PNG<i>→</i>WebP, JPEG</b><span>Лёгкие картинки для веба</span></li>
+        <li><b>MOV<i>→</i>MP4</b><span>Записи экрана и видео с камеры</span></li>
+        <li><b>WAV<i>→</i>M4A, MP3</b><span>Диктофон и подкасты</span></li>
+        <li><b>DOCX<i>→</i>PDF</b><span>Документ, который откроется везде</span></li>
+        <li><b>PDF<i>→</i>PNG</b><span>Страницы как картинки</span></li>
+        <li><b>XLSX<i>→</i>CSV</b><span>Таблица для скриптов и баз данных</span></li>
+        <li><b>JSON<i>→</i>YAML</b><span>Конфиги в удобном виде</span></li>
+        <li><b>Папка<i>→</i>ZIP</b><span>Архив одним переименованием</span></li>
+      </ul>
+      <p class="pairs-note">Renvert — независимая реализация идеи Consul 2.x. В нём нет кода, ресурсов и проверок лицензий Consul, и он не обещает все его 5211 пар: только те, что работают.</p>
+    </section>
+
+    <section class="band" aria-labelledby="flow-title">
+      <h2 id="flow-title">Как начать</h2>
+      <div class="flow">
+        <ol class="steps">
+          <li>Запустите Renvert. Он живёт в строке меню, иконки в Dock нет.</li>
+          <li>При первом запуске выберите папки. По умолчанию это Рабочий стол, Загрузки и Документы, полный доступ к диску не нужен.</li>
+          <li>Переименуйте в Finder <code>photo.heic</code> в <code>photo.jpg</code>.</li>
+          <li>В режиме «Сначала спросить» подтвердите в меню. В автоматическом режиме конвертация начнётся сама, как только файл перестанет меняться.</li>
+          <li>Передумали — отмените из строки меню или в Настройках, в Истории.</li>
+        </ol>
+        <figure class="shot">
+          <img src="../assets/products/renvert/head.webp" width="1800" height="696" alt="Окно Renvert и меню в строке меню с историей конвертаций" loading="lazy" decoding="async">
+        </figure>
+      </div>
+
+      <div class="facts">
+        <div><h3>Файлы не покидают Mac</h3><p>Вся конвертация идёт локально. Ничего не загружается в облако.</p></div>
+        <div><h3>Резервные копии и отмена</h3><p>Перед конвертацией Renvert сохраняет оригинал, а журнал сбоев не даст потерять файл при ошибке.</p></div>
+        <div><h3>Пункт в меню «Службы»</h3><p>В Finder появляется «Convert with Renvert», если удобнее мышкой.</p></div>
+        <div><h3>Русский и английский</h3><p>Интерфейс на двух языках. Universal Binary: родная скорость на Apple Silicon и Intel.</p></div>
+      </div>
+    </section>
+
+    <section class="band band--ink" id="download" aria-labelledby="download-title">
+      <div class="download">
+        <div>
+          <h2 id="download-title">Скачать Renvert</h2>
+          <p>Бесплатно. Исходный код на GitHub, программа написана на Swift.</p>
+        </div>
+        <div class="download-notes">
+          <div id="dl-list"><a class="dl" href="https://github.com/ArduRadioKot/RenVert/releases/download/v1.0/Renvert-1.0.0.dmg"><span class="dl-label">macOS 14+, Apple Silicon и Intel</span><span class="dl-file">Renvert-1.0.0.dmg</span><span class="dl-size">18,7 МБ</span></a></div>
+          <p><b>Первый запуск.</b> Приложение подписано без Developer ID, поэтому macOS может его не открыть двойным щелчком. Нажмите на Renvert в Программах правой кнопкой и выберите «Открыть».</p>
+          <p><b>Из исходников:</b> <a href="https://github.com/ArduRadioKot/RenVert">github.com/ArduRadioKot/RenVert</a>, сборка через <code style="font-family:var(--mono)">./scripts/build.sh</code> или Xcode.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>Renvert сделан в <a href="../index.html">FrogeeSoft</a>, команда S.I.T</span>
+    <a href="mailto:frogeesoft.team@gmail.com">frogeesoft.team@gmail.com</a>
+  </footer>
+
+  <script src="../assets/downloads.js"></script>
+  <script>
+    (() => {
+      const dl = window.FROGEE_DOWNLOADS;
+      const btn = document.getElementById('get-main');
+      if (dl && !dl.detectOS().startsWith('mac')) {
+        btn.textContent = 'Скачать .dmg для Mac';
+      }
+
+      // Formats Renvert reads, with what each can become.
+      const SOURCES = {
+        heic: { base: 'отпуск', kind: 'фото с iPhone', badge: '#2a62d8', to: { jpg: 'JPEG', jpeg: 'JPEG' } },
+        docx: { base: 'договор', kind: 'документ Word', badge: '#2b579a', to: { pdf: 'PDF' } },
+        wav: { base: 'интервью', kind: 'запись диктофона', badge: '#7a4fb8', to: { m4a: 'M4A', mp3: 'MP3' } },
+        mov: { base: 'запись', kind: 'видео', badge: '#c2410c', to: { mp4: 'MP4' } },
+        xlsx: { base: 'бюджет', kind: 'таблица Excel', badge: '#1d7044', to: { csv: 'CSV' } },
+      };
+      const BADGES = { jpg: '#12899c', jpeg: '#12899c', png: '#12899c', webp: '#12899c', pdf: '#b91c1c', mp3: '#12899c', m4a: '#12899c', mp4: '#12899c', csv: '#12899c' };
+      const MODS = {
+        q: (v) => `качество ${v}%`,
+        min: () => 'минимальный размер',
+        mute: () => 'без звука',
+        page: (v) => `страницы ${v.replace('-', '–')}`,
+      };
+      const TRIES = {
+        heic: ['.jpg', '+q80.jpg', '.jpg!', '.mp3'],
+        docx: ['.pdf', '.pdf!', '.jpg'],
+        wav: ['.mp3', '.m4a', '.mp4'],
+        mov: ['.mp4', '+mute.mp4', '.mp3'],
+        xlsx: ['.csv', '.pdf'],
+      };
+
+      let src = 'heic';
+      const input = document.getElementById('name');
+      const file = document.querySelector('.file');
+      const badge = file.querySelector('.badge');
+      const result = document.querySelector('.result');
+      const tries = document.querySelector('.tries');
+
+      const say = (html, off) => { result.innerHTML = html; result.classList.toggle('is-off', !!off); };
+      const esc = (t) => t.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+      function setSource(key) {
+        src = key;
+        const s = SOURCES[key];
+        input.value = `${s.base}.${key}`;
+        badge.textContent = key;
+        file.style.setProperty('--badge', s.badge);
+        document.querySelectorAll('[data-src]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.src === key)));
+        tries.innerHTML = '';
+        TRIES[key].forEach((t) => {
+          const b = document.createElement('button');
+          b.type = 'button'; b.dataset.try = t; b.textContent = t;
+          tries.append(b);
+        });
+        const first = Object.keys(s.to)[0];
+        say(`Это ${s.kind}. Попробуйте назвать его <b>${esc(s.base)}.${first}</b>.`);
+      }
+
+      function selectExtension() {
+        const dot = input.value.lastIndexOf('.');
+        input.focus();
+        input.setSelectionRange(dot >= 0 ? dot + 1 : input.value.length, input.value.length);
+      }
+
+      function convert() {
+        const s = SOURCES[src];
+        let name = input.value.trim();
+        const now = name.endsWith('!');
+        if (now) name = name.slice(0, -1);
+        const dot = name.lastIndexOf('.');
+        if (dot < 0) { say('Нужно расширение после точки, например <b>.jpg</b>.', true); return; }
+        const exts = name.slice(dot + 1).toLowerCase().split(',').map((e) => e.trim()).filter(Boolean);
+        const stem = name.slice(0, dot);
+        if (exts.length === 1 && exts[0] === src) { say('Имя не изменилось, конвертировать нечего.'); return; }
+
+        const mods = [];
+        stem.replace(/\+(q)(\d{1,3})|\+(min)|\+(mute)|\+(page)(\d+-\d+)/g, (_, q, qv, min, mute, page, pv) => {
+          if (q) mods.push(MODS.q(qv)); if (min) mods.push(MODS.min()); if (mute) mods.push(MODS.mute()); if (page) mods.push(MODS.page(pv));
+        });
+
+        // "photo.png,webp": the first part names the main format; every listed format is produced.
+        const wanted = exts.length > 1 && exts[0] !== src ? exts : exts.filter((e) => e !== src);
+        const ok = wanted.filter((e) => s.to[e]);
+        const bad = wanted.filter((e) => !s.to[e]);
+
+        if (!ok.length) {
+          say(`Такой пары пока нет: <b>${src.toUpperCase()} → ${esc(bad.join(', ').toUpperCase())}</b>. Renvert оставит файл как есть.`, true);
+          return;
+        }
+        file.classList.remove('is-converting'); void file.offsetWidth; file.classList.add('is-converting');
+        setTimeout(() => {
+          badge.textContent = ok[0];
+          file.style.setProperty('--badge', BADGES[ok[0]] || '#12899c');
+        }, 260);
+        const target = ok.map((e) => s.to[e]).join(' и ');
+        const extra = mods.length ? `, ${mods.join(', ')}` : '';
+        const skipped = bad.length ? ` ${esc(bad.join(', ').toUpperCase())} пока не поддерживается.` : '';
+        const when = now ? 'Сразу, без вопроса.' : 'Оригинал сохранён в резервной копии, отменить можно из строки меню.';
+        say(`<b>${src.toUpperCase()} → ${target}</b>${esc(extra)}. ${when}${skipped}`);
+      }
+
+      document.querySelector('.sources').addEventListener('click', (e) => {
+        const b = e.target.closest('[data-src]'); if (b) setSource(b.dataset.src);
+      });
+      tries.addEventListener('click', (e) => {
+        const b = e.target.closest('[data-try]'); if (!b) return;
+        input.value = SOURCES[src].base + b.dataset.try;
+        convert();
+      });
+      document.querySelector('.rename').addEventListener('submit', (e) => { e.preventDefault(); convert(); });
+      input.addEventListener('focus', () => requestAnimationFrame(selectExtension), { once: true });
+      setSource('heic');
+    })();
+  </script>
+</body>
+</html>

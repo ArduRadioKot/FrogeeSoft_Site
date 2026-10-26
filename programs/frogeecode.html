@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="ru" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FrogeeCodeIDE — редактор кода с локальным ИИ</title>
+  <meta name="description" content="FrogeeCodeIDE — лёгкая IDE на Electron с ИИ, который работает на вашем компьютере: Ollama, LM Studio, проверка правок, Jupyter-ноутбуки. От FrogeeSoft.">
+  <link rel="icon" href="../assets/products/frogeecode/icon.png">
+  <script src="../assets/theme.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0d1015;
+      --panel: #151a21;
+      --panel-2: #1c222b;
+      --chip: #262d38;
+      --ink: #e8edf2;
+      --soft: #9aa5b1;
+      --gutter-ink: #6b7682;
+      --add-bg: #10301c;
+      --add-ink: #8ef0ae;
+      --add-mark: #3fd17a;
+      --del-bg: #3a1518;
+      --del-ink: #ffb1ad;
+      --del-mark: #ff6b66;
+      --cobalt: #3d5ef0;
+      --frame: rgba(255,255,255,.08);
+      --btn-bg: #262d38; --btn-ink: #e8edf2;
+      color-scheme: dark;
+    }
+    [data-theme="light"] {
+      --bg: #edeff2;
+      --panel: #ffffff;
+      --panel-2: #f6f7f9;
+      --chip: #e6e9ee;
+      --ink: #0f1419;
+      --soft: #4e5964;
+      --gutter-ink: #8a949e;
+      --add-bg: #d9f7e0;
+      --add-ink: #0f5a24;
+      --add-mark: #1f883d;
+      --del-bg: #ffe5e3;
+      --del-ink: #8d1520;
+      --del-mark: #cf222e;
+      --cobalt: #2a55e5;
+      --frame: #d7dce1;
+      --btn-bg: #e6e9ee; --btn-ink: #0f1419;
+      color-scheme: light;
+    }
+    :root {
+      --ghost: #9aa3ad;
+      --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+      --side: clamp(16px, 4vw, 48px);
+    }
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body { margin: 0; background: var(--bg); color: var(--ink); font: 400 17px/1.6 Manrope, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; }
+    img { display: block; max-width: 100%; height: auto; }
+    h1, h2, h3, p, ul, ol, figure { margin: 0; }
+    ul, ol { padding: 0; list-style: none; }
+    :focus-visible { outline: 3px solid var(--cobalt); outline-offset: 2px; }
+
+    .top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px var(--side); font-size: 15px; }
+    .theme-btn { width: 40px; height: 40px; border: 0; border-radius: 50%; display: inline-grid; place-items: center; vertical-align: middle; margin-left: 12px; background: var(--btn-bg); color: var(--btn-ink); cursor: pointer; }
+    .theme-btn .moon { display: none; } [data-theme="light"] .theme-btn .sun { display: none; } [data-theme="light"] .theme-btn .moon { display: block; }
+    .top a { text-decoration: none; font-weight: 600; }
+    .top a:hover { text-decoration: underline; }
+    .mark { display: flex; align-items: center; gap: 10px; font: 700 16px var(--mono); }
+    .mark img { width: 32px; height: 32px; }
+
+    /* Hero: the headline is an edit the model proposes */
+    .hero { padding: clamp(32px, 7vw, 96px) var(--side) 0; }
+    .review { max-width: 1240px; margin: 0 auto; border-radius: 18px; background: var(--panel); overflow: hidden; box-shadow: 0 0 0 1px var(--frame); }
+    .review-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 16px; padding: 12px 16px; background: var(--panel-2); font: 500 13px var(--mono); color: var(--soft); }
+    .review-bar .who { display: flex; align-items: center; gap: 8px; }
+    .review-bar .who::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--add-mark); }
+    .review-actions { display: flex; gap: 8px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 40px; padding: 0 16px; border: 0; border-radius: 10px; font: 700 14px var(--mono); cursor: pointer; text-decoration: none; transition: transform .15s, background .2s; }
+    .btn:hover { transform: translateY(-1px); }
+    .btn:active { transform: translateY(1px); }
+    .btn-keep { background: var(--cobalt); color: #fff; }
+    .btn-undo { background: var(--chip); color: var(--ink); }
+    .btn-big { min-height: 54px; padding: 0 24px; font-size: 15px; }
+
+    .diff { padding: clamp(16px, 3vw, 36px) 0; }
+    .diff-line { display: grid; grid-template-columns: clamp(40px, 6vw, 72px) 1fr; align-items: baseline; transition: opacity .35s, max-height .45s cubic-bezier(.3,.7,.3,1), background .3s; max-height: 6em; overflow: hidden; }
+    .diff-line .sign { text-align: center; font: 700 clamp(22px, 3.4vw, 44px) var(--mono); }
+    .diff-line .text { padding: 4px clamp(12px, 2vw, 24px) 6px 0; font-weight: 800; font-size: clamp(2rem, 5vw, 4.6rem); line-height: 1.05; letter-spacing: -0.04em; }
+    .diff-line.del { background: var(--del-bg); color: var(--del-ink); }
+    .diff-line.del .sign { color: var(--del-mark); }
+    .diff-line.del .text { text-decoration: line-through; text-decoration-thickness: 0.06em; text-decoration-color: color-mix(in srgb, var(--del-mark) 60%, transparent); }
+    .diff-line.add { background: var(--add-bg); color: var(--add-ink); }
+    .diff-line.add .sign { color: var(--add-mark); }
+    .review[data-state="kept"] .diff-line.del, .review[data-state="undone"] .diff-line.add { max-height: 0; opacity: 0; }
+    .review[data-state="kept"] .diff-line.add, .review[data-state="undone"] .diff-line.del { background: transparent; color: var(--ink); }
+    .review[data-state="kept"] .diff-line.add .sign, .review[data-state="undone"] .diff-line.del .sign { color: transparent; }
+    .review[data-state="undone"] .diff-line.del .text { text-decoration: none; }
+    .hero-sub { max-width: 1240px; margin: 28px auto 0; display: grid; grid-template-columns: 1.2fr 1fr; gap: 24px 48px; align-items: end; }
+    .hero-sub p { font-size: clamp(18px, 1.6vw, 21px); max-width: 52ch; }
+    .hero-sub .cta { display: flex; flex-wrap: wrap; gap: 10px; justify-content: flex-end; align-items: center; }
+    .hero-sub small { width: 100%; text-align: right; color: var(--soft); font: 400 13px var(--mono); }
+
+    /* Ghost-text completion demo */
+    .section { max-width: 1240px; margin: 0 auto; padding: clamp(80px, 11vw, 150px) var(--side) 0; }
+    .section h2 { font-size: clamp(2rem, 4vw, 3.4rem); line-height: 1.02; letter-spacing: -0.04em; font-weight: 800; max-width: 18ch; }
+    .section h2 + p { margin-top: 16px; max-width: 58ch; color: var(--soft); font-size: 18px; }
+    .code { margin-top: 36px; border-radius: 16px; background: #15191e; color: #e6e9ec; overflow: hidden; }
+    .code-bar { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 10px 16px; background: #1c2128; font: 500 13px var(--mono); color: #9aa5b0; }
+    .code pre { margin: 0; padding: 20px 0; font: 400 clamp(13px, 1.4vw, 15.5px)/1.75 var(--mono); overflow-x: auto; counter-reset: ln; }
+    .code .ln { display: block; padding: 0 20px 0 0; white-space: pre; }
+    .code .ln::before { counter-increment: ln; content: counter(ln); display: inline-block; width: 3.2em; padding-right: 1.2em; text-align: right; color: #56606b; }
+    .code .ln[hidden] { display: none; }
+    .code .k { color: #ff8f8f; } .code .f { color: #8fb8ff; } .code .s { color: #a5e3a5; } .code .c { color: #7c8792; }
+    .ghosted { color: #6c7682; }
+    .ghosted.is-accepted { color: inherit; }
+    .ghosted.is-accepted .k { color: #ff8f8f; } .ghosted.is-accepted .s { color: #a5e3a5; } .ghosted.is-accepted .f { color: #8fb8ff; }
+    .caret { display: inline-block; width: 2px; height: 1.2em; vertical-align: text-bottom; background: #e6e9ec; animation: blink 1s steps(1) infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+    .kbd { font: 700 12px var(--mono); padding: 3px 7px; border-radius: 6px; background: #2a313a; color: #e6e9ec; }
+    .tab-btn { border: 0; cursor: pointer; padding: 6px 12px; border-radius: 8px; background: var(--cobalt); color: #fff; font: 700 12.5px var(--mono); }
+
+    /* Features: each group sits next to its screenshot */
+    .feature { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: clamp(28px, 5vw, 72px); align-items: center; margin-top: clamp(56px, 8vw, 96px); }
+    .feature:nth-of-type(even) { grid-template-columns: 1.2fr 0.8fr; }
+    .feature:nth-of-type(even) .feature-text { order: 2; }
+    .feature h3 { font-size: clamp(1.5rem, 2.4vw, 2.1rem); letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 16px; }
+    .feature li { position: relative; padding-left: 26px; margin-top: 10px; }
+    .feature li::before { content: "+"; position: absolute; left: 0; font: 700 1em var(--mono); color: var(--add-mark); }
+    .feature figure { border-radius: 14px; overflow: hidden; box-shadow: 0 0 0 1px var(--frame); background: #15191e; }
+
+    .install { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 5vw, 72px); margin-top: 40px; align-items: start; }
+    .install pre { margin: 0; padding: 20px 22px; border-radius: 14px; background: #15191e; color: #e6e9ec; font: 400 14.5px/1.8 var(--mono); overflow-x: auto; }
+    .install pre .c { color: #7c8792; }
+    .install-notes { display: grid; gap: 16px; }
+    .install-notes h3 { font-size: 18px; margin-bottom: 4px; }
+    .install-notes p { color: var(--soft); }
+    .install-notes code { font: 500 0.88em var(--mono); background: var(--chip); padding: 1px 6px; border-radius: 5px; }
+
+    footer { max-width: 1240px; margin: clamp(80px, 11vw, 150px) auto 0; padding: 28px var(--side) 44px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; color: var(--soft); font: 400 14px var(--mono); }
+
+    @media (max-width: 860px) {
+      .hero-sub, .install, .feature, .feature:nth-of-type(even) { grid-template-columns: 1fr; }
+      .feature:nth-of-type(even) .feature-text { order: 0; }
+      .hero-sub .cta { justify-content: flex-start; }
+      .hero-sub small { text-align: left; }
+    }
+    @media (max-width: 520px) {
+      .review-actions { width: 100%; }
+      .review-actions .btn { flex: 1; }
+    }
+    @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+
+    .crumbs { display: flex; align-items: center; gap: 14px; min-width: 0; }
+    .fs-home { display: flex; flex: none; }
+    .fs-home img { height: 30px; width: auto; }
+    .fs-light { display: none; }
+    [data-theme="light"] .fs-dark { display: none; }
+    [data-theme="light"] .fs-light { display: block; }
+    .crumbs-sep { width: 1px; height: 26px; background: currentColor; opacity: .3; flex: none; }
+    .crumbs .mark { white-space: nowrap; }
+    @media (max-width: 520px) { .fs-home img { height: 24px; } .crumbs { gap: 10px; } }
+  </style>
+</head>
+<body>
+  <header class="top">
+    <div class="crumbs">
+        <a class="fs-home" href="../index.html" aria-label="FrogeeSoft, на главную"><img class="fs-dark" src="../assets/brand/frogeesoft-logo-dark.png" width="124" height="34" alt="FrogeeSoft"><img class="fs-light" src="../assets/brand/frogeesoft-logo-light.png" width="124" height="34" alt="" aria-hidden="true"></a>
+        <span class="crumbs-sep" aria-hidden="true"></span>
+        <a class="mark" href="#"><img src="../assets/products/frogeecode/icon.png" width="32" height="32" alt="">FrogeeCodeIDE</a>
+      </div>
+    <nav><a href="../index.html#programs">Все программы</a><button class="theme-btn" type="button" data-theme-toggle aria-label="Сменить тему">
+        <svg class="sun" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="moon" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/></svg>
+      </button></nav>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="title">
+      <div class="review" data-state="pending">
+        <div class="review-bar">
+          <span class="who">ИИ предлагает правку в README.md</span>
+          <div class="review-actions">
+            <button class="btn btn-undo" type="button" data-act="undone">Отменить</button>
+            <button class="btn btn-keep" type="button" data-act="kept">Оставить</button>
+          </div>
+        </div>
+        <h1 id="title" class="diff">
+          <span class="diff-line del"><span class="sign" aria-hidden="true">−</span><span class="text">Ещё один редактор кода</span></span>
+          <span class="diff-line add"><span class="sign" aria-hidden="true">+</span><span class="text">Редактор, где ИИ работает у вас</span></span>
+        </h1>
+      </div>
+      <div class="hero-sub">
+        <p>Лёгкая IDE на Electron. Подключите Ollama, LM Studio или свой провайдер: чат видит файлы проекта, предлагает правки, а вы принимаете или откатываете их кнопкой — как в заголовке выше.</p>
+        <div class="cta">
+          <a class="btn btn-keep btn-big" href="#install">Установить</a>
+          <a class="btn btn-undo btn-big" href="https://github.com/ArduRadioKot/ForgeeCodeIDE">GitHub</a>
+          <small>Бесплатно · MIT · macOS, Windows, Linux</small>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="ghost-title">
+      <h2 id="ghost-title">Подсказки прямо по ходу набора</h2>
+      <p>Модель дописывает строку серым текстом, <span class="kbd">Tab</span> принимает. Поддерживаются FIM-модели, которые учитывают код и до, и после курсора.</p>
+      <div class="code" aria-label="Пример подсказки в редакторе">
+        <div class="code-bar"><span>utils.js</span><button class="tab-btn" type="button" id="accept">Tab — принять</button></div>
+        <pre><span class="ln"><span class="k">export async function</span> <span class="f">fetchWithRetry</span>(url, retries = <span class="s">3</span>) {</span><span class="ln">  <span class="k">for</span> (<span class="k">let</span> attempt = <span class="s">1</span>; attempt &lt;= retries; attempt++) {</span><span class="ln">    <span class="k">const</span> response = <span class="k">await</span> <span class="f">fetch</span>(url);</span><span class="ln">    <span class="k">if</span> (response.ok) <span class="k">return</span> response.<span class="f">json</span>();<span class="caret" id="caret"></span></span><span class="ln" id="ghost-line" hidden>    <span class="ghosted" id="ghost"></span></span><span class="ln">  }</span><span class="ln">}</span></pre>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="features-title">
+      <h2 id="features-title">Что внутри</h2>
+
+      <div class="feature">
+        <div class="feature-text">
+          <h3>ИИ, который не уносит код</h3>
+          <ul>
+            <li>Чат с Ollama, LM Studio, OpenRouter и любым совместимым провайдером.</li>
+            <li>Файлы проекта как контекст, правка и перегенерация сообщений.</li>
+            <li>Изменения подсвечиваются в редакторе: «Оставить» или «Отменить» для каждого файла.</li>
+          </ul>
+        </div>
+        <figure><img src="../assets/products/frogeecode/review.webp" width="1800" height="1078" alt="Проверка правок ИИ: изменённые строки подсвечены, внизу кнопки Оставить и Отменить" loading="lazy" decoding="async"></figure>
+      </div>
+
+      <div class="feature">
+        <div class="feature-text">
+          <h3>Ноутбуки и запуск</h3>
+          <ul>
+            <li>Jupyter-ноутбуки: сама находит виртуальные окружения и даёт выбрать ядро.</li>
+            <li>Конфигурации запуска, скрипты из <code style="font-family:var(--mono)">package.json</code>, несколько терминалов.</li>
+            <li>Live Server и встроенный браузер, предпросмотр Markdown, просмотр картинок.</li>
+          </ul>
+        </div>
+        <figure><img src="../assets/products/frogeecode/notebook.webp" width="1800" height="1078" alt="Jupyter-ноутбук в FrogeeCodeIDE с ячейками кода и результатом" loading="lazy" decoding="async"></figure>
+      </div>
+
+      <div class="feature">
+        <div class="feature-text">
+          <h3>Привычный редактор</h3>
+          <ul>
+            <li>Подсветка синтаксиса, диагностика, поиск и замена, поиск по проекту.</li>
+            <li>Проводник с перетаскиванием файлов между папками.</li>
+            <li>Несколько окон, меню в Dock, вкладки восстанавливаются после перезапуска.</li>
+            <li>Светлые и тёмные темы в JSON, на macOS — прозрачное окно Liquid Glass.</li>
+          </ul>
+        </div>
+        <figure><img src="../assets/products/frogeecode/run.webp" width="1800" height="1078" alt="Редактор FrogeeCodeIDE с терминалом и запущенным скриптом" loading="lazy" decoding="async"></figure>
+      </div>
+    </section>
+
+    <section class="section" id="install" aria-labelledby="install-title">
+      <h2 id="install-title">Установка</h2>
+      <p>Готовых установщиков пока нет: соберите программу из исходников, это пара минут. Нужен Node.js 18 или новее.</p>
+      <div class="install">
+<pre><span class="c"># скачать и запустить</span>
+git clone https://github.com/ArduRadioKot/ForgeeCodeIDE
+cd ForgeeCodeIDE/src/code-redactor
+npm install
+npm start
+
+<span class="c"># собрать установщик</span>
+npm run build:mac     <span class="c"># .dmg</span>
+npm run build:win     <span class="c"># установщик Windows</span>
+npm run build:linux   <span class="c"># AppImage и deb</span></pre>
+        <div class="install-notes">
+          <div><a class="btn btn-keep btn-big" id="get-src" href="https://github.com/ArduRadioKot/ForgeeCodeIDE/archive/refs/heads/main.zip">Скачать исходники, zip</a></div>
+          <div><h3>Платформы</h3><p>macOS проверена полностью. Windows и Linux собираются, но вместо размытия окна там непрозрачная тема.</p></div>
+          <div><h3>Плагины и темы</h3><p>Как в <a href="fgsnotes.html">FgSNotes</a>: файлы <code>.js</code> и <code>.css</code> в <code>~/Documents/FrogeeCodeIDE/plugins</code>. Свои темы кладутся в папку <code>themes</code>.</p></div>
+          <div><h3>Лицензия</h3><p>MIT, FrogeeSoft. Готовая сборка появится в <a href="https://github.com/ArduRadioKot/ForgeeCodeIDE/releases">релизах на GitHub</a>.</p></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>FrogeeCodeIDE · <a href="../index.html">FrogeeSoft</a></span>
+    <a href="mailto:frogeesoft.team@gmail.com">frogeesoft.team@gmail.com</a>
+  </footer>
+
+  <script>
+    (() => {
+      const review = document.querySelector('.review');
+      const bar = review.querySelector('.review-bar .who');
+      const actions = review.querySelector('.review-actions');
+      actions.addEventListener('click', (e) => {
+        const b = e.target.closest('[data-act]'); if (!b) return;
+        if (review.dataset.state !== 'pending') {
+          review.dataset.state = 'pending';
+          bar.textContent = 'ИИ предлагает правку в README.md';
+          actions.innerHTML = '<button class="btn btn-undo" type="button" data-act="undone">Отменить</button><button class="btn btn-keep" type="button" data-act="kept">Оставить</button>';
+          return;
+        }
+        review.dataset.state = b.dataset.act;
+        bar.textContent = b.dataset.act === 'kept' ? 'Правка оставлена' : 'Правка отменена, файл как был';
+        actions.innerHTML = '<button class="btn btn-undo" type="button" data-act="again">Показать правку снова</button>';
+      });
+
+      // Ghost completion: types itself in, Tab or the button accepts it.
+      const ghost = document.getElementById('ghost');
+      const caret = document.getElementById('caret');
+      const suggestion = [
+        ['if', 'k'], [' (attempt === retries) ', ''], ['throw new', 'k'], [' ', ''], ['Error', 'f'],
+        ['(', ''], ['`HTTP ${response.status}`', 's'], [');', ''],
+      ];
+      const html = suggestion.map(([t, c]) => {
+        const safe = t.replace(/[&<>]/g, (ch) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[ch]));
+        return c ? `<span class="${c}">${safe}</span>` : safe;
+      }).join('');
+      let accepted = false;
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const show = () => { ghost.innerHTML = html; document.getElementById('ghost-line').hidden = false; };
+      const accept = () => {
+        if (accepted) return;
+        accepted = true;
+        show();
+        ghost.classList.add('is-accepted');
+        caret.remove();
+        ghost.after(caret);
+        document.getElementById('accept').textContent = 'Принято';
+      };
+      const io = new IntersectionObserver((entries) => {
+        if (!entries[0].isIntersecting) return;
+        io.disconnect();
+        setTimeout(show, reduced ? 0 : 700);
+      }, { threshold: 0.6 });
+      io.observe(ghost.closest('.code'));
+      document.getElementById('accept').addEventListener('click', accept);
+      document.addEventListener('keydown', (e) => {
+        if (e.key !== 'Tab' || accepted || !ghost.innerHTML) return;
+        const r = ghost.closest('.code').getBoundingClientRect();
+        if (r.top < innerHeight && r.bottom > 0 && document.activeElement === document.body) { e.preventDefault(); accept(); }
+      });
+    })();
+  </script>
+</body>
+</html>
