@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>FgSNotes — Markdown-редактор, который не мешает писать</title>
-  <meta name="description" content="FgSNotes — бесплатный редактор Markdown для macOS, Windows, Linux и телефона: живой предпросмотр, формулы LaTeX, 22 темы, плагины и ИИ-помощник на вашем компьютере.">
+  <title>FgSNotes - Markdown-редактор, который не мешает писать</title>
+  <meta name="description" content="FgSNotes - бесплатный редактор Markdown для macOS, Windows, Linux и телефона: живой предпросмотр, формулы LaTeX, 22 темы, плагины и ИИ-помощник на вашем компьютере.">
   <link rel="icon" href="../assets/products/fgsnotes/icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,7 +17,7 @@
       --text: #f1f5ef; --muted: #98a398; --line: rgba(240, 255, 238, .13);
       --accent: #21aabe; --accent-hi: #62c7d4; --mint: #91e48b; --on-accent: #061316;
       --syn-k: #cf8e6d; --syn-s: #6aab73; --syn-n: #2aacb8; --syn-c: #7a7e85; --syn-f: #56a8f5;
-      --radius: 14px; --gap: 8px; --sx: clamp(20px, 4.5vw, 64px); --sy: clamp(40px, 6vw, 88px);
+      --radius: 14px; --gap: 8px; --page-gutter: clamp(20px, 3vw, 36px); --sx: clamp(20px, 4.5vw, 64px); --sy: clamp(40px, 6vw, 88px);
       --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
       color-scheme: dark;
     }
@@ -40,7 +40,7 @@
 
     .nav {
       position: absolute; z-index: 20; top: 0; left: 0; right: 0;
-      height: 68px; display: flex; align-items: center; gap: 24px; padding: 0 calc(var(--gap) + var(--sx));
+      height: 68px; display: flex; align-items: center; gap: 24px; padding: 0 max(var(--page-gutter), calc(50% - 750px + var(--page-gutter)));
       background: transparent;
     }
     .nav-brand { display: flex; align-items: center; gap: 10px; font-weight: 800; letter-spacing: -0.02em; text-decoration: none; }
@@ -60,7 +60,7 @@
     .btn-big { min-height: 54px; padding: 0 24px; font-size: 16px; border-radius: 12px; }
     .btn-ghost { background: var(--island-2); color: var(--text); }
 
-    .page { padding: 68px var(--gap) var(--gap); display: grid; gap: var(--gap); }
+    .page { width: min(100%, 1500px); margin-inline: auto; padding: 68px var(--page-gutter) var(--page-gutter); display: grid; gap: var(--gap); }
     .island { background: var(--island); border-radius: var(--radius); padding: var(--sy) var(--sx); overflow: hidden; }
     .row { display: grid; gap: var(--gap); }
     .row-2 { grid-template-columns: 1fr 1fr; }
@@ -157,7 +157,9 @@
     [data-theme="light"] .fs-light { display: block; }
     .crumbs-sep { width: 1px; height: 26px; background: currentColor; opacity: .3; flex: none; }
     .crumbs .mark { white-space: nowrap; }
-    @media (max-width: 520px) { .fs-home img { height: 24px; } .crumbs { gap: 10px; } }
+    @media (max-width: 520px) { .nav { gap: 10px; } .nav .crumbs .mark { font-size: 16px; } .nav .crumbs .mark img { width: 26px; height: 26px; } .icon-btn { width: 36px; height: 36px; } .fs-home img { height: 22px; } .crumbs { gap: 8px; } }
+    .nav { position: sticky; background: var(--wall); border-bottom: 1px solid var(--line); }
+    .page { padding-top: var(--gap); }
   </style>
 </head>
 <body>
@@ -187,7 +189,7 @@
     <section class="island hero" aria-labelledby="title">
       <div>
         <h1 id="title">Markdown-редактор, который не мешает писать</h1>
-        <p>FgSNotes открывает обычные .md файлы, показывает результат рядом, считает формулы LaTeX и помогает с текстом через ИИ — на вашем компьютере или в облаке. Есть версия для телефона, а оформление меняется одним CSS-файлом.</p>
+        <p>FgSNotes открывает обычные .md файлы, показывает результат рядом, считает формулы LaTeX и помогает с текстом через ИИ - на вашем компьютере или в облаке. Есть версия для телефона, а оформление меняется одним CSS-файлом.</p>
         <div class="hero-actions">
           <a class="btn btn-big" id="get-main" href="#download">Скачать</a>
           <a class="btn btn-big btn-ghost" href="https://github.com/ArduRadioKot/FgSNotes">GitHub</a>
@@ -222,7 +224,7 @@
     <div class="row row-2">
       <section class="island feature" aria-labelledby="cell-title">
         <h3 id="cell-title">Запускаемый JavaScript прямо в заметке</h3>
-        <p>Блок <code>js-cell</code> работает как ячейка в Jupyter: запустите его — и результат появится сразу под кодом. Переменные живут между ячейками одной заметки. Запуск — <kbd>Shift Enter</kbd>, работает и на телефоне.</p>
+        <p>Блок <code>js-cell</code> работает как ячейка в Jupyter: запустите его - и результат появится сразу под кодом. Переменные живут между ячейками одной заметки. Запуск - <kbd>Shift Enter</kbd>, работает и на телефоне.</p>
         <div>
 <pre class="code"><span class="k">const</span> prices = [<span class="n">120</span>, <span class="n">340</span>, <span class="n">95</span>];
 <span class="k">const</span> total = prices.<span class="f">reduce</span>((a, b) =&gt; a + b);
@@ -272,7 +274,7 @@ total / prices.length</pre>
 
     <section class="island" id="phone" aria-labelledby="phone-title">
       <h2 id="phone-title">FgSNotes и на телефоне</h2>
-      <p>Те же заметки, предпросмотр и чат. Небольшие модели — Qwen 3.5, Ministral 3, Phi-3.5 mini — скачиваются прямо в приложение и работают без интернета.</p>
+      <p>Те же заметки, предпросмотр и чат. Небольшие модели - Qwen 3.5, Ministral 3, Phi-3.5 mini - скачиваются прямо в приложение и работают без интернета.</p>
       <div class="phones">
         <figure><img src="../assets/products/fgsnotes/phone-notes.webp" width="740" height="1600" alt="Список заметок на телефоне" loading="lazy" decoding="async"><figcaption>Заметки</figcaption></figure>
         <figure><img src="../assets/products/fgsnotes/phone-editor.webp" width="740" height="1600" alt="Редактор заметки на телефоне" loading="lazy" decoding="async"><figcaption>Редактор</figcaption></figure>
@@ -283,7 +285,7 @@ total / prices.length</pre>
 
     <section class="island" id="themes" aria-labelledby="themes-title">
       <h2 id="themes-title">22 темы в одном CSS-файле</h2>
-      <p>Dracula, Nord, GitHub, Solarized и другие. Своя тема — это один файл.</p>
+      <p>Dracula, Nord, GitHub, Solarized и другие. Своя тема - это один файл.</p>
       <div class="themes">
         <figure><img src="../assets/products/fgsnotes/themes/dracula.webp" width="800" height="500" alt="" loading="lazy" decoding="async"><figcaption>Dracula</figcaption></figure>
         <figure><img src="../assets/products/fgsnotes/themes/nord.webp" width="800" height="500" alt="" loading="lazy" decoding="async"><figcaption>Nord</figcaption></figure>
@@ -314,7 +316,7 @@ total / prices.length</pre>
         <div class="dl-group"><h3>Windows и Linux</h3><div class="dl-slot" data-os="other"></div></div>
         <div class="dl-group">
           <h3>iPhone и Android</h3>
-          <p class="phone-build">Готовых сборок в сторах пока нет. Соберите приложение сами: iOS — в Xcode, Android — в Android Studio, по <a href="https://github.com/ArduRadioKot/FgSNotes">инструкции на GitHub</a>.</p>
+          <p class="phone-build">Готовых сборок в сторах пока нет. Соберите приложение сами: iOS - в Xcode, Android - в Android Studio, по <a href="https://github.com/ArduRadioKot/FgSNotes">инструкции на GitHub</a>.</p>
         </div>
       </div>
       <p class="unsigned"><b>Сборки пока не подписаны.</b> На macOS при первом запуске откройте приложение через контекстное меню → «Открыть». На Windows в окне SmartScreen нажмите «Подробнее» → «Выполнить в любом случае». На Mac с M1 и новее берите arm64: версия x64 работает через Rosetta в несколько раз медленнее.</p>

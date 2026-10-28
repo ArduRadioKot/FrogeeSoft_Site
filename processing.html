@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f2f3ef">
+  <script>try{const saved=localStorage.getItem('processing-studio-theme');document.documentElement.dataset.theme=saved==='dark'||saved==='light'?saved:matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}catch{document.documentElement.dataset.theme=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}</script>
+  <meta name="description" content="Processing Studio: полноценная IDE для мобильных приложений на Processing. Редактор PDE, эмулятор телефона, датчики и экспорт Android-проекта в одном окне.">
+  <meta property="og:title" content="Processing Studio: написать приложение проще, чем кажется">
+  <meta property="og:description" content="Пишите на Processing, проверяйте скетч в эмуляторе и экспортируйте Android-проект.">
+  <meta property="og:image" content="assets/products/processing/screenshots/ide-editor-device.png">
+  <title>Processing Studio: IDE для мобильной разработки</title>
+  <link rel="icon" href="assets/products/processing/icon.png" sizes="any">
+  <link rel="icon" href="assets/products/processing/icon.png" type="image/png">
+  <link rel="stylesheet" href="processing.css">
+  <script defer src="processing.js"></script>
+</head>
+<body id="top">
+  <svg class="icon-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+    <symbol id="icon-arrow-out" viewBox="0 0 24 24"><path d="M5 19 19 5M8 5h11v11"/></symbol>
+    <symbol id="icon-arrow-down" viewBox="0 0 24 24"><path d="M12 4v16m-7-7 7 7 7-7"/></symbol>
+    <symbol id="icon-arrow-up" viewBox="0 0 24 24"><path d="M12 20V4m-7 7 7-7 7 7"/></symbol>
+    <symbol id="icon-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="icon-moon" viewBox="0 0 24 24"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11Z"/></symbol>
+    <symbol id="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></symbol>
+  </svg>
+  <a class="skip-link" href="#main">К содержимому</a>
+  <header class="site-header page-grid">
+    <a class="identity" href="index.html" aria-label="FrogeeSoft, на главную">
+      <img src="assets/products/processing/icon.png" width="50" height="50" alt="">
+      <span>Processing<br>Studio</span>
+    </a>
+    <nav class="desktop-nav" aria-label="Основная навигация">
+      <a href="index.html">FrogeeSoft</a><a href="#idea">Идея</a>
+      <a href="#device">Эмулятор</a>
+      <a href="#android">Android</a>
+      <a href="#editor">Редактор</a>
+    </nav>
+    <div class="header-actions">
+      <button class="theme-toggle" type="button" aria-label="Включить тёмную тему" aria-pressed="false"><svg class="icon theme-icon-moon" aria-hidden="true" focusable="false"><use href="#icon-moon"/></svg><svg class="icon theme-icon-sun" aria-hidden="true" focusable="false"><use href="#icon-sun"/></svg><span class="theme-toggle-label">Тёмная тема</span></button>
+      <a class="header-download" href="#download">Скачать <span aria-hidden="true"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-arrow-out"/></svg></span></a>
+      <button class="menu-toggle" type="button" aria-controls="mobile-nav" aria-expanded="false" aria-label="Открыть меню">Меню <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-plus"/></svg></button>
+    </div>
+  </header>
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Мобильная навигация" hidden>
+    <a href="index.html">FrogeeSoft</a><a href="#idea">Идея</a><a href="#device">Эмулятор</a><a href="#android">Android</a><a href="#editor">Редактор</a><a href="#download">Скачать</a>
+  </nav>
+
+  <main id="main">
+    <section class="hero page-grid" aria-labelledby="hero-title">
+      <div class="hero-heading">
+        <h1 id="hero-title">Написать приложение<br><em>проще, чем кажется.</em></h1>
+        <div class="hero-aside"><p>Processing Studio: полноценная IDE для мобильных приложений на Processing. Меняйте скетч, запускайте его рядом с кодом, затем экспортируйте Android-проект.</p><a class="primary-link" href="#download">Получить IDE <span aria-hidden="true"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-arrow-out"/></svg></span></a></div>
+      </div>
+      <figure class="screen-frame hero-screen">
+        <a href="assets/products/processing/screenshots/ide-editor-device.png" target="_blank" rel="noopener" aria-label="Открыть снимок редактора и эмулятора в полном размере"><img src="assets/products/processing/screenshots/ide-editor-device.png" width="1600" height="950" fetchpriority="high" decoding="async" alt="Processing Studio: код скетча PDE и работающий эмулятор Pixel 7"></a>
+        <figcaption>Редактор и эмулятор в одном окне. Нажмите, чтобы открыть полный снимок.</figcaption>
+      </figure>
+      <div class="hero-footnote"><span>От первой строки до проекта Android</span><a href="#idea">Листать дальше <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-arrow-down"/></svg></a></div>
+    </section>
+
+    <section class="idea-section page-grid" id="idea" aria-labelledby="idea-title">
+      
+      <div class="idea-main"><h2 id="idea-title">Скетч чувствует телефон.</h2><p>У телефона есть касания, ориентация, датчики и разрешения. В обычном окне Processing эти сценарии неудобно проверять. Здесь они доступны рядом с кодом, пока идея ещё меняется.</p></div>
+      <div class="workflow" aria-label="Как устроена работа">
+        <div><span>Код</span><p>Создайте <code>.pde</code>, используйте знакомые <code>setup()</code> и <code>draw()</code>. Несколько вкладок работают как один скетч.</p></div>
+        <div><span>Проверка</span><p>Запустите скетч в модели телефона. Проверьте касания, размер экрана, поворот и показания датчиков.</p></div>
+        <div><span>Проект</span><p>Выберите параметры приложения. IDE создаст структуру Gradle, исходники и ресурсы для Android Studio.</p></div>
+      </div>
+    </section>
+
+    <section class="device-section" id="device" aria-labelledby="device-title">
+      <div class="device-inner page-grid">
+        <div class="device-copy"><h2 id="device-title">Телефон рядом<br><em>с кодом.</em></h2><p>Переключайтесь между моделями iPhone, Pixel, Galaxy и iPad или задайте свой размер. Проверяйте портретный и альбомный режимы, мультитач, клавиатуру и индикатор касаний.</p><div class="device-spec"><span>Отдельная панель датчиков</span><p>Акселерометр, гироскоп, компас, наклон, тряска, ориентация и местоположение. Показания меняются прямо во время запуска.</p></div></div>
+        <figure class="screen-frame device-screen"><a href="assets/products/processing/screenshots/ide-sensors.png" target="_blank" rel="noopener" aria-label="Открыть снимок эмулятора и датчиков в полном размере"><img src="assets/products/processing/screenshots/ide-sensors.png" width="1600" height="1100" loading="lazy" decoding="async" alt="Processing Studio с открытым проектом, запущенным эмулятором телефона и панелью датчиков"></a><figcaption>Эмулятор и панель датчиков в работающей IDE <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-arrow-out"/></svg></figcaption></figure>
+      </div>
+    </section>
+
+    <section class="android-section page-grid" id="android" aria-labelledby="android-title">
+      
+      <div class="android-heading"><h2 id="android-title">Проект для<br><em>Android Studio.</em></h2><p>Мастер спрашивает только то, что действительно нужно для старта: имя, package name, версии SDK, ориентацию и разрешения.</p></div>
+      <figure class="screen-frame android-screen"><a href="assets/products/processing/screenshots/ide-android-project.png" target="_blank" rel="noopener" aria-label="Открыть снимок мастера Android-проекта в полном размере"><img src="assets/products/processing/screenshots/ide-android-project.png" width="1600" height="950" loading="lazy" decoding="async" alt="Мастер создания Android-проекта Processing Studio с настройками SDK, package name, ориентации и разрешений"></a><figcaption>Настоящий экран мастера Processing Studio <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-arrow-out"/></svg></figcaption></figure>
+      <div class="android-output"><div><h3>Что получится</h3><p><code>AndroidManifest.xml</code>, настройки Gradle, <code>MainActivity</code>, ресурсы и исходники приложения.</p></div><div><h3>Как работает скетч</h3><p>В проект включается собственный Java-рантайм <code>PApplet</code> для рисования, касаний, датчиков и разрешений.</p></div><div><h3>Что дальше</h3><p>Откройте созданный проект в Android Studio, соберите через Gradle и проверьте на настоящем устройстве.</p></div></div>
+    </section>
+
+    <section class="editor-section page-grid" id="editor" aria-labelledby="editor-title">
+      
+      <div class="editor-head"><h2 id="editor-title">Редактор для<br><em>всей работы.</em></h2><p>Помимо эмулятора здесь есть инструменты для ежедневной работы с проектом.</p></div>
+      <div class="editor-index">
+        <div><h3>Писать</h3><p>Подсветка синтаксиса, автодополнение Processing и Android API, умные отступы, поиск и замена. Ошибки указывают на строку файла.</p></div>
+        <div><h3>Организовать</h3><p>Проводник, несколько вкладок, разделение редактора, поиск по проекту, Git и история изменений. Вкладки восстанавливаются после перезапуска.</p></div>
+        <div><h3>Запустить</h3><p>Конфигурации запуска, несколько терминалов и скрипты <code>package.json</code>. Открывайте Markdown, изображения и Jupyter-ноутбуки.</p></div>
+        <div><h3>Настроить</h3><p>Светлая и тёмная темы, темы в JSON, размер шрифта и интерфейса. На macOS есть полупрозрачный режим окна.</p></div>
+      </div>
+    </section>
+
+    <section class="origin-section page-grid" id="origin" aria-labelledby="origin-title">
+      <div class="origin-body">
+        <h2 id="origin-title">Знакомый<br><em>FrogeeCodeIDE.</em></h2>
+        <div class="origin-copy"><p>Processing Studio основана на существующем редакторе FrogeeCodeIDE. Если вы уже работали в нём, здесь всё выглядит знакомо: файлы, вкладки, поиск, терминалы и настройки. Рядом с ними появились инструменты для мобильной разработки на Processing: PDE-скетчи, эмулятор телефона и экспорт Android-проекта.</p><a class="under-link" href="https://arduradiokot.github.io/ForgeeCodeIDE/" target="_blank" rel="noopener noreferrer">Посмотреть FrogeeCodeIDE <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-arrow-out"/></svg></a></div>
+      </div>
+    </section>
+
+    <section class="examples-section page-grid" id="examples" aria-labelledby="examples-title">
+      <figure class="screen-frame examples-screen"><a href="assets/products/processing/screenshots/ide-examples.png" target="_blank" rel="noopener" aria-label="Открыть снимок галереи примеров в полном размере"><img src="assets/products/processing/screenshots/ide-examples.png" width="1600" height="950" loading="lazy" decoding="async" alt="Галерея учебных примеров Processing Studio: первый скетч, датчики, масштабирование, разрешения, ESP32 и PApplet"></a><figcaption>Встроенная галерея учебных скетчей <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-arrow-out"/></svg></figcaption></figure>
+      <div class="examples-copy"><h2 id="examples-title">Начните<br><em>с примера.</em></h2><p>В галерее есть касания, акселерометр, масштабирование двумя пальцами, разрешения и адаптивный интерфейс. Отдельные примеры показывают обмен данными с ESP32 по UDP и работу с <code>PApplet</code> внутри Activity.</p><a class="under-link" href="https://github.com/ArduRadioKot/Processing-Studio#readme" target="_blank" rel="noopener noreferrer">Документация проекта <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-arrow-out"/></svg></a></div>
+    </section>
+
+    <section class="faq-section page-grid" aria-labelledby="faq-title"><h2 id="faq-title">Коротко о важном.</h2><div class="faq-list"><article><h3>Нужен Processing for Android?</h3><p>Для экспорта нет. Processing Studio включает свой Java-рантайм <code>PApplet</code> в создаваемый проект.</p></article><article><h3>Эмулятор собирает APK?</h3><p>Эмулятор быстро запускает скетч внутри IDE. Итоговую сборку и тест на устройстве выполняют из экспортированного проекта через Android Studio и Gradle.</p></article><article><h3>Можно открыть обычную папку?</h3><p>Да. Проводник работает с файлами проекта, а редактор поддерживает несколько вкладок и разделённый экран.</p></article></div></section>
+
+    <section class="download-section page-grid" id="download" aria-labelledby="download-title"><img src="assets/products/processing/icon.png" width="96" height="96" alt=""><div><h2 id="download-title">Пора запускать<br>скетч.</h2><p>Версия 4.4.0. Бесплатная IDE с открытым исходным кодом под GPL 2.0.</p></div><div class="download-actions"><a class="download-button" href="#builds">Выбрать сборку <span aria-hidden="true"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-arrow-down"/></svg></span></a><span>macOS · Windows · Linux<br>Файлы на GitHub Releases</span></div></section>
+    <section class="build-section page-grid" id="builds" aria-labelledby="build-title">
+      <div class="build-heading"><h2 id="build-title">Сборка<br><em>под вашу систему.</em></h2><p>Это версии самой IDE для настольных систем. Выберите пакет для своего компьютера.</p></div>
+      <div class="build-table-scroll" role="region" aria-label="Сравнение сборок Processing Studio" tabindex="0">
+        <table class="build-table">
+          <thead><tr><th scope="col">Система</th><th scope="col">Процессор</th><th scope="col">Пакет</th><th scope="col">Размер</th><th scope="col">Скачать</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">macOS</th><td>Apple Silicon</td><td>DMG</td><td>750 МБ</td><td><a href="https://github.com/ArduRadioKot/Processing-Studio/releases/download/v4.0.0/ProcessingStudio-4.4.0-mac-arm64.dmg">Загрузить <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-arrow-out"/></svg></a></td></tr>
+            <tr><th scope="row">macOS</th><td>Intel</td><td>DMG</td><td>753 МБ</td><td><a href="https://github.com/ArduRadioKot/Processing-Studio/releases/download/v4.0.0/ProcessingStudio-4.4.0-mac-x64.dmg">Загрузить <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-arrow-out"/></svg></a></td></tr>
+            <tr><th scope="row">Windows</th><td>x64</td><td>EXE</td><td>692 МБ</td><td><a href="https://github.com/ArduRadioKot/Processing-Studio/releases/download/v4.0.0/ProcessingStudio-4.4.0-win-x64.exe">Загрузить <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-arrow-out"/></svg></a></td></tr>
+            <tr><th scope="row">Linux</th><td>x64</td><td>AppImage</td><td>625 МБ</td><td><a href="https://github.com/ArduRadioKot/Processing-Studio/releases/download/v4.0.0/ProcessingStudio-4.4.0-linux-x64.AppImage">Загрузить <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-arrow-out"/></svg></a></td></tr>
+            <tr><th scope="row">Linux</th><td>x64</td><td>DEB</td><td>622 МБ</td><td><a href="https://github.com/ArduRadioKot/Processing-Studio/releases/download/v4.0.0/ProcessingStudio-4.4.0-linux-x64.deb">Загрузить <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-arrow-out"/></svg></a></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="target-compare">
+        <div><h3>А мобильное<br>приложение?</h3><p>IDE экспортирует проект. Финальную сборку выполняют инструменты целевой платформы.</p></div>
+        <table class="target-table">
+          <thead><tr><th scope="col">Цель</th><th scope="col">Экспорт из IDE</th><th scope="col">Финальная сборка</th></tr></thead>
+          <tbody><tr><th scope="row">Android</th><td>Gradle-проект</td><td>APK через Android Studio</td></tr><tr><th scope="row">iOS</th><td>Пока нет</td><td>Не поддерживается</td></tr></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer page-grid"><a class="footer-brand" href="#top">Processing Studio <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-arrow-up"/></svg></a><p>IDE для мобильной разработки на Processing.</p><nav aria-label="Ссылки проекта"><a href="https://github.com/ArduRadioKot/Processing-Studio" target="_blank" rel="noopener noreferrer">Исходный код</a><a href="https://github.com/ArduRadioKot/Processing-Studio/issues" target="_blank" rel="noopener noreferrer">Сообщить об ошибке</a><a href="processing-licenses.html">Лицензии</a><a href="index.html#contact">Контакты FrogeeSoft</a></nav><small>© <span id="year">2026</span> FrogeeSoft · GPL 2.0</small></footer>
+</body>
+</html>

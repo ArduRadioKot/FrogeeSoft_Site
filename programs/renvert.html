@@ -63,7 +63,8 @@
     }
     :root {
       --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
-      --gutter: clamp(16px, 4vw, 56px);
+      --gutter: clamp(24px, 4vw, 64px);
+      --page-pad: max(var(--gutter), calc(50% - 620px));
     }
     * { box-sizing: border-box; }
     html { -webkit-text-size-adjust: 100%; }
@@ -74,8 +75,11 @@
     ul, ol { padding: 0; list-style: none; }
     :focus-visible { outline: 3px solid var(--select); outline-offset: 3px; }
 
-    .top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 20px var(--gutter); font-size: 15px; }
-    .theme-btn { width: 40px; height: 40px; border: 0; border-radius: 50%; display: inline-grid; place-items: center; vertical-align: middle; margin-left: 12px; background: var(--btn-bg); color: var(--btn-ink); cursor: pointer; }
+    .top { position: sticky; top: 0; z-index: 50; display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 68px; padding: 0 var(--page-pad); font-size: 15px; background: color-mix(in srgb, var(--ground) 88%, transparent); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--rule); }
+    .top nav { display: flex; align-items: center; gap: 8px; }
+    .top nav a { padding: 8px 11px; border-radius: 999px; color: var(--soft); font-size: .875rem; font-weight: 600; white-space: nowrap; }
+    .top nav a:hover { background: var(--chip); color: var(--ink); text-decoration: none; }
+    .theme-btn { width: 38px; height: 38px; border: 0; border-radius: 50%; display: inline-grid; place-items: center; background: var(--btn-bg); color: var(--btn-ink); cursor: pointer; }
     .theme-btn .moon { display: none; } [data-theme="light"] .theme-btn .sun { display: none; } [data-theme="light"] .theme-btn .moon { display: block; }
     .top a { text-decoration: none; font-weight: 500; }
     .top a:hover { text-decoration: underline; }
@@ -83,7 +87,7 @@
     .mark img { width: 34px; height: 34px; border-radius: 9px; }
 
     /* Hero: the filename is the interface */
-    .hero { padding: clamp(32px, 6vw, 72px) var(--gutter) 64px; display: grid; justify-items: center; text-align: center; }
+    .hero { padding: clamp(32px, 6vw, 72px) var(--page-pad) 64px; display: grid; justify-items: center; text-align: center; }
     .hero h1 { font-size: clamp(2.4rem, 6.4vw, 5.6rem); line-height: 0.98; letter-spacing: -0.045em; font-weight: 800; max-width: 20ch; }
     .hero > p { margin-top: 20px; max-width: 46ch; font-size: clamp(17px, 1.5vw, 20px); color: var(--soft); }
 
@@ -126,7 +130,7 @@
     .get small { color: var(--soft); font-size: 14px; }
 
     /* Sections */
-    .band { padding: clamp(72px, 10vw, 140px) var(--gutter); }
+    .band { padding: clamp(72px, 10vw, 140px) var(--page-pad); }
     .band--paper { background: var(--paper); }
     .band--ink { background: var(--band); color: var(--band-text); }
     .band h2 { font-size: clamp(2rem, 4.4vw, 3.6rem); line-height: 1; letter-spacing: -0.04em; font-weight: 800; max-width: 18ch; }
@@ -166,7 +170,7 @@
     .download-notes { display: grid; gap: 14px; color: var(--band-soft); }
     .download-notes b { color: var(--band-text); font-weight: 700; }
 
-    footer { padding: 28px var(--gutter) 40px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 14px; color: var(--soft); }
+    footer { padding: 28px var(--page-pad) 40px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 14px; color: var(--soft); }
     footer a { font-weight: 500; }
 
     @media (max-width: 860px) {
@@ -192,7 +196,7 @@
     [data-theme="light"] .fs-light { display: block; }
     .crumbs-sep { width: 1px; height: 26px; background: currentColor; opacity: .3; flex: none; }
     .crumbs .mark { white-space: nowrap; }
-    @media (max-width: 520px) { .fs-home img { height: 24px; } .crumbs { gap: 10px; } }
+    @media (max-width: 520px) { .top { padding-inline: 20px; min-height: 66px; gap: 10px; } .top nav a { display: none; } .fs-home img { height: 22px; } .crumbs { gap: 8px; } .crumbs .mark img { width: 30px; height: 30px; } }
   </style>
 </head>
 <body>

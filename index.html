@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>FrogeeSoft — we make the future</title>
-  <meta name="description" content="FrogeeSoft — IT-компания и комьюнити с 2023 года. Бесплатные программы для macOS, Windows и Linux, трекер для сноуборда FG-Track, ИИ-репетитор Ясно и образовательный проект S.I.T Education.">
+  <title>FrogeeSoft - we make the future</title>
+  <meta name="description" content="FrogeeSoft - IT-компания и комьюнити с 2023 года. Бесплатные программы для macOS, Windows и Linux, трекер для сноуборда FG-Track, ИИ-репетитор Ясно и образовательный проект S.I.T Education.">
   <meta name="theme-color" content="#090c0a">
   <link rel="icon" href="assets/brand/logo.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,7 +22,7 @@
       <img class="brand-logo brand-logo--light" src="assets/brand/frogeesoft-logo-light.png" width="155" height="43" alt="" aria-hidden="true">
     </a>
     <nav class="header-pill" aria-label="Разделы">
-      <a href="#products">Продукты</a>
+      <div class="nav-dropdown"><button class="nav-dropdown-toggle" type="button" aria-expanded="false" aria-controls="products-menu">Продукты <svg viewBox="0 0 20 20" width="15" height="15" aria-hidden="true"><path d="m4 7 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2"/></svg></button><div class="nav-dropdown-panel" id="products-menu"><a href="index.html#products">Все продукты</a><a href="programs/fgsnotes.html">FgSNotes</a><a href="programs/renvert.html">Renvert</a><a href="processing.html">Processing Studio</a><a href="programs/fllama.html">Fllama</a><a href="programs/frogeecode.html">FrogeeCodeIDE</a><a href="programs/logic.html">Logic Circuit Simulator</a><a href="http://fgtrack.ru" target="_blank" rel="noreferrer">FG-Track</a></div></div>
       <a href="#education">Обучение</a>
       <a href="team.html">Команда</a>
       <a href="shop.html">Магазин</a>
@@ -40,7 +40,7 @@
 
   <div class="mobile-menu" id="mobile-menu" hidden>
     <nav aria-label="Разделы">
-      <a href="#products">Продукты</a>
+      <a href="index.html#products">Все продукты</a><a href="processing.html">Processing Studio</a><a href="programs/renvert.html">Renvert</a><a href="programs/fllama.html">Fllama</a>
       <a href="#education">Обучение</a>
       <a href="team.html">Команда</a>
       <a href="shop.html">Магазин</a>
@@ -52,8 +52,10 @@
     <main id="main">
     <section class="section hero" id="top" aria-labelledby="hero-title">
       <div class="hero-center">
-        <img class="hero-mascot" src="assets/brand/mascot.png" width="209" height="153" alt="Пиксельная лягушка — талисман FrogeeSoft">
-        <h1 id="hero-title">FrogeeSoft — <span>we make the future</span></h1>
+        <div class="hero-title-row">
+          <img class="hero-mascot" src="assets/brand/mascot.png" width="209" height="153" alt="Пиксельная лягушка - талисман FrogeeSoft">
+          <h1 id="hero-title">FrogeeSoft - <span>we make the future</span></h1>
+        </div>
         <p class="hero-lead">Небольшая студия и IT-команда с 2023 года. Участвуем в хакатонах, пишем статьи и курсы, делаем программы и устройства.</p>
         <div class="hero-actions">
           <a class="button button-primary" href="#products">Продукты ↓</a>
@@ -84,11 +86,27 @@
         <div class="project-info">
           <p class="project-org">Программа · macOS, Windows, Linux, телефон</p>
           <h3>FgSNotes</h3>
-          <p>Markdown-редактор с живым предпросмотром, формулами LaTeX, 22 темами и плагинами. ИИ-помощник исправляет, сокращает и переводит текст — на вашем компьютере через Ollama или в облаке по вашему ключу.</p>
+          <p>Markdown-редактор с живым предпросмотром, формулами LaTeX, 22 темами и плагинами. ИИ-помощник исправляет, сокращает и переводит текст - на вашем компьютере через Ollama или в облаке по вашему ключу.</p>
           <div class="tags"><span>Electron</span><span>Markdown</span><span>Ollama</span><span>Версия 2.5.5</span></div>
           <div class="card-actions">
             <a class="button button-primary" data-download>Скачать</a>
             <a class="button button-secondary" href="programs/fgsnotes.html">О программе ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-featured reveal">
+        <a class="project-visual" href="processing.html" tabindex="-1" aria-hidden="true">
+          <img src="assets/products/processing/screenshots/ide-editor-device.png" width="1600" height="950" alt="" loading="lazy" decoding="async">
+        </a>
+        <div class="project-info">
+          <p class="project-org">Программа · macOS, Windows, Linux</p>
+          <h3>Processing Studio</h3>
+          <p>Пишите скетчи Processing, запускайте их в эмуляторе телефона и экспортируйте Android-проект. В редакторе PDE доступны датчики и примеры.</p>
+          <div class="tags"><span>Редактор PDE</span><span>Эмулятор телефона</span><span>Датчики</span><span>Экспорт Android</span></div>
+          <div class="card-actions">
+            <a class="button button-primary" href="processing.html#builds">Скачать</a>
+            <a class="button button-secondary" href="processing.html">О программе ↗</a>
           </div>
         </div>
       </article>
@@ -98,7 +116,7 @@
           <a class="product-media" href="programs/renvert.html" tabindex="-1" aria-hidden="true"><img src="assets/products/renvert/head.webp" width="1800" height="696" alt="" loading="lazy" decoding="async"></a>
           <p class="project-org">Программа · macOS 14+</p>
           <h3>Renvert</h3>
-          <p>Переименуйте photo.heic в photo.jpg прямо в Finder — и файл сконвертируется. Резервные копии и отмена.</p>
+          <p>Конвертируйте HEIC, видео, документы и архивы переименованием в Finder. Файлы остаются на Mac; оригинал можно восстановить.</p>
           <div class="card-actions"><a class="button button-primary" data-download>Скачать</a><a class="button button-secondary" href="programs/renvert.html">Подробнее ↗</a></div>
         </article>
         <article class="product-card reveal" data-program="frogeecode">
@@ -112,7 +130,7 @@
           <a class="product-media" href="programs/fllama.html" tabindex="-1" aria-hidden="true"><img src="assets/products/fllama/screen1.webp" width="1800" height="1124" alt="" loading="lazy" decoding="async"></a>
           <p class="project-org">Программа · macOS, Windows, Linux</p>
           <h3>Fllama</h3>
-          <p>Чат с нейросетями Ollama — Llama, Gemma, Qwen — без интернета и подписок.</p>
+          <p>Клиент для локальных моделей Ollama: выбирайте модель, ведите диалоги и работайте без сети после загрузки модели.</p>
           <div class="card-actions"><a class="button button-primary" data-download>Скачать</a><a class="button button-secondary" href="programs/fllama.html">Подробнее ↗</a></div>
         </article>
         <article class="product-card reveal" data-program="logic">
@@ -140,7 +158,7 @@
 
       <article class="project-featured project-featured--reverse reveal">
         <a class="project-visual project-visual--device" href="http://fgtrack.ru" target="_blank" rel="noreferrer" tabindex="-1" aria-hidden="true">
-          <img src="assets/products/fgtrack/tracker-closeup.webp" width="618" height="392" alt="" loading="lazy" decoding="async">
+          <img src="assets/products/fgtrack/sensor-render.png" width="1600" height="1000" alt="Рендер корпуса датчика FG-Track" loading="lazy" decoding="async">
         </a>
         <div class="project-info">
           <p class="project-org">Устройство · в разработке</p>
@@ -165,9 +183,9 @@
           <span>Образовательный проект FrogeeSoft</span>
         </div>
         <div class="team-card-copy">
-          <span class="section-number">02</span>
+
           <h2 id="education-title">S.I.T Education</h2>
-          <p>S.I.T Education — <strong>образовательный проект FrogeeSoft</strong>. Статьи, справочники и курсы для тех, кто учится программировать и собирать электронику. Пишем с сентября 2023 года.</p>
+          <p>S.I.T Education - <strong>образовательный проект FrogeeSoft</strong>. Статьи, справочники и курсы для тех, кто учится программировать и собирать электронику. Пишем с сентября 2023 года.</p>
           <p>Курсы «Arduino и электроника» (20 уроков) и «Frontend-разработка» (25 уроков) начинаются с нуля, а VIM-тренажёр учит работать без мыши.</p>
           <div class="team-directions"><span>Arduino</span><span>Электроника</span><span>Frontend</span><span>VIM</span><span>Олимпиады</span><span>База знаний</span></div>
           <div class="team-links">
@@ -185,8 +203,8 @@
         <span class="faces" aria-hidden="true">
           <img src="assets/team/Alex.webp" width="641" height="800" alt="">
           <img src="assets/team/nicit.webp" width="800" height="732" alt="">
-          <img src="assets/team/matvey.webp" width="600" height="800" alt="">
-          <img src="assets/team/kirill.webp" width="635" height="635" alt="">
+          <img src="assets/team/art.webp" width="600" height="800" alt="">
+          <img src="assets/team/artem2.webp" width="635" height="635" alt="">
         </span>
         <strong>Команда</strong>
         <span>Кто делает FrogeeSoft: роли, опыт и победы</span>
@@ -195,7 +213,7 @@
       <a class="link-card reveal" href="shop.html">
         <span class="shop-teaser" aria-hidden="true"><img src="assets/brand/mascot.png" width="248" height="182" alt=""></span>
         <strong>Магазин</strong>
-        <span>Программы бесплатно, скоро — FG-Track, электроника, мерч и книги</span>
+        <span>Программы бесплатно, скоро - FG-Track, электроника, мерч и книги</span>
         <b aria-hidden="true">↗</b>
       </a>
     </section>
@@ -203,9 +221,9 @@
     <section class="section contact" id="contact" aria-labelledby="contact-title">
       <div class="contact-card reveal">
         <div class="contact-copy">
-          <span class="section-number">03</span>
+
           <h2 id="contact-title">Давайте <em>обсудим</em></h2>
-          <p>Нашли ошибку в программе, хотите предложить идею или позвать нас на хакатон — пишите на почту или в Telegram.</p>
+          <p>Нашли ошибку в программе, хотите предложить идею или позвать нас на хакатон - пишите на почту или в Telegram.</p>
         </div>
         <div class="contact-actions">
           <a class="contact-link contact-link-primary" href="mailto:frogeesoft.team@gmail.com"><span>Почта</span><strong>frogeesoft.team@gmail.com</strong><b>↗</b></a>
@@ -226,6 +244,7 @@
     <nav class="footer-links" aria-label="Страницы">
       <a href="team.html">Команда</a>
       <a href="shop.html">Магазин</a>
+      <a href="processing.html">Processing Studio</a>
       <a href="https://sit-edu.ru" target="_blank" rel="noreferrer">S.I.T Education</a>
       <a href="http://fgtrack.ru" target="_blank" rel="noreferrer">FG-Track</a>
       <a href="https://yasnenko.ru" target="_blank" rel="noreferrer">Ясно</a>

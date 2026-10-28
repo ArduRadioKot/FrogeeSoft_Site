@@ -30,6 +30,22 @@
   menu.addEventListener('click', (e) => { if (e.target.closest('a')) setMenu(false); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') setMenu(false); });
 
+  // Product dropdown supports keyboard, click and pointer interaction.
+  const dropdown = document.querySelector('.nav-dropdown');
+  if (dropdown) {
+    const trigger = dropdown.querySelector('.nav-dropdown-toggle');
+    const panel = dropdown.querySelector('.nav-dropdown-panel');
+    const close = () => { trigger.setAttribute('aria-expanded', 'false'); panel.classList.remove('is-open'); };
+    trigger.addEventListener('click', () => {
+      const open = trigger.getAttribute('aria-expanded') !== 'true';
+      trigger.setAttribute('aria-expanded', String(open));
+      panel.classList.toggle('is-open', open);
+    });
+    dropdown.addEventListener('mouseleave', close);
+    document.addEventListener('click', (e) => { if (!dropdown.contains(e.target)) close(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+  }
+
   // Reveal on scroll
   const reveals = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window && !reduced) {
@@ -58,7 +74,7 @@
           const note = document.createElement('small');
           note.textContent = dl.size(file.mb);
           btn.append(note);
-          btn.title = `${file.file} — ${file.label}`;
+          btn.title = `${file.file} - ${file.label}`;
         }
       } else {
         const sys = dl.osNames[os];

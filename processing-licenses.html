@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f2f3ef">
+  <script>try{const saved=localStorage.getItem('processing-studio-theme');document.documentElement.dataset.theme=saved==='dark'||saved==='light'?saved:matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}catch{document.documentElement.dataset.theme=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}</script>
+  <meta name="description" content="Лицензии Processing Studio, сайта и основных библиотек приложения.">
+  <title>Лицензии | Processing Studio</title>
+  <link rel="icon" href="assets/products/processing/icon.png" sizes="any">
+  <link rel="icon" href="assets/products/processing/icon.png" type="image/png">
+  <link rel="stylesheet" href="processing.css">
+  <script defer src="processing.js"></script>
+</head>
+<body>
+  <svg class="icon-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+    <symbol id="icon-arrow-out" viewBox="0 0 24 24"><path d="M5 19 19 5M8 5h11v11"/></symbol>
+    <symbol id="icon-arrow-down" viewBox="0 0 24 24"><path d="M12 4v16m-7-7 7 7 7-7"/></symbol>
+    <symbol id="icon-arrow-up" viewBox="0 0 24 24"><path d="M12 20V4m-7 7 7-7 7 7"/></symbol>
+    <symbol id="icon-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="icon-moon" viewBox="0 0 24 24"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11Z"/></symbol>
+    <symbol id="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></symbol>
+  </svg>
+  <a class="skip-link" href="#main">К содержимому</a>
+  <header class="legal-header page-grid">
+    <a class="identity" href="processing.html" aria-label="Processing Studio, на главную">
+      <img src="assets/products/processing/icon.png" width="50" height="50" alt="">
+      <span>Processing<br>Studio</span>
+    </a>
+    <div class="legal-actions"><button class="theme-toggle" type="button" aria-label="Включить тёмную тему" aria-pressed="false"><svg class="icon theme-icon-moon" aria-hidden="true" focusable="false"><use href="#icon-moon"/></svg><svg class="icon theme-icon-sun" aria-hidden="true" focusable="false"><use href="#icon-sun"/></svg><span class="theme-toggle-label">Тёмная тема</span></button><a class="legal-back" href="processing.html">На главную <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-arrow-out"/></svg></a></div>
+  </header>
+  <main class="legal-main page-grid" id="main">
+    <h1>Лицензии.</h1>
+    <p class="legal-intro">У кода приложения, сторонних библиотек и изображений разные условия использования. Здесь собраны основные сведения и полный текст лицензии проекта.</p>
+    <section aria-labelledby="project-license">
+      <h2 id="project-license">Processing Studio</h2>
+      <div class="legal-copy"><p>Исходный код приложения и сайта распространяется по GNU General Public License, версия 2. Полный текст доступен в файле <a href="processing-LICENSE.txt">LICENSE.txt</a>.</p>
+      <p>Исходники приложения опубликованы <a href="https://github.com/ArduRadioKot/Processing-Studio" target="_blank" rel="noopener noreferrer">на GitHub</a>.</p></div>
+    </section>
+    <section aria-labelledby="dependencies-license">
+      <h2 id="dependencies-license">Библиотеки приложения</h2>
+      <div class="legal-copy"><p>Основные зависимости, используемые в текущем проекте:</p>
+      <ul>
+        <li>Electron: MIT</li>
+        <li>xterm.js и addon-fit: MIT</li>
+        <li>Axios: MIT</li>
+        <li>Marked: MIT</li>
+        <li>node-pty: MIT</li>
+      </ul>
+      <p>Полные уведомления и лицензии сторонних пакетов входят в их поставку. Зависимости и версии указаны в <code>package.json</code> проекта.</p></div>
+    </section>
+    <section aria-labelledby="assets-license">
+      <h2 id="assets-license">Логотип и снимки экрана</h2>
+      <div class="legal-copy"><p>Логотип и снимки интерфейса используются как материалы Processing Studio. Отдельные условия их повторного использования вне проекта не опубликованы.</p></div>
+    </section>
+  </main>
+  <footer class="site-footer page-grid legal-footer"><a class="footer-brand" href="processing.html">Processing Studio <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-arrow-up"/></svg></a><p>IDE для мобильной разработки на Processing.</p><nav aria-label="Ссылки проекта"><a href="processing.html">Главная</a><a href="processing-LICENSE.txt">GPL 2.0</a><a href="https://github.com/ArduRadioKot/Processing-Studio" target="_blank" rel="noopener noreferrer">Исходный код</a></nav><small>© 2026 FrogeeSoft</small></footer>
+</body>
+</html>
