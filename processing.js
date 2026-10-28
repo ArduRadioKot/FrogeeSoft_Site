@@ -43,7 +43,7 @@ mobileNav?.addEventListener('click', event => {
   if (event.target.closest('a')) closeMenu();
 });
 window.addEventListener('resize', () => {
-  if (innerWidth > 1200) closeMenu();
+  if (innerWidth > 1100) closeMenu();
 });
 if (document.getElementById('year')) document.getElementById('year').textContent = new Date().getFullYear();
 

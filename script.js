@@ -52,7 +52,7 @@
     if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last?.focus(); }
     else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first?.focus(); }
   });
-  window.matchMedia('(min-width: 981px)').addEventListener('change', (event) => { if (event.matches) setMenu(false); });
+  window.matchMedia('(min-width: 1101px)').addEventListener('change', (event) => { if (event.matches) setMenu(false); });
 
   // Product dropdown supports keyboard, click and pointer interaction.
   const dropdown = document.querySelector('.nav-dropdown');
