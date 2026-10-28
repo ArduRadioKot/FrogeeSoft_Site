@@ -13,6 +13,7 @@
   <link rel="icon" href="assets/products/processing/icon.png" sizes="any">
   <link rel="icon" href="assets/products/processing/icon.png" type="image/png">
   <link rel="stylesheet" href="processing.css">
+  <link rel="stylesheet" href="assets/project-ui.css">
   <script defer src="processing.js"></script>
 </head>
 <body id="top">
@@ -26,10 +27,7 @@
   </svg>
   <a class="skip-link" href="#main">К содержимому</a>
   <header class="site-header page-grid">
-    <a class="identity" href="index.html" aria-label="FrogeeSoft, на главную">
-      <img src="assets/products/processing/icon.png" width="50" height="50" alt="">
-      <span>Processing<br>Studio</span>
-    </a>
+    <div class="project-brand project-brand--header"><a class="project-parent" href="index.html" aria-label="FrogeeSoft, на главную"><img class="project-parent-logo project-parent-logo--dark" src="assets/brand/frogeesoft-logo-dark.png" width="124" height="34" alt="FrogeeSoft"><img class="project-parent-logo project-parent-logo--light" src="assets/brand/frogeesoft-logo-light.png" width="124" height="34" alt="" aria-hidden="true"></a><a class="project-title" href="#"><img class="project-logo" src="assets/products/processing/icon.png" width="30" height="30" alt=""><span class="project-title-text">Processing Studio</span></a></div>
     <nav class="desktop-nav" aria-label="Основная навигация">
       <a href="index.html">FrogeeSoft</a><a href="#idea">Идея</a>
       <a href="#device">Эмулятор</a>
@@ -49,7 +47,8 @@
   <main id="main">
     <section class="hero page-grid" aria-labelledby="hero-title">
       <div class="hero-heading">
-        <h1 id="hero-title">Написать приложение<br><em>проще, чем кажется.</em></h1>
+        <div class="hero-title-copy"><h1 id="hero-title">Написать приложение<br><em>проще, чем кажется.</em></h1>
+        <p class="project-authors project-authors--page">Автор: <a href="https://github.com/ArduRadioKot" target="_blank" rel="noreferrer">Александр Воробьев</a></p></div>
         <div class="hero-aside"><p>Processing Studio: полноценная IDE для мобильных приложений на Processing. Меняйте скетч, запускайте его рядом с кодом, затем экспортируйте Android-проект.</p><a class="primary-link" href="#download">Получить IDE <span aria-hidden="true"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-arrow-out"/></svg></span></a></div>
       </div>
       <figure class="screen-frame hero-screen">

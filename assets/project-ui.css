@@ -1,0 +1,41 @@
+/* Shared product identity, used in the catalog and on project pages. */
+.project-brand { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; min-width: 0; }
+.project-parent { display: inline-flex; align-items: center; flex: none; text-decoration: none; }
+.project-parent .project-parent-logo { display: block; width: auto; height: 24px; max-width: none; border-radius: 0; }
+.project-parent .project-parent-logo--light { display: none; }
+[data-theme="light"] .project-parent .project-parent-logo--dark { display: none; }
+[data-theme="light"] .project-parent .project-parent-logo--light { display: block; }
+.project-brand .project-title { display: flex; align-items: center; gap: 9px; min-width: 0; max-width: 100%; margin: 0; padding-inline-start: 10px; border-inline-start: 1px solid currentColor; color: inherit; text-decoration: none; font-size: 1.15rem; font-weight: 750; line-height: 1.2; letter-spacing: -.025em; }
+.project-title .project-logo { display: block; width: 30px; height: 30px; object-fit: contain; flex: none; border-radius: 6px; margin: 0; aspect-ratio: 1; }
+.project-title-text { min-width: 0; overflow-wrap: anywhere; }
+.project-brand--header { flex-wrap: nowrap; }
+.project-brand--header .project-title { font-size: 1rem; }
+.project-brand--header .project-title-text { max-width: 17ch; }
+.project-authors { margin: 0; font-size: .875rem; line-height: 1.65; color: var(--muted, var(--soft, currentColor)); overflow-wrap: anywhere; }
+.project-authors a { color: inherit; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.project-authors a:hover { color: var(--accent-soft, var(--accent, currentColor)); }
+.project-authors--page { margin-block: 18px 0; }
+.hero .project-authors, .frame-head .project-authors { font-size: .875rem; line-height: 1.65; margin-block: 18px 0; }
+footer .project-authors { flex-basis: 100%; }
+.project-featured .project-brand .project-title { font-size: clamp(1.2rem, 1.8vw, 1.6rem); }
+.item .project-brand { margin-block-end: 12px; }
+.item .project-title { max-width: none; }
+.product-card .project-authors { color: var(--muted); }
+.project-media--wiki { display: grid; place-items: start center; height: 220px; background: #e6ebed; }
+.project-media--wiki img { width: min(100%, 210px); height: auto; aspect-ratio: auto; object-fit: contain; }
+.project-featured .project-media--wiki { height: 400px; }
+.project-featured .project-media--wiki img { width: min(100%, 240px); }
+.project-media--education { display: grid; place-items: center; min-height: 200px; background: var(--surface-2); }
+.project-media--education img { width: 132px; height: auto; object-fit: contain; aspect-ratio: auto; image-rendering: pixelated; }
+@media (max-width: 620px) {
+  .project-brand--header { gap: 8px; }
+  .project-brand--header .project-parent-logo { height: 20px; }
+  .project-brand--header .project-title { padding-inline-start: 8px; gap: 7px; font-size: .875rem; }
+  .project-brand--header .project-logo { width: 26px; height: 26px; }
+  .project-brand--header .project-title-text { max-width: 14ch; }
+  .top:has(.project-brand) { gap: 12px; }
+  .top:has(.project-brand) nav > a { display: none; }
+  .top:has(.project-brand) .theme-btn { margin-left: 0; width: 36px; height: 36px; flex: none; }
+  .nav:has(.project-brand) { gap: 10px; }
+  .nav:has(.project-brand) .nav-end { flex: none; }
+}

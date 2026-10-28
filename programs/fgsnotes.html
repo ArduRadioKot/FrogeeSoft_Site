@@ -118,11 +118,11 @@
     .dl-grid { margin-top: 32px; display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gap); }
     .dl-group { padding: 20px; border-radius: 12px; background: var(--island-2); display: grid; gap: 8px; align-content: start; }
     .dl-group h3 { font-size: 18px; margin-bottom: 4px; }
-    .dl { display: grid; grid-template-columns: 1fr auto; gap: 2px 12px; padding: 14px 16px; border-radius: 10px; background: var(--island); text-decoration: none; transition: background .2s; }
+    .dl { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 12px; padding: 14px 16px; border-radius: 10px; background: var(--island); text-decoration: none; transition: background .2s; }
     .dl:hover { background: var(--raised); }
     .dl.is-yours { background: var(--accent); color: var(--on-accent); }
     .dl-label { font-weight: 700; }
-    .dl-file { font: 400 12px var(--mono); opacity: .75; }
+    .dl-file { font: 400 12px var(--mono); opacity: .75; overflow-wrap: anywhere; }
     .dl-size { grid-column: 2; grid-row: 1 / 3; align-self: center; font: 500 13px var(--mono); }
     .phone-build { font-size: 15px; color: var(--muted); }
     .unsigned { margin-top: 24px; padding: 16px 18px; border-radius: 12px; background: var(--inset); color: var(--muted); font-size: 15px; }
@@ -161,14 +161,11 @@
     .nav { position: sticky; background: var(--wall); border-bottom: 1px solid var(--line); }
     .page { padding-top: var(--gap); }
   </style>
+  <link rel="stylesheet" href="../assets/project-ui.css">
 </head>
 <body>
   <nav class="nav" aria-label="Навигация">
-    <div class="crumbs">
-        <a class="fs-home" href="../index.html" aria-label="FrogeeSoft, на главную"><img class="fs-dark" src="../assets/brand/frogeesoft-logo-dark.png" width="124" height="34" alt="FrogeeSoft"><img class="fs-light" src="../assets/brand/frogeesoft-logo-light.png" width="124" height="34" alt="" aria-hidden="true"></a>
-        <span class="crumbs-sep" aria-hidden="true"></span>
-        <a class="mark nav-brand" href="#"><img src="../assets/products/fgsnotes/icon.png" width="28" height="28" alt="">FgSNotes</a>
-      </div>
+    <div class="project-brand project-brand--header"><a class="project-parent" href="../index.html" aria-label="FrogeeSoft, на главную"><img class="project-parent-logo project-parent-logo--dark" src="../assets/brand/frogeesoft-logo-dark.png" width="124" height="34" alt="FrogeeSoft"><img class="project-parent-logo project-parent-logo--light" src="../assets/brand/frogeesoft-logo-light.png" width="124" height="34" alt="" aria-hidden="true"></a><a class="project-title" href="#"><img class="project-logo" src="../assets/products/fgsnotes/icon.png" width="30" height="30" alt=""><span class="project-title-text">FgSNotes</span></a></div>
     <div class="nav-links">
       <a href="#features">Возможности</a>
       <a href="#ai">Чат</a>
@@ -189,11 +186,12 @@
     <section class="island hero" aria-labelledby="title">
       <div>
         <h1 id="title">Markdown-редактор, который не мешает писать</h1>
+        <p class="project-authors project-authors--page">Автор: <a href="https://github.com/ArduRadioKot" target="_blank" rel="noreferrer">Александр Воробьев</a></p>
         <p>FgSNotes открывает обычные .md файлы, показывает результат рядом, считает формулы LaTeX и помогает с текстом через ИИ - на вашем компьютере или в облаке. Есть версия для телефона, а оформление меняется одним CSS-файлом.</p>
         <div class="hero-actions">
           <a class="btn btn-big" id="get-main" href="#download">Скачать</a>
           <a class="btn btn-big btn-ghost" href="https://github.com/ArduRadioKot/FgSNotes">GitHub</a>
-          <small>Версия 2.5.5 · бесплатно · GPL-2.0</small>
+          <small>Версия <span data-release-version="fgsnotes">2.6.2</span> · бесплатно · GPL-2.0</small>
         </div>
       </div>
       <figure class="hero-shot"><img src="../assets/products/fgsnotes/hero-glass.webp" width="1800" height="1125" alt="FgSNotes в режиме Liquid Glass: полупрозрачное окно с заметкой и предпросмотром"></figure>
@@ -310,7 +308,7 @@ total / prices.length</pre>
 
     <section class="island" id="download" aria-labelledby="download-title">
       <h2 id="download-title">Скачать FgSNotes</h2>
-      <p>Версия 2.5.5 от 17 октября 2026 года. Выделенный файл подходит вашей системе.</p>
+      <p>Версия <span data-release-version="fgsnotes">2.6.2</span>. Выделенный файл подходит вашей системе.</p>
       <div class="dl-grid">
         <div class="dl-group"><h3>macOS</h3><div class="dl-slot" data-os="mac"></div></div>
         <div class="dl-group"><h3>Windows и Linux</h3><div class="dl-slot" data-os="other"></div></div>
@@ -332,11 +330,13 @@ total / prices.length</pre>
   <script>
     (() => {
       const dl = window.FROGEE_DOWNLOADS;
-      if (dl) {
+      function renderDownloads() {
+        if (!dl) return;
         const p = dl.programs.fgsnotes;
         const mine = dl.pick('fgsnotes');
         const slots = { mac: p.files.filter((f) => f.os.startsWith('mac')), other: p.files.filter((f) => !f.os.startsWith('mac')) };
         document.querySelectorAll('.dl-slot').forEach((slot) => {
+          slot.textContent = '';
           slot.style.display = 'grid'; slot.style.gap = '8px';
           slots[slot.dataset.os].forEach((f) => {
             const a = document.createElement('a');
@@ -346,13 +346,10 @@ total / prices.length</pre>
             slot.append(a);
           });
         });
-        if (mine) {
-          const btn = document.getElementById('get-main');
-          btn.href = mine.url;
-          btn.textContent = `Скачать для ${dl.osNames[dl.detectOS()] || mine.label}`;
-        }
+        dl.wireButton('fgsnotes', document.getElementById('get-main'));
       }
-
+      renderDownloads();
+      dl?.ready.then(renderDownloads);
     })();
   </script>
 </body>

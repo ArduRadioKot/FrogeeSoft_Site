@@ -188,3 +188,19 @@ p{text-wrap:pretty}
 /* FrogeeSoft catalog integration */
 .site-header{position:sticky;top:0;z-index:40;background:var(--paper);box-shadow:0 10px 30px rgba(0,0,0,.08)}
 html{scroll-padding-top:100px}
+.site-header:has(.project-brand){display:flex;justify-content:space-between;gap:24px;height:68px}
+.site-header:has(.project-brand) .desktop-nav{margin-left:auto;gap:20px}
+.hero-title-copy{min-width:0}
+.hero-title-copy .project-authors{font-size:14px}
+@media(max-width:1200px){
+  .site-header:has(.project-brand) .desktop-nav,.site-header:has(.project-brand) .header-download{display:none}
+  .site-header:has(.project-brand) .menu-toggle{display:inline-flex;align-items:center;gap:8px}
+  .mobile-nav{position:fixed;top:68px;left:0;right:0;z-index:39;max-height:calc(100dvh - 68px);overflow-y:auto;overscroll-behavior:contain}
+}
+@media(max-width:620px){
+  .site-header:has(.project-brand){gap:10px}
+  .site-header:has(.project-brand) .header-actions{gap:12px}
+  .site-header:has(.project-brand) .menu-toggle{font-size:0;gap:0}
+  .site-header:has(.project-brand) .menu-toggle .icon{width:22px;height:22px}
+  .legal-header:has(.project-brand){display:flex;flex-wrap:wrap;gap:20px;padding-block:20px}
+}
