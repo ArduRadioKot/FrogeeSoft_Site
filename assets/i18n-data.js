@@ -160,10 +160,6 @@ window.FROGEE_TRANSLATIONS = {
     "ru": "Веб-сервис · учёба в «Сириусе»",
     "en": "Web service · studying at Sirius"
   },
-  "Конспекты:": {
-    "ru": "Конспекты:",
-    "en": "Lecture notes:"
-  },
   "Конспекты по дням и предметам, формулы и PDF, вопросы для самопроверки с объяснениями. Расписание групп ИОП-ИТ с аудиториями, преподавателями и подпиской на календарь; справочник по жизни в кампусе.": {
     "ru": "Конспекты по дням и предметам, формулы и PDF, вопросы для самопроверки с объяснениями. Расписание групп ИОП-ИТ с аудиториями, преподавателями и подпиской на календарь; справочник по жизни в кампусе.",
     "en": "Lecture notes by day and subject, formulas and PDFs, and self-check questions with explanations. IOP-IT timetables include rooms, instructors and calendar subscriptions, alongside a guide to campus life."
@@ -223,10 +219,6 @@ window.FROGEE_TRANSLATIONS = {
   "Авторы:": {
     "ru": "Авторы:",
     "en": "Authors:"
-  },
-  "Никита / GigaProgramm": {
-    "ru": "Никита / GigaProgramm",
-    "en": "Nikita / GigaProgramm"
   },
   "Схемы из элементов И, ИЛИ, НЕ и исключающего ИЛИ с кнопками и светодиодами. Переводит схему в выражение.": {
     "ru": "Схемы из элементов И, ИЛИ, НЕ и исключающего ИЛИ с кнопками и светодиодами. Переводит схему в выражение.",
@@ -2403,5 +2395,13 @@ window.FROGEE_TRANSLATIONS = {
   "Windows, portable": {
     "ru": "Windows, без установки",
     "en": "Windows, portable"
+  },
+  "Конспекты, самопроверка и расписание ИОП-ИТ с подпиской на календарь. Справочник по кампусу, офлайн-доступ и установка как приложения. Неофициальный студенческий проект.": {
+    "ru": "Конспекты, самопроверка и расписание ИОП-ИТ с подпиской на календарь. Справочник по кампусу, офлайн-доступ и установка как приложения. Неофициальный студенческий проект.",
+    "en": "Lecture notes, self-check questions and IOP-IT timetables with calendar subscriptions. Campus guides, offline access and app installation. An unofficial student project."
+  },
+  "Главная страница S.I.T Education: статьи, база знаний и курсы": {
+    "ru": "Главная страница S.I.T Education: статьи, база знаний и курсы",
+    "en": "S.I.T Education homepage: articles, knowledge base and courses"
   }
 };

@@ -21,13 +21,20 @@ footer .project-authors { flex-basis: 100%; }
 .item .project-brand { margin-block-end: 12px; }
 .item .project-title { max-width: none; }
 .product-card .project-authors { color: var(--muted); }
-.project-media--wiki { display: grid; place-items: start center; height: 220px; background: #e6ebed; }
-.project-media--wiki img { width: min(100%, 210px); height: auto; aspect-ratio: auto; object-fit: contain; }
-.project-featured .project-media--wiki { height: 400px; }
-.project-featured .project-media--wiki img { width: min(100%, 240px); }
-.project-media--education { display: grid; place-items: center; min-height: 200px; background: var(--surface-2); }
-.project-media--education img { width: 132px; height: auto; object-fit: contain; aspect-ratio: auto; image-rendering: pixelated; }
+.project-media--wiki { display: grid; place-items: center; height: 200px; background: #e6ebed; }
+.project-media--wiki img { width: auto; height: 100%; max-width: 100%; aspect-ratio: auto; object-fit: contain; }
+.project-media--platform img { aspect-ratio: 2992 / 1708; object-fit: contain; image-rendering: auto; }
+.education-platform-shot { display: block; align-self: center; min-width: 0; overflow: hidden; border-radius: var(--radius-sm); }
+.education-platform-shot img { width: 100%; height: auto; }
+#case-yakovlev { row-gap: var(--space-24); }
+.client-project-heading { grid-column: 1 / -1; flex-wrap: nowrap; }
+.client-project-heading .project-title { flex: 1; }
+.client-project-heading .project-title-text { white-space: nowrap; overflow-wrap: normal; }
+#case-geoscan-title, .together .project-title-regular { font-weight: 400; }
 @media (max-width: 620px) {
+  .client-project-heading { flex-wrap: wrap; }
+  .client-project-heading .project-title { flex-basis: 100%; }
+  .client-project-heading .project-title-text { white-space: normal; }
   .project-brand--header { gap: 8px; }
   .project-brand--header .project-parent-logo { height: 20px; }
   .project-brand--header .project-title { padding-inline-start: 8px; gap: 7px; font-size: .875rem; }
