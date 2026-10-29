@@ -1,0 +1,26 @@
+html.i18n-pending body { visibility: hidden; }
+.resume-header .lang-switch {
+  display: flex; align-items: center; flex: none; gap: 0; height: 46px; padding: 4px;
+  border: 1px solid var(--header-line); border-radius: 999px;
+  background: var(--header-fill); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+}
+.resume-header .lang-switch button {
+  min-width: 36px; height: 100%; padding: 0 9px; border: 0; border-radius: 999px;
+  background: transparent; color: var(--header-muted); font: 800 .75rem/1 system-ui, sans-serif;
+  letter-spacing: .04em; cursor: pointer;
+}
+.resume-header .lang-switch button:hover,
+.resume-header .lang-switch button[aria-pressed="true"] { color: var(--header-ink); background: color-mix(in srgb, var(--header-ink) 10%, transparent); }
+@media (max-width: 620px) {
+  .resume-header .lang-switch { height: 42px; padding: 3px; }
+  .resume-header .lang-switch button { min-width: 30px; padding-inline: 6px; }
+  html.has-project-header { --site-header-height: 116px; --header-h: var(--site-header-height); }
+  .has-resume-header .resume-header:has(.project-brand) { display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: auto auto; align-content: center; gap: 6px; }
+  .resume-header:has(.project-brand) > .project-brand { grid-row: 1; }
+  .has-resume-header .resume-header:has(.project-brand) > :is(.header-actions, .nav-end, .legal-actions) { grid-row: 2; justify-self: end; margin: 0; }
+}
+@media (max-width: 380px) {
+  .has-resume-header .resume-header { gap: 8px; }
+  .has-resume-header .resume-header :is(.header-actions, .nav-end, .legal-actions) { gap: 4px; }
+  .resume-header .lang-switch button { min-width: 28px; }
+}

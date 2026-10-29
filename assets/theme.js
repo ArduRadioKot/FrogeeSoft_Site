@@ -5,8 +5,14 @@
   try { saved = localStorage.getItem('fs-theme'); } catch (e) {}
   root.dataset.theme = saved === 'light' ? 'light' : 'dark';
 
-  const label = () => (root.dataset.theme === 'light' ? 'Включить тёмную тему' : 'Включить светлую тему');
+  const label = () => {
+    const text = root.dataset.theme === 'light' ? 'Включить тёмную тему' : 'Включить светлую тему';
+    return window.FROGEE_I18N?.t(text) || text;
+  };
   document.addEventListener('DOMContentLoaded', () => {
+    window.addEventListener('frogee:languagechange', () => {
+      document.querySelectorAll('[data-theme-toggle]').forEach((button) => button.setAttribute('aria-label', label()));
+    });
     document.querySelectorAll('[data-theme-toggle]').forEach((btn) => {
       btn.setAttribute('aria-label', label());
       btn.addEventListener('click', () => {

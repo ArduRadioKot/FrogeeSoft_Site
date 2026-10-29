@@ -2,6 +2,7 @@
   const root = document.documentElement;
   root.classList.add('js');
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const t = (text, values) => window.FROGEE_I18N?.t(text, values) || text;
 
   // Current section highlighted in the menu
   const navLinks = [...document.querySelectorAll('.header-pill a[href^="#"]')];
@@ -24,7 +25,7 @@
     if (!toggle || !menu) return;
     clearTimeout(menuTimer);
     toggle.setAttribute('aria-expanded', String(open));
-    toggle.setAttribute('aria-label', open ? 'Закрыть меню' : 'Открыть меню');
+    toggle.setAttribute('aria-label', t(open ? 'Закрыть меню' : 'Открыть меню'));
     document.body.classList.toggle('menu-open', open);
     document.querySelectorAll('main, body > footer').forEach((element) => { element.inert = open; });
     menu.inert = !open;
@@ -104,24 +105,28 @@
       const file = dl.pick(id, os);
       if (file) {
         btn.href = file.url;
-        if (file.os === 'source') btn.textContent = 'Скачать исходники';
+        if (file.os === 'source') btn.textContent = t('Скачать исходники');
         else {
-          btn.textContent = 'Скачать ';
+          btn.textContent = t('Скачать') + ' ';
           const note = document.createElement('small');
           note.textContent = dl.size(file.mb);
           btn.append(note);
-          btn.title = `${file.file} - ${file.label}`;
+          btn.title = `${file.file} - ${dl.label(file)}`;
         }
       } else {
         const sys = dl.osNames[os];
         btn.href = dl.programs[id].releases;
-        btn.textContent = sys ? `Нет сборки для ${sys}` : 'Все версии ↗';
+        btn.textContent = sys ? t('Нет сборки для {system}', { system: sys }) : t('Все версии ↗');
         btn.classList.replace('button-primary', 'button-secondary');
       }
     });
   }
   wireDownloads();
   dl?.ready.then(wireDownloads);
+  window.addEventListener('frogee:languagechange', () => {
+    if (toggle) toggle.setAttribute('aria-label', t(toggle.getAttribute('aria-expanded') === 'true' ? 'Закрыть меню' : 'Открыть меню'));
+    wireDownloads();
+  });
 
   const year = document.querySelector('[data-year]');
   if (year) year.textContent = new Date().getFullYear();

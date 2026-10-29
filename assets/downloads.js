@@ -1,5 +1,6 @@
 // Release files of FrogeeSoft programs, taken from their GitHub releases.
 window.FROGEE_DOWNLOADS = (() => {
+  const t = (text, values) => window.FROGEE_I18N?.t(text, values) || text;
   const gh = (repo, tag, file) => `https://github.com/ArduRadioKot/${repo}/releases/download/${tag}/${file}`;
 
   const programs = {
@@ -71,7 +72,8 @@ window.FROGEE_DOWNLOADS = (() => {
     return p.files.find((f) => f.os === 'source') || null;
   }
 
-  const size = (mb) => (mb ? `${mb.toLocaleString('ru-RU', { maximumFractionDigits: 1 })} МБ` : '');
+  const size = (mb) => (mb ? `${mb.toLocaleString(window.FROGEE_I18N?.locale || 'ru-RU', { maximumFractionDigits: 1 })} ${t('МБ')}` : '');
+  const label = (file) => t(file.label);
 
   // Fills a container with one link per release file; the visitor's own file is marked.
   function renderList(id, container) {
@@ -82,7 +84,7 @@ window.FROGEE_DOWNLOADS = (() => {
       const a = document.createElement('a');
       a.className = 'dl' + (mine === f ? ' is-yours' : '');
       a.href = f.url;
-      [['dl-label', f.label], ['dl-file', f.file], ['dl-size', size(f.mb)]].forEach(([cls, text]) => {
+      [['dl-label', label(f)], ['dl-file', f.file], ['dl-size', size(f.mb)]].forEach(([cls, text]) => {
         const span = document.createElement('span');
         span.className = cls;
         span.textContent = text;
@@ -97,10 +99,10 @@ window.FROGEE_DOWNLOADS = (() => {
     const f = pick(id);
     if (f) {
       btn.href = f.url;
-      btn.textContent = f.os === 'source' ? 'Скачать исходники' : `${prefix} для ${osNames[detectOS()] || f.label}`;
+      btn.textContent = f.os === 'source' ? t('Скачать исходники') : prefix === 'Скачать' ? t('Скачать для {system}', { system: osNames[detectOS()] || label(f) }) : `${t(prefix)} ${osNames[detectOS()] || label(f)}`;
     } else {
       btn.href = programs[id].releases;
-      btn.textContent = 'Все версии на GitHub';
+      btn.textContent = t('Все версии на GitHub');
     }
     return f;
   }
@@ -173,5 +175,5 @@ window.FROGEE_DOWNLOADS = (() => {
   }
 
   const ready = refreshNotesRelease();
-  return { programs, detectOS, pick, size, osNames, renderList, wireButton, ready };
+  return { programs, detectOS, pick, size, label, osNames, renderList, wireButton, ready };
 })();

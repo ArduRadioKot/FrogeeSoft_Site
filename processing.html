@@ -1,8 +1,10 @@
 <!doctype html>
-<html lang="ru">
+<html lang="ru" class="has-project-header">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="assets/i18n-data.js"></script>
+  <script src="assets/i18n.js"></script>
   <meta name="theme-color" content="#f2f3ef">
   <script>try{const saved=localStorage.getItem('processing-studio-theme');document.documentElement.dataset.theme=saved==='dark'||saved==='light'?saved:matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}catch{document.documentElement.dataset.theme=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}</script>
   <meta name="description" content="Processing Studio: полноценная IDE для мобильных приложений на Processing. Редактор PDE, эмулятор телефона, датчики и экспорт Android-проекта в одном окне.">
@@ -17,6 +19,7 @@
   <script defer src="processing.js"></script>
   <link rel="stylesheet" href="assets/header.css">
   <script src="assets/header.js" defer></script>
+  <link rel="stylesheet" href="assets/i18n.css">
 </head>
 <body id="top" class="has-resume-header">
   <svg class="icon-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
@@ -37,7 +40,7 @@
       <a href="#editor">Редактор</a>
     </nav>
     <div class="header-actions">
-      <button class="theme-toggle" type="button" aria-label="Включить тёмную тему" aria-pressed="false"><svg class="icon theme-icon-moon" aria-hidden="true" focusable="false"><use href="#icon-moon"/></svg><svg class="icon theme-icon-sun" aria-hidden="true" focusable="false"><use href="#icon-sun"/></svg><span class="theme-toggle-label">Тёмная тема</span></button>
+      <div class="lang-switch" role="group" aria-label="Язык"><button type="button" data-language="ru" lang="ru" aria-label="Русский" aria-pressed="true" data-i18n-ignore>RU</button><button type="button" data-language="en" lang="en" aria-label="English" aria-pressed="false" data-i18n-ignore>EN</button></div><button class="theme-toggle" type="button" aria-label="Включить тёмную тему" aria-pressed="false"><svg class="icon theme-icon-moon" aria-hidden="true" focusable="false"><use href="#icon-moon"/></svg><svg class="icon theme-icon-sun" aria-hidden="true" focusable="false"><use href="#icon-sun"/></svg><span class="theme-toggle-label">Тёмная тема</span></button>
       <a class="header-download" href="#download">Скачать <span aria-hidden="true"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-arrow-out"/></svg></span></a>
       <button class="menu-toggle" type="button" aria-controls="mobile-nav" aria-expanded="false" aria-label="Открыть меню">Меню <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-plus"/></svg></button>
     </div>

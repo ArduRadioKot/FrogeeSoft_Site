@@ -3,6 +3,7 @@ const mobileNav = document.querySelector('.mobile-nav');
 const themeButtons = document.querySelectorAll('.theme-toggle');
 const themeMedia = matchMedia('(prefers-color-scheme: dark)');
 const themeKey = 'processing-studio-theme';
+const t = (text) => window.FROGEE_I18N?.t(text) || text;
 
 function setTheme(theme) {
   const dark = theme === 'dark';
@@ -10,8 +11,8 @@ function setTheme(theme) {
   document.querySelector('meta[name="theme-color"]')?.setAttribute('content', dark ? '#101719' : '#f2f3ef');
   themeButtons.forEach(button => {
     button.setAttribute('aria-pressed', String(dark));
-    button.setAttribute('aria-label', dark ? 'Включить светлую тему' : 'Включить тёмную тему');
-    button.querySelector('.theme-toggle-label').textContent = dark ? 'Светлая тема' : 'Тёмная тема';
+    button.setAttribute('aria-label', t(dark ? 'Включить светлую тему' : 'Включить тёмную тему'));
+    button.querySelector('.theme-toggle-label').textContent = t(dark ? 'Светлая тема' : 'Тёмная тема');
   });
 }
 
@@ -30,20 +31,24 @@ function closeMenu() {
   if (!menuButton || !mobileNav) return;
   mobileNav.hidden = true;
   menuButton.setAttribute('aria-expanded', 'false');
-  menuButton.setAttribute('aria-label', 'Открыть меню');
+  menuButton.setAttribute('aria-label', t('Открыть меню'));
 }
 
 menuButton?.addEventListener('click', () => {
   const open = mobileNav.hidden;
   mobileNav.hidden = !open;
   menuButton.setAttribute('aria-expanded', String(open));
-  menuButton.setAttribute('aria-label', open ? 'Закрыть меню' : 'Открыть меню');
+  menuButton.setAttribute('aria-label', t(open ? 'Закрыть меню' : 'Открыть меню'));
 });
 mobileNav?.addEventListener('click', event => {
   if (event.target.closest('a')) closeMenu();
 });
 window.addEventListener('resize', () => {
   if (innerWidth > 1100) closeMenu();
+});
+window.addEventListener('frogee:languagechange', () => {
+  setTheme(document.documentElement.dataset.theme);
+  menuButton?.setAttribute('aria-label', t(menuButton.getAttribute('aria-expanded') === 'true' ? 'Закрыть меню' : 'Открыть меню'));
 });
 if (document.getElementById('year')) document.getElementById('year').textContent = new Date().getFullYear();
 

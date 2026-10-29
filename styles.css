@@ -236,6 +236,19 @@ h2 em { font-style: normal; color: var(--accent); }
 .product-card > p:not(.project-org) { color: var(--text); }
 .product-card .card-actions { margin-top: auto; padding-top: var(--space-8); }
 
+/* Work for other companies. */
+.client-project-list { display: grid; gap: var(--space-16); }
+.client-project-media { margin: 0; min-width: 0; }
+.client-project-media .project-visual { background: var(--bg-soft); }
+.client-project-media img { aspect-ratio: 16 / 10; object-fit: contain; }
+.client-project-media figcaption { margin-top: 12px; color: var(--muted); font-size: var(--fs-small); line-height: 1.5; }
+.client-projects .project-title .project-logo--wide { width: 96px; height: 30px; border-radius: 0; }
+.client-projects .project-title .client-project-logo--light { display: none; }
+[data-theme="light"] .client-projects .project-title .client-project-logo--dark { display: none; }
+[data-theme="light"] .client-projects .project-title .client-project-logo--light { display: block; }
+.partners a:hover { color: var(--text); }
+.together a { text-decoration: underline; text-underline-offset: 4px; }
+
 /* Education */
 .team-card { padding: var(--space-16); display: grid; grid-template-columns: 0.78fr 1.22fr; gap: var(--space-16); border-radius: var(--radius-md); background: var(--surface); }
 .team-card-brand { min-height: 420px; padding: var(--space-32); display: flex; flex-direction: column; justify-content: space-between; border-radius: var(--radius-sm); background: var(--bg-soft); overflow: hidden; position: relative; }

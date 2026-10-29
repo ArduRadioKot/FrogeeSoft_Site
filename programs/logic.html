@@ -1,8 +1,10 @@
 <!doctype html>
-<html lang="ru" data-theme="dark">
+<html lang="ru" data-theme="dark" class="has-project-header">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="../assets/i18n-data.js"></script>
+  <script src="../assets/i18n.js"></script>
   <title>Logic Circuit Simulator - симулятор логических схем</title>
   <meta name="description" content="Logic Circuit Simulator - бесплатный симулятор логических схем: элементы И, ИЛИ, НЕ, исключающее ИЛИ, кнопки и светодиоды, перевод схемы в логическое выражение. От FrogeeSoft.">
   <link rel="icon" href="../assets/products/logic/icon.png">
@@ -186,12 +188,13 @@
   <link rel="stylesheet" href="../assets/project-ui.css">
   <link rel="stylesheet" href="../assets/header.css">
   <script src="../assets/header.js" defer></script>
+  <link rel="stylesheet" href="../assets/i18n.css">
 </head>
 <body class="has-resume-header">
   <div class="sheet">
     <header class="top resume-header">
       <div class="project-brand project-brand--header"><a class="project-parent" href="../index.html" aria-label="FrogeeSoft, на главную"><img class="project-parent-logo project-parent-logo--dark" src="../assets/brand/frogeesoft-logo-dark.png" width="124" height="34" alt="FrogeeSoft"><img class="project-parent-logo project-parent-logo--light" src="../assets/brand/frogeesoft-logo-light.png" width="124" height="34" alt="" aria-hidden="true"></a><a class="project-title" href="#"><img class="project-logo" src="../assets/products/logic/icon.png" width="30" height="30" alt=""><span class="project-title-text">Logic Circuit Simulator</span></a></div>
-      <div class="header-actions"><nav class="header-pill" aria-label="Навигация по сайту"><a href="../index.html#products">Все программы</a></nav><button class="theme-btn" type="button" data-theme-toggle aria-label="Сменить тему">
+      <div class="header-actions"><nav class="header-pill" aria-label="Навигация по сайту"><a href="../index.html#products">Все программы</a></nav><div class="lang-switch" role="group" aria-label="Язык"><button type="button" data-language="ru" lang="ru" aria-label="Русский" aria-pressed="true" data-i18n-ignore>RU</button><button type="button" data-language="en" lang="en" aria-label="English" aria-pressed="false" data-i18n-ignore>EN</button></div><button class="theme-btn" type="button" data-theme-toggle aria-label="Сменить тему">
         <svg class="sun" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
         <svg class="moon" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/></svg>
       </button></div>
@@ -333,6 +336,7 @@ python src/LogicCircuitSimulator.py</pre>
 
   <script>
     (() => {
+      const t = (text) => window.FROGEE_I18N?.t(text) || text;
       const GATES = {
         and: { label: 'И', expr: 'A ∧ B', fn: (a, b) => a & b, body: 'M232 60 h60 a50 50 0 0 1 0 100 h-60 Z', lx: 262 },
         or: { label: 'ИЛИ', expr: 'A ∨ B', fn: (a, b) => a | b, body: 'M226 60 q24 50 0 100 q80 0 126 -50 q-46 -50 -126 -50 Z', lx: 256 },
@@ -350,7 +354,7 @@ python src/LogicCircuitSimulator.py</pre>
         $('gate-body').setAttribute('d', g.body);
         $('gate-xor').setAttribute('visibility', state.gate === 'xor' ? 'visible' : 'hidden');
         $('gate-bubble').setAttribute('visibility', unary ? 'visible' : 'hidden');
-        $('gate-label').textContent = g.label;
+        $('gate-label').textContent = t(g.label);
         $('gate-label').setAttribute('x', g.lx);
         $('w-a').setAttribute('d', unary ? 'M98 70 H160 V110 H232' : 'M98 70 H160 V80 H232');
         $('w-b').classList.toggle('is-off', unary);
@@ -390,6 +394,7 @@ python src/LogicCircuitSimulator.py</pre>
         draw();
       });
       draw();
+      window.addEventListener('frogee:languagechange', draw);
     })();
   </script>
 </body>

@@ -1,8 +1,10 @@
 <!doctype html>
-<html lang="ru">
+<html lang="ru" class="has-project-header">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="assets/i18n-data.js"></script>
+  <script src="assets/i18n.js"></script>
   <meta name="theme-color" content="#f2f3ef">
   <script>try{const saved=localStorage.getItem('processing-studio-theme');document.documentElement.dataset.theme=saved==='dark'||saved==='light'?saved:matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}catch{document.documentElement.dataset.theme=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}</script>
   <meta name="description" content="Лицензии Processing Studio, сайта и основных библиотек приложения.">
@@ -14,6 +16,7 @@
   <script defer src="processing.js"></script>
   <link rel="stylesheet" href="assets/header.css">
   <script src="assets/header.js" defer></script>
+  <link rel="stylesheet" href="assets/i18n.css">
 </head>
 <body class="has-resume-header">
   <svg class="icon-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
@@ -27,7 +30,7 @@
   <a class="skip-link" href="#main">К содержимому</a>
   <header class="legal-header page-grid resume-header">
     <div class="project-brand project-brand--header"><a class="project-parent" href="index.html" aria-label="FrogeeSoft, на главную"><img class="project-parent-logo project-parent-logo--dark" src="assets/brand/frogeesoft-logo-dark.png" width="124" height="34" alt="FrogeeSoft"><img class="project-parent-logo project-parent-logo--light" src="assets/brand/frogeesoft-logo-light.png" width="124" height="34" alt="" aria-hidden="true"></a><a class="project-title" href="processing.html"><img class="project-logo" src="assets/products/processing/icon.png" width="30" height="30" alt=""><span class="project-title-text">Processing Studio</span></a></div>
-    <div class="legal-actions"><button class="theme-toggle" type="button" aria-label="Включить тёмную тему" aria-pressed="false"><svg class="icon theme-icon-moon" aria-hidden="true" focusable="false"><use href="#icon-moon"/></svg><svg class="icon theme-icon-sun" aria-hidden="true" focusable="false"><use href="#icon-sun"/></svg><span class="theme-toggle-label">Тёмная тема</span></button><a class="legal-back" href="processing.html">На главную <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-arrow-out"/></svg></a></div>
+    <div class="legal-actions"><div class="lang-switch" role="group" aria-label="Язык"><button type="button" data-language="ru" lang="ru" aria-label="Русский" aria-pressed="true" data-i18n-ignore>RU</button><button type="button" data-language="en" lang="en" aria-label="English" aria-pressed="false" data-i18n-ignore>EN</button></div><button class="theme-toggle" type="button" aria-label="Включить тёмную тему" aria-pressed="false"><svg class="icon theme-icon-moon" aria-hidden="true" focusable="false"><use href="#icon-moon"/></svg><svg class="icon theme-icon-sun" aria-hidden="true" focusable="false"><use href="#icon-sun"/></svg><span class="theme-toggle-label">Тёмная тема</span></button><a class="legal-back" href="processing.html">На главную <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-arrow-out"/></svg></a></div>
   </header>
   <main class="legal-main page-grid" id="main">
     <h1>Лицензии.</h1>
