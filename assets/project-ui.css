@@ -21,8 +21,8 @@ footer .project-authors { flex-basis: 100%; }
 .item .project-brand { margin-block-end: 12px; }
 .item .project-title { max-width: none; }
 .product-card .project-authors { color: var(--muted); }
-.project-media--wiki { display: grid; place-items: center; height: 200px; background: #e6ebed; }
-.project-media--wiki img { width: auto; height: 100%; max-width: 100%; aspect-ratio: auto; object-fit: contain; }
+.project-media--wiki { display: flex; align-items: center; justify-content: center; flex: 0 0 200px; height: 200px; background: #e6ebed; }
+.project-media--wiki img { width: auto; height: 200px; max-width: 100%; aspect-ratio: auto; object-fit: contain; }
 .project-media--platform img { aspect-ratio: 2992 / 1708; object-fit: contain; image-rendering: auto; }
 .education-platform-shot { display: block; align-self: center; min-width: 0; overflow: hidden; border-radius: var(--radius-sm); }
 .education-platform-shot img { width: 100%; height: auto; }

@@ -96,6 +96,10 @@ window.FROGEE_TRANSLATIONS = {
     "ru": "КРОК",
     "en": "CROC"
   },
+  "ОАО \"РЖД\"": {
+    "ru": "ОАО \"РЖД\"",
+    "en": "Russian Railways JSC"
+  },
   "Продукты и сервисы": {
     "ru": "Продукты и сервисы",
     "en": "Products and services"
@@ -114,7 +118,7 @@ window.FROGEE_TRANSLATIONS = {
   },
   "Александр Воробьев": {
     "ru": "Александр Воробьев",
-    "en": "Alexander Vorobyev"
+    "en": "Alexander Vorobev"
   },
   "Markdown-редактор с живым предпросмотром, формулами LaTeX, 22 темами и плагинами. ИИ-помощник исправляет, сокращает и переводит текст - на вашем компьютере через Ollama или в облаке по вашему ключу.": {
     "ru": "Markdown-редактор с живым предпросмотром, формулами LaTeX, 22 темами и плагинами. ИИ-помощник исправляет, сокращает и переводит текст - на вашем компьютере через Ollama или в облаке по вашему ключу.",
@@ -436,9 +440,9 @@ window.FROGEE_TRANSLATIONS = {
     "ru": "Команда FrogeeSoft - люди компании",
     "en": "FrogeeSoft team - the people behind the company"
   },
-  "Команда компании FrogeeSoft: Александр, Никита, Артём и Артём. Роли, опыт, победы и как к нам присоединиться.": {
-    "ru": "Команда компании FrogeeSoft: Александр, Никита, Артём и Артём. Роли, опыт, победы и как к нам присоединиться.",
-    "en": "Meet the FrogeeSoft team: Alexander, Nikita, Artyom and Artyom. Roles, experience, achievements and how to join us."
+  "Команда компании FrogeeSoft: Александр Воробьев, Никита Голубицкий и Кирилл Дергунов. Опыт, проекты, достижения и как к нам присоединиться.": {
+    "ru": "Команда компании FrogeeSoft: Александр Воробьев, Никита Голубицкий и Кирилл Дергунов. Опыт, проекты, достижения и как к нам присоединиться.",
+    "en": "Meet the FrogeeSoft team: Alexander Vorobev, Nikita Golubitsky and Kirill Dergunov. Experience, projects, achievements and how to join us."
   },
   "Люди, которые делают FrogeeSoft. Те, кто разрабатывает софт, прошивки и инженерные решения, участвует в хакатонах и делится опытом в статьях S.I.T Education.": {
     "ru": "Люди, которые делают FrogeeSoft. Те, кто разрабатывает софт, прошивки и инженерные решения, участвует в хакатонах и делится опытом в статьях S.I.T Education.",
@@ -456,9 +460,9 @@ window.FROGEE_TRANSLATIONS = {
     "ru": "Основатель проекта - ведущий разработчик - руководитель команды - генеральный директор",
     "en": "Founder - Lead Developer - Team Lead - CEO"
   },
-  "Fullstack и embedded-разработчик. Разрабатывал проекты для Яндекса, ГК \"Геоскан\" и КРОК. Участник Конгресса Молодых Ученых. Занимаюсь встраиваемыми системами, машинным обучением, fullstack-разработкой и дизайном. Победитель всероссийского конкурса \"Большие вызовы\", призер кейс-чемпионата НИУ ВШЭ, победитель кейс-чемпионата \"Капча\" от компании КРОК.": {
-    "ru": "Fullstack и embedded-разработчик. Разрабатывал проекты для Яндекса, ГК \"Геоскан\" и КРОК. Участник Конгресса Молодых Ученых. Занимаюсь встраиваемыми системами, машинным обучением, fullstack-разработкой и дизайном. Победитель всероссийского конкурса \"Большие вызовы\", призер кейс-чемпионата НИУ ВШЭ, победитель кейс-чемпионата \"Капча\" от компании КРОК.",
-    "en": "Full-stack and embedded developer. Built projects for Yandex, Geoscan Group and CROC. Attended the Congress of Young Scientists. Works on embedded systems, machine learning, full-stack development and design. Winner of the national Big Challenges competition, prizewinner of HSE University's case championship and winner of CROC's Kapcha case championship."
+  "Молодой учёный, fullstack и embedded-разработчик. Разрабатывал проекты для Яндекса, ГК \"Геоскан\" и КРОК. Участник Конгресса Молодых Ученых. Занимаюсь встраиваемыми системами, машинным обучением, fullstack-разработкой и дизайном. Победитель всероссийского конкурса \"Большие вызовы\", призер кейс-чемпионата НИУ ВШЭ, победитель кейс-чемпионата \"Капча\" от компании КРОК.": {
+    "ru": "Молодой учёный, fullstack и embedded-разработчик. Разрабатывал проекты для Яндекса, ГК \"Геоскан\" и КРОК. Участник Конгресса Молодых Ученых. Занимаюсь встраиваемыми системами, машинным обучением, fullstack-разработкой и дизайном. Победитель всероссийского конкурса \"Большие вызовы\", призер кейс-чемпионата НИУ ВШЭ, победитель кейс-чемпионата \"Капча\" от компании КРОК.",
+    "en": "Young scientist, full-stack and embedded developer. Built projects for Yandex, Geoscan Group and CROC. Attended the Congress of Young Scientists. Works on embedded systems, machine learning, full-stack development and design. Winner of the national Big Challenges competition, prizewinner of HSE University's case championship and winner of CROC's Kapcha case championship."
   },
   "Встраиваемые системы": {
     "ru": "Встраиваемые системы",
@@ -511,18 +515,6 @@ window.FROGEE_TRANSLATIONS = {
   "Коррекция полёта по цветовой метке, при поддержке ПАО «Яковлев»": {
     "ru": "Коррекция полёта по цветовой метке, при поддержке ПАО «Яковлев»",
     "en": "Marker-based flight correction, supported by Yakovlev PJSC"
-  },
-  "Дроны на ESP32 с языком сценариев FGD": {
-    "ru": "Дроны на ESP32 с языком сценариев FGD",
-    "en": "ESP32 drones with the FGD scripting language"
-  },
-  "Распознавание эмоций и пульса по видео": {
-    "ru": "Распознавание эмоций и пульса по видео",
-    "en": "Emotion and heart-rate recognition from video"
-  },
-  "Игра на Unity за один день геймджема": {
-    "ru": "Игра на Unity за один день геймджема",
-    "en": "A Unity game built in a single day at a game jam"
   },
   "Курсы, статьи и справочники для начинающих": {
     "ru": "Курсы, статьи и справочники для начинающих",
@@ -2399,6 +2391,22 @@ window.FROGEE_TRANSLATIONS = {
   "Конспекты, самопроверка и расписание ИОП-ИТ с подпиской на календарь. Справочник по кампусу, офлайн-доступ и установка как приложения. Неофициальный студенческий проект.": {
     "ru": "Конспекты, самопроверка и расписание ИОП-ИТ с подпиской на календарь. Справочник по кампусу, офлайн-доступ и установка как приложения. Неофициальный студенческий проект.",
     "en": "Lecture notes, self-check questions and IOP-IT timetables with calendar subscriptions. Campus guides, offline access and app installation. An unofficial student project."
+  },
+  "Кирилл Дергунов": {
+    "ru": "Кирилл Дергунов",
+    "en": "Kirill Dergunov"
+  },
+  "Компьютерное зрение и робототехника": {
+    "ru": "Компьютерное зрение и робототехника",
+    "en": "Computer vision and robotics"
+  },
+  "Кирилл Дергунов с дипломом олимпиады «Старт в науку»": {
+    "ru": "Кирилл Дергунов с дипломом олимпиады «Старт в науку»",
+    "en": "Kirill Dergunov holding his Start in Science Olympiad diploma"
+  },
+  "Работаю с компьютерным зрением, embedded-устройствами и робототехническими симуляторами. Победитель олимпиады «Старт в науку» и всероссийского конкурса «Большие вызовы». Призёр перечневых олимпиад по физике. Студент МФТИ.": {
+    "ru": "Работаю с компьютерным зрением, embedded-устройствами и робототехническими симуляторами. Победитель олимпиады «Старт в науку» и всероссийского конкурса «Большие вызовы». Призёр перечневых олимпиад по физике. Студент МФТИ.",
+    "en": "I work with computer vision, embedded devices and robotics simulators. Winner of the Start in Science Olympiad and the national Big Challenges competition. Prizewinner in physics olympiads on Russia’s official list. Student at the Moscow Institute of Physics and Technology (MIPT)."
   },
   "Главная страница S.I.T Education: статьи, база знаний и курсы": {
     "ru": "Главная страница S.I.T Education: статьи, база знаний и курсы",
