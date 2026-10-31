@@ -113,6 +113,25 @@ window.FROGEE_DOWNLOADS = (() => {
     });
   }
 
+  async function refreshPublicVersionLabels() {
+    const products = [
+      { id: 'renvert', repo: 'RenVert', versionFrom: (assets) => assets.map((a) => a.name.match(/Renvert-(\d+\.\d+\.\d+)\.dmg/i)?.[1]).find(Boolean) },
+      { id: 'processing', repo: 'Processing-Studio', versionFrom: (assets) => assets.map((a) => a.name.match(/ProcessingStudio-(\d+\.\d+\.\d+)-/i)?.[1]).find(Boolean) },
+    ];
+    await Promise.all(products.map(async ({ id, repo, versionFrom }) => {
+      const labels = document.querySelectorAll(`[data-release-version="${id}"]`);
+      if (!labels.length) return;
+      try {
+        const response = await fetch(`https://api.github.com/repos/ArduRadioKot/${repo}/releases/latest`, { headers: { Accept: 'application/vnd.github+json' } });
+        if (!response.ok) return;
+        const release = await response.json();
+        if (release.draft || release.prerelease || !Array.isArray(release.assets)) return;
+        const version = versionFrom(release.assets) || release.tag_name?.replace(/^v/i, '');
+        if (version) labels.forEach((label) => { label.textContent = version; });
+      } catch { /* Keep the checked-in version when GitHub is unavailable. */ }
+    }));
+  }
+
   function parseNotesRelease(release) {
     if (!release || release.draft || release.prerelease || !/^v?\d+\.\d+\.\d+$/.test(release.tag_name) || !Array.isArray(release.assets)) return null;
     const prefix = 'https://github.com/ArduRadioKot/FgSNotes/releases/download/';
@@ -175,5 +194,6 @@ window.FROGEE_DOWNLOADS = (() => {
   }
 
   const ready = refreshNotesRelease();
+  refreshPublicVersionLabels();
   return { programs, detectOS, pick, size, label, osNames, renderList, wireButton, ready };
 })();

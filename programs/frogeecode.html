@@ -54,7 +54,7 @@
     :root {
       --ghost: #9aa3ad;
       --mono: ui-monospace, Menlo, monospace; /* taste-skill-ignore: real code and file paths */
-      --side: clamp(16px, 4vw, 48px);
+      --side: clamp(24px, 5vw, 72px);
     }
     * { box-sizing: border-box; }
     html { -webkit-text-size-adjust: 100%; }
@@ -119,7 +119,7 @@
     .crumbs-sep { width: 1px; height: 26px; background: currentColor; opacity: .3; flex: none; }
     .crumbs .mark { white-space: nowrap; }
     @media (max-width: 520px) { .fs-home img { height: 24px; } .crumbs { gap: 10px; } }
-      .real-editor-hero{max-width:1240px;margin:auto;display:grid;grid-template-columns:.65fr 1.35fr;gap:36px;align-items:center}.real-editor-hero h1{font-size:clamp(2.8rem,6vw,6rem);line-height:1.02;letter-spacing:-.06em}.real-editor-hero p{font-size:clamp(18px,2vw,24px);margin-top:22px;max-width:28ch}.real-editor-hero img{width:100%;border-radius:14px}.hero-sub{margin-top:40px}@media(max-width:800px){.real-editor-hero{grid-template-columns:1fr}}
+      .real-editor-hero{max-width:1240px;margin-inline:auto;display:grid;grid-template-columns:.65fr 1.35fr;gap:36px;align-items:center}.real-editor-hero h1{font-size:clamp(2.8rem,6vw,6rem);line-height:1.02;letter-spacing:-.06em}.real-editor-hero p{font-size:clamp(18px,2vw,24px);margin-top:22px;max-width:28ch}.real-editor-hero img{width:100%;border-radius:14px}.hero-sub{margin-top:40px}@media(max-width:800px){.real-editor-hero{grid-template-columns:1fr}}
       .top{position:sticky;top:0;z-index:50;background:var(--bg)}
   </style>
   <link rel="stylesheet" href="../assets/project-ui.css">
@@ -139,7 +139,7 @@
   <main>
     <section class="hero" aria-labelledby="title">
       <div class="real-editor-hero"><div><h1 id="title">FrogeeCodeIDE</h1>
-        <p class="project-authors project-authors--page">Автор: <a href="https://github.com/ArduRadioKot" target="_blank" rel="noreferrer">Александр Воробьев</a></p><p>Редактор кода с локальным ИИ, файлами проекта и проверкой правок.</p></div><img src="../assets/products/frogeecode/hero.webp" width="1800" height="1078" alt="Настоящий интерфейс FrogeeCodeIDE" decoding="async"></div>
+        <p>Редактор кода с локальным ИИ, файлами проекта и проверкой правок.</p></div><img src="../assets/products/frogeecode/hero.webp" width="1800" height="1078" alt="Настоящий интерфейс FrogeeCodeIDE" decoding="async"></div>
       <div class="hero-sub">
         <p>Лёгкая IDE на Electron. Подключите Ollama, LM Studio или свой провайдер: чат видит файлы проекта и предлагает правки. Решение об изменениях остаётся за вами.</p>
         <div class="cta">

@@ -2711,5 +2711,57 @@ window.FROGEE_TRANSLATIONS = {
   "Открыть репозиторий": {
     "ru": "Открыть репозиторий",
     "en": "Open the repository"
+  },
+  "Образовательная платформа": {
+    "ru": "Образовательная платформа",
+    "en": "Educational platform"
+  },
+  "При поддержке ПАО «Яковлев» · ОАК · «Большие вызовы»": {
+    "ru": "При поддержке ПАО «Яковлев» · ОАК · «Большие вызовы»",
+    "en": "Supported by Yakovlev PJSC · UAC · Big Challenges"
+  },
+  "ОАК": {
+    "ru": "ОАК",
+    "en": "UAC"
+  },
+  "Чёрная футболка FrogeeSoft с вышитым логотипом": {
+    "ru": "Чёрная футболка FrogeeSoft с вышитым логотипом",
+    "en": "Black FrogeeSoft T-shirt with embroidered logo"
+  },
+  "Скриншот FgSNotes: редактор Markdown и инструменты для заметок": {
+    "ru": "Скриншот FgSNotes: редактор Markdown и инструменты для заметок",
+    "en": "FgSNotes screenshot: Markdown editor and note-taking tools"
+  },
+  "Скриншот Renvert: настройки и меню конвертации файлов": {
+    "ru": "Скриншот Renvert: настройки и меню конвертации файлов",
+    "en": "Renvert screenshot: settings and file conversion menu"
+  },
+  "Скриншот редактора FrogeeCodeIDE": {
+    "ru": "Скриншот редактора FrogeeCodeIDE",
+    "en": "FrogeeCodeIDE editor screenshot"
+  },
+  "Скриншот симулятора логических схем": {
+    "ru": "Скриншот симулятора логических схем",
+    "en": "Logic circuit simulator screenshot"
+  },
+  "Программы уже здесь, и все они бесплатные. В каталоге также представлены трекер FG-Track, мерч с лягушкой и книги.": {
+    "ru": "Программы уже здесь, и все они бесплатные. В каталоге также представлены трекер FG-Track, мерч с лягушкой и книги.",
+    "en": "The apps are already here, and they are all free. The catalog also features the FG-Track tracker, frog merchandise and books."
+  },
+  "Скриншот": {
+    "ru": "Скриншот",
+    "en": "Screenshot"
+  },
+  "Устройство · трекер для сноуборда": {
+    "ru": "Устройство · трекер для сноуборда",
+    "en": "Device · snowboard tracker"
+  },
+  "Трекер прыжков и вращений для сноуборда с приложением для iOS и Android.": {
+    "ru": "Трекер прыжков и вращений для сноуборда с приложением для iOS и Android.",
+    "en": "Snowboard jump and rotation tracker with an app for iOS and Android."
+  },
+  "На сайт проекта ↗": {
+    "ru": "На сайт проекта ↗",
+    "en": "Project website ↗"
   }
 };

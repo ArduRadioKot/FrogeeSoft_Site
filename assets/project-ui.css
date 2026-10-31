@@ -24,6 +24,21 @@ footer .project-authors { flex-basis: 100%; }
 .project-media--wiki { display: flex; align-items: center; justify-content: center; flex: 0 0 200px; height: 200px; background: #e6ebed; }
 .project-media--wiki img { width: auto; height: 200px; max-width: 100%; aspect-ratio: auto; object-fit: contain; }
 .project-media--platform img { aspect-ratio: 2992 / 1708; object-fit: contain; image-rendering: auto; }
+.item-visual--photo img { width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-sm); }
+.shop-grid .item-visual { position: relative; overflow: hidden; min-width: 0; }
+.shop-grid .item-visual img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; padding: 16px; border-radius: 0; }
+.shop-grid .item--wide .item-visual { min-height: 280px; }
+.shop-grid .item--merch .item-visual { background: #eeeae5; }
+.item, .product-card { transition: background-color .2s ease; }
+.item:hover, .product-card:hover { background: var(--surface-2); }
+.product-card .product-media { margin: -4px -4px 8px; }
+.product-card > p.project-authors, .project-info > p.project-authors { color: var(--muted); font-size: 13px; font-weight: 400; line-height: 1.6; padding-top: 12px; }
+.project-authors a { text-decoration: none; }
+.project-authors a:hover { text-decoration: underline; }
+.project-title .project-logo--oak { width: 120px; height: 30px; aspect-ratio: auto; border-radius: 0; background: #fff; padding: 5px; }
+.faces img { object-position: 50% 28%; }
+.faces img:last-child { object-position: 50% 18%; }
+@media (prefers-reduced-motion: reduce) { .item, .product-card { transition: none; } }
 .education-platform-shot { display: block; align-self: center; min-width: 0; overflow: hidden; border-radius: var(--radius-sm); }
 .education-platform-shot img { width: 100%; height: auto; }
 #case-yakovlev { row-gap: var(--space-24); }
