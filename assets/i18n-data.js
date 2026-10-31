@@ -2775,5 +2775,13 @@ window.FROGEE_TRANSLATIONS = {
   "Документация плагинов": {
     "ru": "Документация плагинов",
     "en": "Plugin documentation"
+  },
+  "Все темы": {
+    "ru": "Все темы",
+    "en": "All themes"
+  },
+  "Документация тем": {
+    "ru": "Документация тем",
+    "en": "Theme documentation"
   }
 };
