@@ -2767,5 +2767,13 @@ window.FROGEE_TRANSLATIONS = {
   "Недоступно": {
     "ru": "Недоступно",
     "en": "Unavailable"
+  },
+  "Все плагины": {
+    "ru": "Все плагины",
+    "en": "All plugins"
+  },
+  "Документация плагинов": {
+    "ru": "Документация плагинов",
+    "en": "Plugin documentation"
   }
 };
