@@ -309,11 +309,11 @@
 
       <section class="part" id="download" aria-labelledby="get-title">
         <h2 id="get-title">Скачать</h2>
-        <p>Стабильная сборка от 30 мая 2025 года. Дальше симулятор вырастет в эмулятор ПЛИС.</p>
+        <p>Последняя версия: <span data-release-version="logic">загружаю релиз GitHub…</span>. Дальше симулятор вырастет в эмулятор ПЛИС.</p>
         <div class="get">
           <div>
             <h3>Готовое приложение</h3>
-            <div id="dl-list"><a class="dl" href="https://github.com/ArduRadioKot/LogicCircuitSimulator/releases/download/stable/macos-build.zip"><span class="dl-label">macOS, приложение в zip</span><span class="dl-file">macos-build.zip</span><span class="dl-size">22 МБ</span></a></div>
+            <div id="dl-list" data-release-list="logic"><a class="dl" href="https://github.com/ArduRadioKot/LogicCircuitSimulator/releases/latest"><span class="dl-label">macOS, приложение в zip</span><span class="dl-file">Последний GitHub Release</span><span class="dl-size"></span></a></div>
             <p class="warn">Это ранняя версия: иногда симуляция ошибается. Мы над этим работаем - о найденных ошибках пишите в <a href="https://github.com/ArduRadioKot/LogicCircuitSimulator/issues">issues на GitHub</a>.</p>
           </div>
           <div>
@@ -397,5 +397,6 @@ python src/LogicCircuitSimulator.py</pre>
       window.addEventListener('frogee:languagechange', draw);
     })();
   </script>
+  <script src="../assets/downloads.js"></script>
 </body>
 </html>

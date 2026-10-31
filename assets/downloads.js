@@ -115,20 +115,57 @@ window.FROGEE_DOWNLOADS = (() => {
 
   async function refreshPublicVersionLabels() {
     const products = [
-      { id: 'renvert', repo: 'RenVert', versionFrom: (assets) => assets.map((a) => a.name.match(/Renvert-(\d+\.\d+\.\d+)\.dmg/i)?.[1]).find(Boolean) },
-      { id: 'processing', repo: 'Processing-Studio', versionFrom: (assets) => assets.map((a) => a.name.match(/ProcessingStudio-(\d+\.\d+\.\d+)-/i)?.[1]).find(Boolean) },
+      { id: 'renvert', repo: 'RenVert', match: /\.dmg$/i },
+      { id: 'logic', repo: 'LogicCircuitSimulator', match: /\.zip$/i },
+      { id: 'processing', repo: 'Processing-Studio', match: /\.(dmg|exe|appimage|deb)$/i },
+      { id: 'frogeecode', repo: 'ForgeeCodeIDE' },
     ];
-    await Promise.all(products.map(async ({ id, repo, versionFrom }) => {
+    await Promise.all(products.map(async ({ id, repo, match }) => {
       const labels = document.querySelectorAll(`[data-release-version="${id}"]`);
-      if (!labels.length) return;
+      const lists = document.querySelectorAll(`[data-release-list="${id}"]`);
+      const buttons = document.querySelectorAll(`[data-release-download="${id}"]`);
+      if (!labels.length && !lists.length && !buttons.length) return;
       try {
         const response = await fetch(`https://api.github.com/repos/ArduRadioKot/${repo}/releases/latest`, { headers: { Accept: 'application/vnd.github+json' } });
-        if (!response.ok) return;
+        if (!response.ok) throw new Error('Release unavailable');
         const release = await response.json();
         if (release.draft || release.prerelease || !Array.isArray(release.assets)) return;
-        const version = versionFrom(release.assets) || release.tag_name?.replace(/^v/i, '');
+        const version = release.assets.map((a) => a.name.match(/(?:Renvert|ProcessingStudio)[-_ ](\d+\.\d+\.\d+)/i)?.[1]).find(Boolean)
+          || release.name?.match(/\bv?\d+(?:\.\d+){1,2}\b/i)?.[0]?.replace(/^v/i, '')
+          || release.tag_name?.replace(/^v/i, '');
         if (version) labels.forEach((label) => { label.textContent = version; });
-      } catch { /* Keep the checked-in version when GitHub is unavailable. */ }
+        const assets = release.assets.filter((asset) => !match || match.test(asset.name));
+        programs[id].files = assets.map((asset) => {
+          const name = asset.name;
+          const os = /arm64/i.test(name) ? 'mac-arm' : /mac|darwin|\.dmg/i.test(name) ? 'mac-intel' : /win|\.exe$/i.test(name) ? 'windows' : /appimage|\.deb|linux/i.test(name) ? 'linux' : /\.zip$/i.test(name) ? 'mac' : 'source';
+          return { os, label: name, file: name, mb: asset.size / 1000000, url: asset.browser_download_url };
+        });
+        lists.forEach((list) => {
+          if (!assets.length) return;
+          list.replaceChildren(...assets.map((asset) => {
+            const link = document.createElement('a'); link.className = 'dl'; link.href = asset.browser_download_url;
+            [["dl-label", asset.name], ["dl-file", asset.name], ["dl-size", size(asset.size / 1000000)]].forEach(([cls, text]) => { const span = document.createElement('span'); span.className = cls; span.textContent = text; link.append(span); });
+            return link;
+          }));
+        });
+        buttons.forEach((button, index) => {
+          const os = button.dataset.releaseOs;
+          const chosen = os === 'arm' ? assets.find((a) => /arm64/i.test(a.name))
+            : os === 'intel' ? assets.find((a) => /x64|x86_64/i.test(a.name) && /dmg/i.test(a.name))
+              : os === 'windows' ? assets.find((a) => /\.exe$/i.test(a.name))
+                : os === 'appimage' ? assets.find((a) => /appimage/i.test(a.name))
+                  : os === 'deb' ? assets.find((a) => /\.deb$/i.test(a.name))
+                    : assets[index] || assets[0];
+          button.href = chosen?.browser_download_url || release.html_url;
+        });
+      } catch {
+        const releaseURL = `https://github.com/ArduRadioKot/${repo}/releases/latest`;
+        buttons.forEach((button) => { button.href = releaseURL; });
+        labels.forEach((label) => { label.textContent = t('Недоступно'); });
+      }
+      if (id === 'renvert' || id === 'logic') {
+        lists.forEach((list) => { if (programs[id].files.length) renderList(id, list); });
+      }
     }));
   }
 

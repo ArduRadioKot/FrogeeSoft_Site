@@ -2763,5 +2763,9 @@ window.FROGEE_TRANSLATIONS = {
   "На сайт проекта ↗": {
     "ru": "На сайт проекта ↗",
     "en": "Project website ↗"
+  },
+  "Недоступно": {
+    "ru": "Недоступно",
+    "en": "Unavailable"
   }
 };
