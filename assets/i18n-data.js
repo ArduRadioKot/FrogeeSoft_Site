@@ -2411,5 +2411,305 @@ window.FROGEE_TRANSLATIONS = {
   "Главная страница S.I.T Education: статьи, база знаний и курсы": {
     "ru": "Главная страница S.I.T Education: статьи, база знаний и курсы",
     "en": "S.I.T Education homepage: articles, knowledge base and courses"
+  },
+  "Renvert - конвертер файлов через переименование для macOS": {
+    "ru": "Renvert - конвертер файлов через переименование для macOS",
+    "en": "Renvert - convert files by renaming them on macOS"
+  },
+  "Renvert - утилита для macOS: переименуйте photo.heic в photo.jpg в Finder, и файл сконвертируется. Бесплатно, от FrogeeSoft.": {
+    "ru": "Renvert - утилита для macOS: переименуйте photo.heic в photo.jpg в Finder, и файл сконвертируется. Бесплатно, от FrogeeSoft.",
+    "en": "Renvert for macOS: rename photo.heic to photo.jpg in Finder to convert the file. Free, by FrogeeSoft."
+  },
+  "Скриншоты": {
+    "ru": "Скриншоты",
+    "en": "Screenshots"
+  },
+  "Форматы": {
+    "ru": "Форматы",
+    "en": "Formats"
+  },
+  "Переименуй.": {
+    "ru": "Переименуй.",
+    "en": "Rename it."
+  },
+  "Готово.": {
+    "ru": "Готово.",
+    "en": "Done."
+  },
+  "Renvert конвертирует файлы на Mac, когда вы меняете расширение в Finder.": {
+    "ru": "Renvert конвертирует файлы на Mac, когда вы меняете расширение в Finder.",
+    "en": "Renvert converts files on your Mac when you change their extension in Finder."
+  },
+  "Бесплатно. Всё происходит на вашем компьютере.": {
+    "ru": "Бесплатно. Всё происходит на вашем компьютере.",
+    "en": "Free. Everything happens on your Mac."
+  },
+  "Открыть скриншот общих настроек Renvert": {
+    "ru": "Открыть скриншот общих настроек Renvert",
+    "en": "Open the Renvert general settings screenshot"
+  },
+  "Общие настройки Renvert: автозапуск, отслеживание папок, режим подтверждения и язык": {
+    "ru": "Общие настройки Renvert: автозапуск, отслеживание папок, режим подтверждения и язык",
+    "en": "Renvert general settings: launch at login, folder monitoring, confirmation mode and language"
+  },
+  "Настоящий интерфейс Renvert 1.0.0. Нажмите, чтобы рассмотреть.": {
+    "ru": "Настоящий интерфейс Renvert 1.0.0. Нажмите, чтобы рассмотреть.",
+    "en": "The actual Renvert 1.0.0 interface. Click for a closer look."
+  },
+  "Apple Silicon и Intel": {
+    "ru": "Apple Silicon и Intel",
+    "en": "Apple Silicon and Intel"
+  },
+  "Версия 1.0.0 · 18,7 МБ": {
+    "ru": "Версия 1.0.0 · 18,7 МБ",
+    "en": "Version 1.0.0 · 18.7 MB"
+  },
+  "Попробуйте имя": {
+    "ru": "Попробуйте имя",
+    "en": "Try a filename"
+  },
+  "Выберите исходный файл и поменяйте расширение. Короткие пометки вроде +q80 задают параметры конвертации.": {
+    "ru": "Выберите исходный файл и поменяйте расширение. Короткие пометки вроде +q80 задают параметры конвертации.",
+    "en": "Choose a source file and change its extension. Short modifiers such as +q80 set the conversion options."
+  },
+  "Проверить новое имя": {
+    "ru": "Проверить новое имя",
+    "en": "Check the new filename"
+  },
+  "Это демонстрация команды в браузере. Файлы сюда загружать не нужно; конвертацию выполняет установленный Renvert.": {
+    "ru": "Это демонстрация команды в браузере. Файлы сюда загружать не нужно; конвертацию выполняет установленный Renvert.",
+    "en": "This browser example explains the command. No files are uploaded here; the installed Renvert app performs the conversion."
+  },
+  "Пример: переименуйте photo.heic в photo+q80.jpg, чтобы получить JPEG с качеством 80%. Интерактивный пример работает с JavaScript.": {
+    "ru": "Пример: переименуйте photo.heic в photo+q80.jpg, чтобы получить JPEG с качеством 80%. Интерактивный пример работает с JavaScript.",
+    "en": "Example: rename photo.heic to photo+q80.jpg for a JPEG at 80% quality. The interactive example requires JavaScript."
+  },
+  "Начните в Finder": {
+    "ru": "Начните в Finder",
+    "en": "Start in Finder"
+  },
+  "Renvert работает из строки меню. Обычное переименование запускает конвертацию, а настройки определяют, когда спрашивать разрешение.": {
+    "ru": "Renvert работает из строки меню. Обычное переименование запускает конвертацию, а настройки определяют, когда спрашивать разрешение.",
+    "en": "Renvert lives in the menu bar. Renaming a file triggers conversion; your settings determine when it asks for approval."
+  },
+  "Запустите Renvert": {
+    "ru": "Запустите Renvert",
+    "en": "Launch Renvert"
+  },
+  "Программа появится в строке меню. Отдельной иконки в Dock нет.": {
+    "ru": "Программа появится в строке меню. Отдельной иконки в Dock нет.",
+    "en": "The app appears in the menu bar. There is no separate Dock icon."
+  },
+  "Выберите папки": {
+    "ru": "Выберите папки",
+    "en": "Choose folders"
+  },
+  "Начните с Рабочего стола, Загрузок или Документов. Другие папки можно добавить в настройках.": {
+    "ru": "Начните с Рабочего стола, Загрузок или Документов. Другие папки можно добавить в настройках.",
+    "en": "Start with Desktop, Downloads or Documents. Add other folders in settings."
+  },
+  "Смените расширение": {
+    "ru": "Смените расширение",
+    "en": "Change the extension"
+  },
+  "В Finder переименуйте": {
+    "ru": "В Finder переименуйте",
+    "en": "In Finder, rename"
+  },
+  ". Renvert определит исходный формат по содержимому файла.": {
+    "ru": ". Renvert определит исходный формат по содержимому файла.",
+    "en": ". Renvert detects the source format from the file contents."
+  },
+  "Подтвердите или доверьте": {
+    "ru": "Подтвердите или доверьте",
+    "en": "Approve or automate"
+  },
+  "В режиме «Сначала спросить» подтвердите действие в меню. В автоматическом режиме программа дождётся, пока файл перестанет меняться.": {
+    "ru": "В режиме «Сначала спросить» подтвердите действие в меню. В автоматическом режиме программа дождётся, пока файл перестанет меняться.",
+    "en": "In Ask first mode, approve the action in the menu. In automatic mode, the app waits until the file stops changing."
+  },
+  "Верните оригинал": {
+    "ru": "Верните оригинал",
+    "en": "Restore the original"
+  },
+  "Если результат не подошёл, отмените конвертацию из строки меню или в разделе «История».": {
+    "ru": "Если результат не подошёл, отмените конвертацию из строки меню или в разделе «История».",
+    "en": "If the result is not what you need, undo the conversion from the menu bar or the History section."
+  },
+  "Ваши настройки": {
+    "ru": "Ваши настройки",
+    "en": "Your settings"
+  },
+  "Четыре экрана установленной программы. Выберите раздел и откройте снимок, чтобы увидеть интерфейс в полном размере.": {
+    "ru": "Четыре экрана установленной программы. Выберите раздел и откройте снимок, чтобы увидеть интерфейс в полном размере.",
+    "en": "Four screens from the installed app. Choose a section and open its screenshot to see the interface at full size."
+  },
+  "Скриншоты Renvert": {
+    "ru": "Скриншоты Renvert",
+    "en": "Renvert screenshots"
+  },
+  "Основные": {
+    "ru": "Основные",
+    "en": "General"
+  },
+  "Конвертация": {
+    "ru": "Конвертация",
+    "en": "Conversions"
+  },
+  "Нагрузка": {
+    "ru": "Нагрузка",
+    "en": "Performance"
+  },
+  "О программе": {
+    "ru": "О программе",
+    "en": "About"
+  },
+  "Автоматически или с подтверждением": {
+    "ru": "Автоматически или с подтверждением",
+    "en": "Automatic or with approval"
+  },
+  "Выберите режим конвертации, включите уведомления и запуск вместе с системой. Отслеживание папок можно приостановить.": {
+    "ru": "Выберите режим конвертации, включите уведомления и запуск вместе с системой. Отслеживание папок можно приостановить.",
+    "en": "Choose your conversion mode, enable notifications and launch at login. Pause folder monitoring whenever you need to."
+  },
+  "Настройки → Основные": {
+    "ru": "Настройки → Основные",
+    "en": "Settings → General"
+  },
+  "Настройки Renvert: качество JPEG и WebP, сохранение метаданных и аппаратное ускорение": {
+    "ru": "Настройки Renvert: качество JPEG и WebP, сохранение метаданных и аппаратное ускорение",
+    "en": "Renvert conversion settings: JPEG and WebP quality, metadata preservation and hardware acceleration"
+  },
+  "Качество, которое подходит вам": {
+    "ru": "Качество, которое подходит вам",
+    "en": "Quality on your terms"
+  },
+  "Задайте качество JPEG и WebP по умолчанию. Отдельно настраиваются сохранение метаданных и аппаратное ускорение.": {
+    "ru": "Задайте качество JPEG и WebP по умолчанию. Отдельно настраиваются сохранение метаданных и аппаратное ускорение.",
+    "en": "Set the default JPEG and WebP quality. Metadata preservation and hardware acceleration have their own controls."
+  },
+  "Настройки → Конвертация": {
+    "ru": "Настройки → Конвертация",
+    "en": "Settings → Conversions"
+  },
+  "Настройки производительности Renvert: уровень нагрузки и число параллельных конвертаций": {
+    "ru": "Настройки производительности Renvert: уровень нагрузки и число параллельных конвертаций",
+    "en": "Renvert performance settings: workload level and number of parallel conversions"
+  },
+  "Нагрузка под контролем": {
+    "ru": "Нагрузка под контролем",
+    "en": "Control the workload"
+  },
+  "Выберите уровень нагрузки на Mac. На снимке средний режим: две параллельные конвертации.": {
+    "ru": "Выберите уровень нагрузки на Mac. На снимке средний режим: две параллельные конвертации.",
+    "en": "Choose the workload level for your Mac. The screenshot shows Medium mode: two parallel conversions."
+  },
+  "Настройки → Производительность": {
+    "ru": "Настройки → Производительность",
+    "en": "Settings → Performance"
+  },
+  "Сведения о Renvert: версия 1.0.0 и разработчик FrogeeSoft": {
+    "ru": "Сведения о Renvert: версия 1.0.0 и разработчик FrogeeSoft",
+    "en": "Renvert app information: version 1.0.0 and developer FrogeeSoft"
+  },
+  "Renvert от FrogeeSoft": {
+    "ru": "Renvert от FrogeeSoft",
+    "en": "Renvert by FrogeeSoft"
+  },
+  "Нативная программа на Swift. На снимках версия 1.0.0 с английским интерфейсом; в настройках также доступен русский язык.": {
+    "ru": "Нативная программа на Swift. На снимках версия 1.0.0 с английским интерфейсом; в настройках также доступен русский язык.",
+    "en": "A native Swift app. The screenshots show version 1.0.0 in English; Russian is also available in settings."
+  },
+  "Настройки → О программе": {
+    "ru": "Настройки → О программе",
+    "en": "Settings → About"
+  },
+  "Фото, документы, звук и видео. Это примеры работающих направлений конвертации, а не обещание поддержать любое расширение.": {
+    "ru": "Фото, документы, звук и видео. Это примеры работающих направлений конвертации, а не обещание поддержать любое расширение.",
+    "en": "Photos, documents, audio and video. These are supported conversion examples; not every extension is supported."
+  },
+  "Для MP3 требуется ffmpeg в сборке или системе.": {
+    "ru": "Для MP3 требуется ffmpeg в сборке или системе.",
+    "en": "MP3 requires ffmpeg in the app bundle or on your system."
+  },
+  "Переносится текст и структура абзацев. Сложная вёрстка может отличаться.": {
+    "ru": "Переносится текст и структура абзацев. Сложная вёрстка может отличаться.",
+    "en": "Text and paragraph structure are preserved. Complex page layouts may differ."
+  },
+  "Для WebP может потребоваться ImageMagick. Все направления и ограничения перечислены в": {
+    "ru": "Для WebP может потребоваться ImageMagick. Все направления и ограничения перечислены в",
+    "en": "WebP may require ImageMagick. All conversion paths and limitations are listed in the"
+  },
+  "таблице возможностей": {
+    "ru": "таблице возможностей",
+    "en": "capability matrix"
+  },
+  "Команды в имени": {
+    "ru": "Команды в имени",
+    "en": "Filename commands"
+  },
+  "Перед запуском": {
+    "ru": "Перед запуском",
+    "en": "Before you start"
+  },
+  "Что происходит с файлами и какие разрешения нужны программе.": {
+    "ru": "Что происходит с файлами и какие разрешения нужны программе.",
+    "en": "What happens to your files and which permissions the app needs."
+  },
+  "Куда отправляются файлы?": {
+    "ru": "Куда отправляются файлы?",
+    "en": "Where are my files sent?"
+  },
+  "Можно вернуть исходный файл?": {
+    "ru": "Можно вернуть исходный файл?",
+    "en": "Can I restore the original?"
+  },
+  "Нужен полный доступ к диску?": {
+    "ru": "Нужен полный доступ к диску?",
+    "en": "Does it need Full Disk Access?"
+  },
+  "Для стандартных папок Рабочий стол, Загрузки и Документы достаточно доступа к выбранным папкам. Полный доступ к диску для них не нужен.": {
+    "ru": "Для стандартных папок Рабочий стол, Загрузки и Документы достаточно доступа к выбранным папкам. Полный доступ к диску для них не нужен.",
+    "en": "For Desktop, Downloads and Documents, access to those selected folders is enough. Full Disk Access is not required for them."
+  },
+  "Подойдёт для моего Mac?": {
+    "ru": "Подойдёт для моего Mac?",
+    "en": "Will it run on my Mac?"
+  },
+  "Нужна macOS 14 или новее. Universal Binary работает на Apple Silicon и Intel. Интерфейс доступен на русском и английском.": {
+    "ru": "Нужна macOS 14 или новее. Universal Binary работает на Apple Silicon и Intel. Интерфейс доступен на русском и английском.",
+    "en": "Requires macOS 14 or later. The Universal Binary runs on Apple Silicon and Intel. The interface is available in Russian and English."
+  },
+  "Почему macOS предупреждает при запуске?": {
+    "ru": "Почему macOS предупреждает при запуске?",
+    "en": "Why does macOS warn me on launch?"
+  },
+  "Сборка подписана ad-hoc и не нотарифицирована Apple. При первом запуске macOS может заблокировать открытие. Информация о сборке и запуске есть в": {
+    "ru": "Сборка подписана ad-hoc и не нотарифицирована Apple. При первом запуске macOS может заблокировать открытие. Информация о сборке и запуске есть в",
+    "en": "The build is ad-hoc signed and is not notarized by Apple. macOS may block it on first launch. Build and launch information is in the"
+  },
+  "README проекта": {
+    "ru": "README проекта",
+    "en": "project README"
+  },
+  "Как Renvert связан с Consul?": {
+    "ru": "Как Renvert связан с Consul?",
+    "en": "How is Renvert related to Consul?"
+  },
+  "Renvert независимо реализует идею переименования для конвертации. В проекте нет кода, ресурсов или проверок лицензий Consul. Поддержка форматов описана в таблице возможностей Renvert.": {
+    "ru": "Renvert независимо реализует идею переименования для конвертации. В проекте нет кода, ресурсов или проверок лицензий Consul. Поддержка форматов описана в таблице возможностей Renvert.",
+    "en": "Renvert independently implements the rename-to-convert idea. It contains no Consul code, assets or license checks. Supported formats are listed in Renvert’s capability matrix."
+  },
+  "Renvert для macOS. Бесплатно.": {
+    "ru": "Renvert для macOS. Бесплатно.",
+    "en": "Renvert for macOS. Free."
+  },
+  "Собрать самостоятельно:": {
+    "ru": "Собрать самостоятельно:",
+    "en": "Build it yourself:"
+  },
+  "Открыть репозиторий": {
+    "ru": "Открыть репозиторий",
+    "en": "Open the repository"
   }
 };
