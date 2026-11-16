@@ -33,17 +33,17 @@
       <h1 id="title"><span class="hero-line"><span>Переименуй.</span></span><span class="hero-line"><span>И файл конвертируется сам</span></span></h1>
       <div class="hero-bottom">
         <div class="hero-copy">
-          <p>Renvert конвертирует файлы на Mac, когда вы меняете расширение в Finder.</p>
+          <p>Renvert 1.1 конвертирует файлы на Mac, когда вы меняете расширение в Finder. Фото, таблицы, документы и PDF остаются на компьютере.</p>
           <a class="button" id="get-main" data-release-download="renvert" href="https://github.com/ArduRadioKot/RenVert/releases/latest">Скачать для macOS</a>
           <p>Бесплатно. Всё происходит на вашем компьютере.</p>
         </div>
         <figure class="hero-image">
           <a class="app-capture" href="../assets/products/renvert/settings-general.jpg" target="_blank" rel="noreferrer" aria-label="Открыть скриншот общих настроек Renvert"><img src="../assets/products/renvert/settings-general.jpg" width="1440" height="1000" alt="Общие настройки Renvert: автозапуск, отслеживание папок, режим подтверждения и язык" fetchpriority="high" decoding="async"></a>
-          <figcaption>Настоящий интерфейс Renvert 1.0.0. Нажмите, чтобы рассмотреть.</figcaption>
+          <figcaption>Интерфейс Renvert. Нажмите, чтобы рассмотреть.</figcaption>
         </figure>
         <div class="hero-meta">
           <strong>macOS 14+</strong>
-          <p>Apple Silicon и Intel<br>Версия <span data-release-version="renvert">1.0.0</span> · 18,7 МБ</p>
+          <p>Apple Silicon и Intel<br>Версия <span data-release-version="renvert">1.1.0</span> · 19,1 МБ</p>
 
         </div>
       </div>
@@ -131,8 +131,8 @@
             <figcaption><strong>Нагрузка под контролем</strong><p>Выберите уровень нагрузки на Mac. На снимке средний режим: две параллельные конвертации.</p><span>Настройки → Производительность</span></figcaption>
           </figure>
           <figure class="screen-panel" id="screen-about" role="tabpanel" aria-labelledby="tab-about" tabindex="0">
-            <a class="app-capture" href="../assets/products/renvert/about.jpg" target="_blank" rel="noreferrer"><img src="../assets/products/renvert/about.jpg" width="1440" height="1000" alt="Сведения о Renvert: версия 1.0.0 и разработчик FrogeeSoft" loading="lazy" decoding="async"></a>
-            <figcaption><strong>Renvert от FrogeeSoft</strong><p>Нативная программа на Swift. На снимках версия 1.0.0 с английским интерфейсом; в настройках также доступен русский язык.</p><span>Настройки → О программе</span></figcaption>
+            <a class="app-capture" href="../assets/products/renvert/about.jpg" target="_blank" rel="noreferrer"><img src="../assets/products/renvert/about.jpg" width="1440" height="1000" alt="Сведения о Renvert и разработчик FrogeeSoft" loading="lazy" decoding="async"></a>
+            <figcaption><strong>Renvert от FrogeeSoft</strong><p>Нативная программа на Swift. Интерфейс на русском и английском. Сейчас скачивается версия 1.1.0.</p><span>Настройки → О программе</span></figcaption>
           </figure>
         </div>
       </div>
@@ -141,20 +141,20 @@
     <section class="band formats-band" id="formats" aria-labelledby="pairs-title">
       <div class="section-intro">
         <h2 id="pairs-title">Форматы</h2>
-        <p>Фото, документы, звук и видео. Это примеры работающих направлений конвертации, а не обещание поддержать любое расширение.</p>
+        <p>Фото, документы, таблицы, PDF, звук и видео. Ниже примеры версии 1.1.0, а не обещание поддержать любое расширение.</p>
       </div>
       <ul class="format-list">
-        <li><b>HEIC</b><strong>JPEG</strong><span>Фото с iPhone для любых сайтов и программ</span></li>
-        <li><b>PNG</b><strong>WebP, JPEG</strong><span>Лёгкие картинки для веба</span></li>
+        <li><b>HEIC</b><strong>JPEG, PNG, PDF</strong><span>Фото с iPhone для сайтов и документов</span></li>
+        <li><b>PNG, JPEG</b><strong>WebP, TIFF, PDF</strong><span>Картинки между собой. Для записи WebP может понадобиться ImageMagick.</span></li>
+        <li><b>PDF</b><strong>PNG, TXT</strong><span>Страницы как картинки, текст и распознавание сканов на Mac</span></li>
+        <li><b>DOCX, DOC</b><strong>PDF, TXT, HTML</strong><span>Текст, таблицы и базовое оформление. Печатная вёрстка может отличаться.</span></li>
+        <li><b>XLSX, CSV</b><strong>CSV, PDF, DOCX</strong><span>Структура таблицы сохраняется. Учитываются кодировка, даты, формулы и пустые ячейки.</span></li>
+        <li><b>JSON</b><strong>YAML, XML, TOML</strong><span>Конфиги между JSON, YAML, XML, plist и TOML</span></li>
         <li><b>MOV</b><strong>MP4</strong><span>Записи экрана и видео с камеры</span></li>
-        <li><b>WAV</b><strong>M4A, MP3</strong><span>Для MP3 требуется ffmpeg в сборке или системе.</span></li>
-        <li><b>DOCX</b><strong>PDF</strong><span>Переносится текст и структура абзацев. Сложная вёрстка может отличаться.</span></li>
-        <li><b>PDF</b><strong>PNG</strong><span>Страницы как картинки</span></li>
-        <li><b>XLSX</b><strong>CSV</strong><span>Таблица для скриптов и баз данных</span></li>
-        <li><b>JSON</b><strong>YAML</strong><span>Конфиги в удобном виде</span></li>
-        <li><b>Папка</b><strong>ZIP</strong><span>Архив одним переименованием</span></li>
+        <li><b>WAV, M4A</b><strong>M4A, MP3</strong><span>Для записи MP3 нужен ffmpeg в сборке или в системе.</span></li>
+        <li><b>Папка</b><strong>ZIP, TAR, 7z</strong><span>Архив одним переименованием. RAR только читается.</span></li>
       </ul>
-      <p class="formats-note">Для WebP может потребоваться ImageMagick. Все направления и ограничения перечислены в <a href="https://github.com/ArduRadioKot/RenVert/blob/main/docs/capabilities.md" target="_blank" rel="noreferrer">таблице возможностей</a>.</p>
+      <p class="formats-note">В версии 1.1.0 проверено 131 направление. Сохранение .ipynb в Jupyter и VS Code конвертацию не запускает. Полный список и ограничения есть в <a href="https://github.com/ArduRadioKot/RenVert/blob/main/docs/capabilities.md" target="_blank" rel="noreferrer">таблице возможностей</a>.</p>
       <table class="grammar">
         <caption>Команды в имени</caption>
         <thead><tr><th scope="col">Новое имя</th><th scope="col">Что получится</th></tr></thead>
@@ -166,6 +166,8 @@
           <tr><td><code>book+page2-5.png</code></td><td>Только страницы со 2-й по 5-ю из PDF.</td></tr>
           <tr><td><code>photo.png,webp</code></td><td>Сразу два файла: PNG и WebP.</td></tr>
           <tr><td><code>Photos.folder,zip</code></td><td>Папка превратится в ZIP-архив.</td></tr>
+          <tr><td><code>budget.pdf</code></td><td>Таблица XLSX, CSV или TSV станет PDF. Структура таблицы сохраняется.</td></tr>
+          <tr><td><code>scan+ocr.txt</code></td><td>Текст со скана PDF или картинки. Распознавание идёт на Mac.</td></tr>
           <tr><td><code>photo.jpg!</code></td><td>Конвертировать сразу, даже если включён режим «Сначала спросить».</td></tr>
         </tbody>
       </table>
@@ -182,6 +184,7 @@
         <details name="renvert-faq"><summary>Нужен полный доступ к диску?</summary><p>Для стандартных папок Рабочий стол, Загрузки и Документы достаточно доступа к выбранным папкам. Полный доступ к диску для них не нужен.</p></details>
         <details name="renvert-faq"><summary>Подойдёт для моего Mac?</summary><p>Нужна macOS 14 или новее. Universal Binary работает на Apple Silicon и Intel. Интерфейс доступен на русском и английском.</p></details>
         <details name="renvert-faq"><summary>Почему macOS предупреждает при запуске?</summary><p>Сборка подписана ad-hoc и не нотарифицирована Apple. При первом запуске macOS может заблокировать открытие. Информация о сборке и запуске есть в <a href="https://github.com/ArduRadioKot/RenVert#build" target="_blank" rel="noreferrer">README проекта</a>.</p></details>
+        <details name="renvert-faq"><summary>Почему блокнот Jupyter не конвертируется?</summary><p>Renvert больше не срабатывает на файлы .ipynb при сохранении в Jupyter и VS Code.</p></details>
         <details name="renvert-faq"><summary>Как Renvert связан с Consul?</summary><p>Renvert независимо реализует идею переименования для конвертации. В проекте нет кода, ресурсов или проверок лицензий Consul. Поддержка форматов описана в таблице возможностей Renvert.</p></details>
       </div>
     </section>
@@ -221,7 +224,7 @@
         docx: { base: 'договор', kind: 'документ Word', badge: '#2b579a', to: { pdf: 'PDF' } },
         wav: { base: 'интервью', kind: 'запись диктофона', badge: '#7a4fb8', to: { m4a: 'M4A', mp3: 'MP3' } },
         mov: { base: 'запись', kind: 'видео', badge: '#c2410c', to: { mp4: 'MP4' } },
-        xlsx: { base: 'бюджет', kind: 'таблица Excel', badge: '#1d7044', to: { csv: 'CSV' } },
+        xlsx: { base: 'бюджет', kind: 'таблица Excel', badge: '#1d7044', to: { csv: 'CSV', pdf: 'PDF', docx: 'DOCX', html: 'HTML' } },
       };
       const BADGES = { jpg: '#12899c', jpeg: '#12899c', png: '#12899c', webp: '#12899c', pdf: '#b91c1c', mp3: '#12899c', m4a: '#12899c', mp4: '#12899c', csv: '#12899c' };
       const MODS = {
@@ -235,7 +238,7 @@
         docx: ['.pdf', '.pdf!', '.jpg'],
         wav: ['.mp3', '.m4a', '.mp4'],
         mov: ['.mp4', '+mute.mp4', '.mp3'],
-        xlsx: ['.csv', '.pdf'],
+        xlsx: ['.csv', '.pdf', '.docx'],
       };
 
       let src = 'heic';

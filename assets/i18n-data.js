@@ -2783,5 +2783,85 @@ window.FROGEE_TRANSLATIONS = {
   "Документация тем": {
     "ru": "Документация тем",
     "en": "Theme documentation"
+  },
+  "Переименуйте файл в Finder, и Renvert сконвертирует фото, таблицу, документ или PDF. Файлы остаются на Mac, оригинал можно вернуть.": {
+    "ru": "Переименуйте файл в Finder, и Renvert сконвертирует фото, таблицу, документ или PDF. Файлы остаются на Mac, оригинал можно вернуть.",
+    "en": "Rename a file in Finder, and Renvert converts the photo, spreadsheet, document or PDF. Files stay on your Mac, and the original can be restored."
+  },
+  "Renvert 1.1 конвертирует файлы на Mac, когда вы меняете расширение в Finder. Фото, таблицы, документы и PDF остаются на компьютере.": {
+    "ru": "Renvert 1.1 конвертирует файлы на Mac, когда вы меняете расширение в Finder. Фото, таблицы, документы и PDF остаются на компьютере.",
+    "en": "Renvert 1.1 converts files on your Mac when you change their extension in Finder. Photos, spreadsheets, documents and PDFs stay on your computer."
+  },
+  "Интерфейс Renvert. Нажмите, чтобы рассмотреть.": {
+    "ru": "Интерфейс Renvert. Нажмите, чтобы рассмотреть.",
+    "en": "The Renvert interface. Click for a closer look."
+  },
+  "· 19,1 МБ": {
+    "ru": "· 19,1 МБ",
+    "en": "· 19.1 MB"
+  },
+  "Фото, документы, таблицы, PDF, звук и видео. Ниже примеры версии 1.1.0, а не обещание поддержать любое расширение.": {
+    "ru": "Фото, документы, таблицы, PDF, звук и видео. Ниже примеры версии 1.1.0, а не обещание поддержать любое расширение.",
+    "en": "Photos, documents, spreadsheets, PDFs, audio and video. These are examples from version 1.1.0, not a promise to support every extension."
+  },
+  "Фото с iPhone для сайтов и документов": {
+    "ru": "Фото с iPhone для сайтов и документов",
+    "en": "iPhone photos for websites and documents"
+  },
+  "Картинки между собой. Для записи WebP может понадобиться ImageMagick.": {
+    "ru": "Картинки между собой. Для записи WebP может понадобиться ImageMagick.",
+    "en": "Images converted between these formats. Writing WebP may require ImageMagick."
+  },
+  "Страницы как картинки, текст и распознавание сканов на Mac": {
+    "ru": "Страницы как картинки, текст и распознавание сканов на Mac",
+    "en": "Pages as images, extracted text, and on-device OCR for scans"
+  },
+  "Текст, таблицы и базовое оформление. Печатная вёрстка может отличаться.": {
+    "ru": "Текст, таблицы и базовое оформление. Печатная вёрстка может отличаться.",
+    "en": "Text, tables and basic formatting are kept. Print layout may still differ."
+  },
+  "Структура таблицы сохраняется. Учитываются кодировка, даты, формулы и пустые ячейки.": {
+    "ru": "Структура таблицы сохраняется. Учитываются кодировка, даты, формулы и пустые ячейки.",
+    "en": "The table structure is kept, including encoding, dates, formulas and empty cells."
+  },
+  "Конфиги между JSON, YAML, XML, plist и TOML": {
+    "ru": "Конфиги между JSON, YAML, XML, plist и TOML",
+    "en": "Config files between JSON, YAML, XML, plist and TOML"
+  },
+  "Для записи MP3 нужен ffmpeg в сборке или в системе.": {
+    "ru": "Для записи MP3 нужен ffmpeg в сборке или в системе.",
+    "en": "Writing MP3 needs ffmpeg in the app bundle or on the system."
+  },
+  "Архив одним переименованием. RAR только читается.": {
+    "ru": "Архив одним переименованием. RAR только читается.",
+    "en": "Archive a folder by renaming it. RAR can only be read."
+  },
+  "В версии 1.1.0 проверено 131 направление. Сохранение .ipynb в Jupyter и VS Code конвертацию не запускает. Полный список и ограничения есть в": {
+    "ru": "В версии 1.1.0 проверено 131 направление. Сохранение .ipynb в Jupyter и VS Code конвертацию не запускает. Полный список и ограничения есть в",
+    "en": "Version 1.1.0 was checked across 131 conversion paths. Saving an .ipynb file in Jupyter or VS Code no longer starts a conversion. The full list and its limits are in the"
+  },
+  "Таблица XLSX, CSV или TSV станет PDF. Структура таблицы сохраняется.": {
+    "ru": "Таблица XLSX, CSV или TSV станет PDF. Структура таблицы сохраняется.",
+    "en": "An XLSX, CSV or TSV spreadsheet becomes a PDF. The table structure is kept."
+  },
+  "Текст со скана PDF или картинки. Распознавание идёт на Mac.": {
+    "ru": "Текст со скана PDF или картинки. Распознавание идёт на Mac.",
+    "en": "Text from a scanned PDF or image. Recognition runs on your Mac."
+  },
+  "Сведения о Renvert и разработчик FrogeeSoft": {
+    "ru": "Сведения о Renvert и разработчик FrogeeSoft",
+    "en": "Renvert app information and developer FrogeeSoft"
+  },
+  "Нативная программа на Swift. Интерфейс на русском и английском. Сейчас скачивается версия 1.1.0.": {
+    "ru": "Нативная программа на Swift. Интерфейс на русском и английском. Сейчас скачивается версия 1.1.0.",
+    "en": "A native Swift app with Russian and English interfaces. The current download is version 1.1.0."
+  },
+  "Почему блокнот Jupyter не конвертируется?": {
+    "ru": "Почему блокнот Jupyter не конвертируется?",
+    "en": "Why is a Jupyter notebook not converted?"
+  },
+  "Renvert больше не срабатывает на файлы .ipynb при сохранении в Jupyter и VS Code.": {
+    "ru": "Renvert больше не срабатывает на файлы .ipynb при сохранении в Jupyter и VS Code.",
+    "en": "Renvert no longer starts a conversion when Jupyter or VS Code saves an .ipynb file."
   }
 };
