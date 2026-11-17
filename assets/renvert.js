@@ -1,4 +1,13 @@
 (() => {
+  document.querySelectorAll('.hero-line').forEach((line) => {
+    const settle = () => line.classList.add('is-settled');
+    const span = line.firstElementChild;
+    if (!span) return;
+    span.addEventListener('animationend', settle);
+    span.addEventListener('animationcancel', settle);
+    if (getComputedStyle(span).animationName === 'none') settle();
+  });
+
   const gallery = document.querySelector('.gallery-layout');
   if (gallery) {
     const tablist = gallery.querySelector('[role="tablist"]');
@@ -31,21 +40,28 @@
     });
   }
 
-  // Content is visible by default. Motion enhances it only when supported.
+  // Already-visible blocks stay put. Entering blocks fade in, then release
+  // the animation so hover transforms and list markers are not stuck.
   if (!('IntersectionObserver' in window) || !Element.prototype.animate || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   const targets = document.querySelectorAll('.hero-copy, .hero-image, .hero-meta, .section-intro > *, .source-choices, .rename-area, .steps li, .gallery-layout, .format-list li, .grammar, .faq-stack, .download-link');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (!entry.isIntersecting) return;
       observer.unobserve(entry.target);
-      entry.target.animate([
-        { opacity: 0, transform: 'translateY(22px)' },
-        { opacity: 1, transform: 'translateY(0)' },
-      ], { duration: 650, delay: Number(entry.target.dataset.motionDelay || 0), easing: 'cubic-bezier(.2,.7,.2,1)' });
+      const opacityOnly = entry.target.matches('.steps li, .download-link');
+      const animation = entry.target.animate(opacityOnly
+        ? [{ opacity: 0 }, { opacity: 1 }]
+        : [{ opacity: 0, transform: 'translateY(22px)' }, { opacity: 1, transform: 'translateY(0)' }],
+      { duration: 650, easing: 'cubic-bezier(.2,.7,.2,1)', fill: 'both' });
+      const release = () => animation.cancel();
+      animation.onfinish = release;
+      animation.oncancel = release;
     });
-  }, { threshold: .12 });
-  targets.forEach((element, index) => {
-    element.dataset.motionDelay = String((index % 3) * 70);
+  }, { threshold: .12, rootMargin: '0px 0px -8% 0px' });
+  const viewBottom = window.innerHeight * 0.92;
+  targets.forEach((element) => {
+    const rect = element.getBoundingClientRect();
+    if (rect.top < viewBottom && rect.bottom > 0) return;
     observer.observe(element);
   });
 })();

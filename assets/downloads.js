@@ -21,7 +21,7 @@ window.FROGEE_DOWNLOADS = (() => {
       name: 'Renvert',
       releases: 'https://github.com/ArduRadioKot/RenVert/releases/latest',
       files: [
-        { os: 'mac', label: 'macOS 14+, Apple Silicon и Intel', file: 'Renvert-1.1.0.dmg', mb: 19.1, url: gh('RenVert', 'v1.1.0', 'Renvert-1.1.0.dmg') },
+        { os: 'mac', label: 'macOS 14+, Apple Silicon и Intel', file: 'Renvert-1.2.0.dmg', mb: 19.5, url: gh('RenVert', 'v1.2.0', 'Renvert-1.2.0.dmg') },
       ],
     },
     frogeecode: {

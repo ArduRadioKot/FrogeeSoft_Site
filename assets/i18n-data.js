@@ -2600,9 +2600,9 @@ window.FROGEE_TRANSLATIONS = {
     "ru": "Нагрузка под контролем",
     "en": "Control the workload"
   },
-  "Выберите уровень нагрузки на Mac. На снимке средний режим: две параллельные конвертации.": {
-    "ru": "Выберите уровень нагрузки на Mac. На снимке средний режим: две параллельные конвертации.",
-    "en": "Choose the workload level for your Mac. The screenshot shows Medium mode: two parallel conversions."
+  "Выберите уровень нагрузки на Mac. На снимке высокий режим: семь параллельных конвертаций.": {
+    "ru": "Выберите уровень нагрузки на Mac. На снимке высокий режим: семь параллельных конвертаций.",
+    "en": "Choose the workload level for your Mac. The screenshot shows High mode: seven parallel conversions."
   },
   "Настройки → Производительность": {
     "ru": "Настройки → Производительность",
@@ -2732,9 +2732,9 @@ window.FROGEE_TRANSLATIONS = {
     "ru": "Скриншот FgSNotes: редактор Markdown и инструменты для заметок",
     "en": "FgSNotes screenshot: Markdown editor and note-taking tools"
   },
-  "Скриншот Renvert: настройки и меню конвертации файлов": {
-    "ru": "Скриншот Renvert: настройки и меню конвертации файлов",
-    "en": "Renvert screenshot: settings and file conversion menu"
+  "Скриншот Renvert: настройки конвертации, качество JPEG и WebP": {
+    "ru": "Скриншот Renvert: настройки конвертации, качество JPEG и WebP",
+    "en": "Renvert screenshot: conversion settings, JPEG and WebP quality"
   },
   "Скриншот редактора FrogeeCodeIDE": {
     "ru": "Скриншот редактора FrogeeCodeIDE",
@@ -2848,9 +2848,9 @@ window.FROGEE_TRANSLATIONS = {
     "ru": "Текст со скана PDF или картинки. Распознавание идёт на Mac.",
     "en": "Text from a scanned PDF or image. Recognition runs on your Mac."
   },
-  "Сведения о Renvert и разработчик FrogeeSoft": {
-    "ru": "Сведения о Renvert и разработчик FrogeeSoft",
-    "en": "Renvert app information and developer FrogeeSoft"
+  "О программе Renvert 1.2.0: версия, авторы FrogeeSoft и проверка обновлений": {
+    "ru": "О программе Renvert 1.2.0: версия, авторы FrogeeSoft и проверка обновлений",
+    "en": "Renvert 1.2.0 About: version, FrogeeSoft authors and update check"
   },
   "Нативная программа на Swift. Интерфейс на русском и английском. Сейчас скачивается версия 1.1.0.": {
     "ru": "Нативная программа на Swift. Интерфейс на русском и английском. Сейчас скачивается версия 1.1.0.",
@@ -2863,5 +2863,105 @@ window.FROGEE_TRANSLATIONS = {
   "Renvert больше не срабатывает на файлы .ipynb при сохранении в Jupyter и VS Code.": {
     "ru": "Renvert больше не срабатывает на файлы .ipynb при сохранении в Jupyter и VS Code.",
     "en": "Renvert no longer starts a conversion when Jupyter or VS Code saves an .ipynb file."
+  },
+  "Переименуйте файл в Finder, и Renvert сконвертирует фото, таблицу, документ, трек или PDF. Файлы остаются на Mac, оригинал можно вернуть.": {
+    "ru": "Переименуйте файл в Finder, и Renvert сконвертирует фото, таблицу, документ, трек или PDF. Файлы остаются на Mac, оригинал можно вернуть.",
+    "en": "Rename a file in Finder, and Renvert converts the photo, spreadsheet, document, track or PDF. Files stay on your Mac, and the original can be restored."
+  },
+  "Renvert 1.2 конвертирует файлы на Mac, когда вы меняете расширение в Finder. Среди новых направлений — треки, контакты, письма, Base64 и QR.": {
+    "ru": "Renvert 1.2 конвертирует файлы на Mac, когда вы меняете расширение в Finder. Среди новых направлений — треки, контакты, письма, Base64 и QR.",
+    "en": "Renvert 1.2 converts files on your Mac when you change their extension in Finder. New paths include tracks, contacts, mail, Base64 and QR codes."
+  },
+  "· 19,5 МБ": {
+    "ru": "· 19,5 МБ",
+    "en": "· 19.5 MB"
+  },
+  "В версии 1.2.0 появился раздел «Форматы»: поиск и выключение форматов по одному или целыми группами. Выключенный формат при переименовании не конвертируется.": {
+    "ru": "В версии 1.2.0 появился раздел «Форматы»: поиск и выключение форматов по одному или целыми группами. Выключенный формат при переименовании не конвертируется.",
+    "en": "Version 1.2.0 adds a Formats section: search, then turn formats off one by one or as whole groups. A disabled format is not converted when you rename a file."
+  },
+  "Версия 1.2.0, авторы FrogeeSoft. Обновления приходят из выпусков на GitHub, язык интерфейса переключается в разделе «Основные».": {
+    "ru": "Версия 1.2.0, авторы FrogeeSoft. Обновления приходят из выпусков на GitHub, язык интерфейса переключается в разделе «Основные».",
+    "en": "Version 1.2.0, by FrogeeSoft. Updates come from GitHub releases, and the interface language is changed in General."
+  },
+  "Фото, документы, таблицы, треки, почта и архивы. Ниже примеры версии 1.2.0, а не обещание поддержать любое расширение.": {
+    "ru": "Фото, документы, таблицы, треки, почта и архивы. Ниже примеры версии 1.2.0, а не обещание поддержать любое расширение.",
+    "en": "Photos, documents, spreadsheets, tracks, mail and archives. These are examples from version 1.2.0, not a promise to support every extension."
+  },
+  "Структура сохраняется. SQLite и JSON Lines собирают несколько таблиц из одного файла.": {
+    "ru": "Структура сохраняется. SQLite и JSON Lines собирают несколько таблиц из одного файла.",
+    "en": "The table structure is kept. SQLite and JSON Lines gather several tables from one file."
+  },
+  "Конфиги, а также INI, ENV и .editorconfig": {
+    "ru": "Конфиги, а также INI, ENV и .editorconfig",
+    "en": "Config files, plus INI, ENV and .editorconfig"
+  },
+  "Точки трека сохраняют имя, высоту и время. Также TCX, NMEA и IGC.": {
+    "ru": "Точки трека сохраняют имя, высоту и время. Также TCX, NMEA и IGC.",
+    "en": "Track points keep their name, elevation and time. TCX, NMEA and IGC are included."
+  },
+  "Контакты и события календаря, в обе стороны": {
+    "ru": "Контакты и события календаря, в обе стороны",
+    "en": "Contacts and calendar events, both ways"
+  },
+  "Заголовки и текст письма. EMLX только читается.": {
+    "ru": "Заголовки и текст письма. EMLX только читается.",
+    "en": "Message headers and body text. EMLX can only be read."
+  },
+  "Любой файл в Base64 и обратно. Пометка +qr рисует код из текста и читает QR на картинке или в PDF.": {
+    "ru": "Любой файл в Base64 и обратно. Пометка +qr рисует код из текста и читает QR на картинке или в PDF.",
+    "en": "Any file to Base64 and back. The +qr modifier draws a code from text and reads a QR from an image or PDF."
+  },
+  "Архив одним переименованием. NPZ и PT — байты для NumPy и PyTorch. RAR только читается.": {
+    "ru": "Архив одним переименованием. NPZ и PT — байты для NumPy и PyTorch. RAR только читается.",
+    "en": "Archive a folder by renaming it. NPZ and PT store the bytes for NumPy and PyTorch. RAR can only be read."
+  },
+  "В настройках можно выключить формат или целую группу. Сохранение .ipynb в Jupyter и VS Code конвертацию не запускает. Полный список и ограничения есть в": {
+    "ru": "В настройках можно выключить формат или целую группу. Сохранение .ipynb в Jupyter и VS Code конвертацию не запускает. Полный список и ограничения есть в",
+    "en": "Settings can turn off one format or a whole group. Saving an .ipynb file in Jupyter or VS Code does not start a conversion. The full list and its limits are in the"
+  },
+  "Текст файла станет QR-кодом. Та же пометка на картинке или PDF читает QR и штрихкоды.": {
+    "ru": "Текст файла станет QR-кодом. Та же пометка на картинке или PDF читает QR и штрихкоды.",
+    "en": "The file’s text becomes a QR code. The same modifier on an image or PDF reads QR codes and barcodes."
+  },
+  "Файл станет текстом Base64. Обратное переименование вернёт исходные байты.": {
+    "ru": "Файл станет текстом Base64. Обратное переименование вернёт исходные байты.",
+    "en": "The file becomes Base64 text. Renaming it back restores the original bytes."
+  },
+  "И файл конвертируется сам": {
+    "ru": "И файл конвертируется сам",
+    "en": "And the file converts itself."
+  },
+  "Файл": {
+    "ru": "Файл",
+    "en": "File"
+  },
+  "Папка, ZIP": {
+    "ru": "Папка, ZIP",
+    "en": "Folder, ZIP"
+  },
+  "Можно отключить формат?": {
+    "ru": "Можно отключить формат?",
+    "en": "Can I turn a format off?"
+  },
+  "В разделе «Форматы» есть поиск и выключатели по одному и группами. Выключенный формат при переименовании не меняется. Старые настройки без этого раздела по-прежнему открываются.": {
+    "ru": "В разделе «Форматы» есть поиск и выключатели по одному и группами. Выключенный формат при переименовании не меняется. Старые настройки без этого раздела по-прежнему открываются.",
+    "en": "The Formats section has search and switches for single formats and whole groups. A disabled format stays unchanged when renamed. Older settings without this section still open."
+  },
+  "Раздел «Форматы» в Renvert: поиск, включение всех форматов и список изображений": {
+    "ru": "Раздел «Форматы» в Renvert: поиск, включение всех форматов и список изображений",
+    "en": "Renvert Formats section: search, enable all formats, and the image list"
+  },
+  "Только нужные форматы": {
+    "ru": "Только нужные форматы",
+    "en": "Only the formats you need"
+  },
+  "Найдите формат или выключите целую группу. Выключенный формат при переименовании не конвертируется.": {
+    "ru": "Найдите формат или выключите целую группу. Выключенный формат при переименовании не конвертируется.",
+    "en": "Find a format or turn off a whole group. A disabled format is not converted when you rename a file."
+  },
+  "Настройки → Форматы": {
+    "ru": "Настройки → Форматы",
+    "en": "Settings → Formats"
   }
 };

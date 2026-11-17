@@ -33,7 +33,7 @@
       <h1 id="title"><span class="hero-line"><span>Переименуй.</span></span><span class="hero-line"><span>И файл конвертируется сам</span></span></h1>
       <div class="hero-bottom">
         <div class="hero-copy">
-          <p>Renvert 1.1 конвертирует файлы на Mac, когда вы меняете расширение в Finder. Фото, таблицы, документы и PDF остаются на компьютере.</p>
+          <p>Renvert 1.2 конвертирует файлы на Mac, когда вы меняете расширение в Finder. Среди новых направлений — треки, контакты, письма, Base64 и QR.</p>
           <a class="button" id="get-main" data-release-download="renvert" href="https://github.com/ArduRadioKot/RenVert/releases/latest">Скачать для macOS</a>
           <p>Бесплатно. Всё происходит на вашем компьютере.</p>
         </div>
@@ -43,7 +43,7 @@
         </figure>
         <div class="hero-meta">
           <strong>macOS 14+</strong>
-          <p>Apple Silicon и Intel<br>Версия <span data-release-version="renvert">1.1.0</span> · 19,1 МБ</p>
+          <p>Apple Silicon и Intel<br>Версия <span data-release-version="renvert">1.2.0</span> · 19,5 МБ</p>
 
         </div>
       </div>
@@ -108,12 +108,13 @@
     <section class="band" id="screens" aria-labelledby="screens-title">
       <div class="section-intro">
         <h2 id="screens-title">Ваши настройки</h2>
-        <p>Четыре экрана установленной программы. Выберите раздел и откройте снимок, чтобы увидеть интерфейс в полном размере.</p>
+        <p>В версии 1.2.0 появился раздел «Форматы»: поиск и выключение форматов по одному или целыми группами. Выключенный формат при переименовании не конвертируется.</p>
       </div>
       <div class="gallery-layout">
         <div class="screen-tabs" role="tablist" aria-label="Скриншоты Renvert" hidden>
           <button type="button" role="tab" id="tab-general" aria-controls="screen-general" aria-selected="true" tabindex="0">Основные</button>
           <button type="button" role="tab" id="tab-conversions" aria-controls="screen-conversions" aria-selected="false" tabindex="-1">Конвертация</button>
+          <button type="button" role="tab" id="tab-formats" aria-controls="screen-formats" aria-selected="false" tabindex="-1">Форматы</button>
           <button type="button" role="tab" id="tab-performance" aria-controls="screen-performance" aria-selected="false" tabindex="-1">Нагрузка</button>
           <button type="button" role="tab" id="tab-about" aria-controls="screen-about" aria-selected="false" tabindex="-1">О программе</button>
         </div>
@@ -126,13 +127,17 @@
             <a class="app-capture" href="../assets/products/renvert/settings-conversions.jpg" target="_blank" rel="noreferrer"><img src="../assets/products/renvert/settings-conversions.jpg" width="1440" height="1000" alt="Настройки Renvert: качество JPEG и WebP, сохранение метаданных и аппаратное ускорение" loading="lazy" decoding="async"></a>
             <figcaption><strong>Качество, которое подходит вам</strong><p>Задайте качество JPEG и WebP по умолчанию. Отдельно настраиваются сохранение метаданных и аппаратное ускорение.</p><span>Настройки → Конвертация</span></figcaption>
           </figure>
+          <figure class="screen-panel" id="screen-formats" role="tabpanel" aria-labelledby="tab-formats" tabindex="0">
+            <a class="app-capture" href="../assets/products/renvert/settings-formats.jpg" target="_blank" rel="noreferrer"><img src="../assets/products/renvert/settings-formats.jpg" width="1440" height="1000" alt="Раздел «Форматы» в Renvert: поиск, включение всех форматов и список изображений" loading="lazy" decoding="async"></a>
+            <figcaption><strong>Только нужные форматы</strong><p>Найдите формат или выключите целую группу. Выключенный формат при переименовании не конвертируется.</p><span>Настройки → Форматы</span></figcaption>
+          </figure>
           <figure class="screen-panel" id="screen-performance" role="tabpanel" aria-labelledby="tab-performance" tabindex="0">
             <a class="app-capture" href="../assets/products/renvert/settings-performance.jpg" target="_blank" rel="noreferrer"><img src="../assets/products/renvert/settings-performance.jpg" width="1440" height="1000" alt="Настройки производительности Renvert: уровень нагрузки и число параллельных конвертаций" loading="lazy" decoding="async"></a>
-            <figcaption><strong>Нагрузка под контролем</strong><p>Выберите уровень нагрузки на Mac. На снимке средний режим: две параллельные конвертации.</p><span>Настройки → Производительность</span></figcaption>
+            <figcaption><strong>Нагрузка под контролем</strong><p>Выберите уровень нагрузки на Mac. На снимке высокий режим: семь параллельных конвертаций.</p><span>Настройки → Производительность</span></figcaption>
           </figure>
           <figure class="screen-panel" id="screen-about" role="tabpanel" aria-labelledby="tab-about" tabindex="0">
-            <a class="app-capture" href="../assets/products/renvert/about.jpg" target="_blank" rel="noreferrer"><img src="../assets/products/renvert/about.jpg" width="1440" height="1000" alt="Сведения о Renvert и разработчик FrogeeSoft" loading="lazy" decoding="async"></a>
-            <figcaption><strong>Renvert от FrogeeSoft</strong><p>Нативная программа на Swift. Интерфейс на русском и английском. Сейчас скачивается версия 1.1.0.</p><span>Настройки → О программе</span></figcaption>
+            <a class="app-capture" href="../assets/products/renvert/about.jpg" target="_blank" rel="noreferrer"><img src="../assets/products/renvert/about.jpg" width="1440" height="1000" alt="О программе Renvert 1.2.0: версия, авторы FrogeeSoft и проверка обновлений" loading="lazy" decoding="async"></a>
+            <figcaption><strong>Renvert от FrogeeSoft</strong><p>Версия 1.2.0, авторы FrogeeSoft. Обновления приходят из выпусков на GitHub, язык интерфейса переключается в разделе «Основные».</p><span>Настройки → О программе</span></figcaption>
           </figure>
         </div>
       </div>
@@ -141,20 +146,24 @@
     <section class="band formats-band" id="formats" aria-labelledby="pairs-title">
       <div class="section-intro">
         <h2 id="pairs-title">Форматы</h2>
-        <p>Фото, документы, таблицы, PDF, звук и видео. Ниже примеры версии 1.1.0, а не обещание поддержать любое расширение.</p>
+        <p>Фото, документы, таблицы, треки, почта и архивы. Ниже примеры версии 1.2.0, а не обещание поддержать любое расширение.</p>
       </div>
       <ul class="format-list">
         <li><b>HEIC</b><strong>JPEG, PNG, PDF</strong><span>Фото с iPhone для сайтов и документов</span></li>
         <li><b>PNG, JPEG</b><strong>WebP, TIFF, PDF</strong><span>Картинки между собой. Для записи WebP может понадобиться ImageMagick.</span></li>
         <li><b>PDF</b><strong>PNG, TXT</strong><span>Страницы как картинки, текст и распознавание сканов на Mac</span></li>
         <li><b>DOCX, DOC</b><strong>PDF, TXT, HTML</strong><span>Текст, таблицы и базовое оформление. Печатная вёрстка может отличаться.</span></li>
-        <li><b>XLSX, CSV</b><strong>CSV, PDF, DOCX</strong><span>Структура таблицы сохраняется. Учитываются кодировка, даты, формулы и пустые ячейки.</span></li>
-        <li><b>JSON</b><strong>YAML, XML, TOML</strong><span>Конфиги между JSON, YAML, XML, plist и TOML</span></li>
+        <li><b>XLSX, CSV</b><strong>CSV, PDF, SQLite</strong><span>Структура сохраняется. SQLite и JSON Lines собирают несколько таблиц из одного файла.</span></li>
+        <li><b>JSON</b><strong>YAML, XML, TOML</strong><span>Конфиги, а также INI, ENV и .editorconfig</span></li>
+        <li><b>GPX, KML</b><strong>GeoJSON, CSV</strong><span>Точки трека сохраняют имя, высоту и время. Также TCX, NMEA и IGC.</span></li>
+        <li><b>vCard, ICS</b><strong>CSV, JSON</strong><span>Контакты и события календаря, в обе стороны</span></li>
+        <li><b>EML</b><strong>PDF, TXT, HTML</strong><span>Заголовки и текст письма. EMLX только читается.</span></li>
+        <li><b>Файл</b><strong>Base64, QR</strong><span>Любой файл в Base64 и обратно. Пометка +qr рисует код из текста и читает QR на картинке или в PDF.</span></li>
         <li><b>MOV</b><strong>MP4</strong><span>Записи экрана и видео с камеры</span></li>
         <li><b>WAV, M4A</b><strong>M4A, MP3</strong><span>Для записи MP3 нужен ffmpeg в сборке или в системе.</span></li>
-        <li><b>Папка</b><strong>ZIP, TAR, 7z</strong><span>Архив одним переименованием. RAR только читается.</span></li>
+        <li><b>Папка, ZIP</b><strong>ZIP, NPZ, PT</strong><span>Архив одним переименованием. NPZ и PT — байты для NumPy и PyTorch. RAR только читается.</span></li>
       </ul>
-      <p class="formats-note">В версии 1.1.0 проверено 131 направление. Сохранение .ipynb в Jupyter и VS Code конвертацию не запускает. Полный список и ограничения есть в <a href="https://github.com/ArduRadioKot/RenVert/blob/main/docs/capabilities.md" target="_blank" rel="noreferrer">таблице возможностей</a>.</p>
+      <p class="formats-note">В настройках можно выключить формат или целую группу. Сохранение .ipynb в Jupyter и VS Code конвертацию не запускает. Полный список и ограничения есть в <a href="https://github.com/ArduRadioKot/RenVert/blob/main/docs/capabilities.md" target="_blank" rel="noreferrer">таблице возможностей</a>.</p>
       <table class="grammar">
         <caption>Команды в имени</caption>
         <thead><tr><th scope="col">Новое имя</th><th scope="col">Что получится</th></tr></thead>
@@ -168,6 +177,8 @@
           <tr><td><code>Photos.folder,zip</code></td><td>Папка превратится в ZIP-архив.</td></tr>
           <tr><td><code>budget.pdf</code></td><td>Таблица XLSX, CSV или TSV станет PDF. Структура таблицы сохраняется.</td></tr>
           <tr><td><code>scan+ocr.txt</code></td><td>Текст со скана PDF или картинки. Распознавание идёт на Mac.</td></tr>
+          <tr><td><code>note+qr.png</code></td><td>Текст файла станет QR-кодом. Та же пометка на картинке или PDF читает QR и штрихкоды.</td></tr>
+          <tr><td><code>photo.b64</code></td><td>Файл станет текстом Base64. Обратное переименование вернёт исходные байты.</td></tr>
           <tr><td><code>photo.jpg!</code></td><td>Конвертировать сразу, даже если включён режим «Сначала спросить».</td></tr>
         </tbody>
       </table>
@@ -184,6 +195,7 @@
         <details name="renvert-faq"><summary>Нужен полный доступ к диску?</summary><p>Для стандартных папок Рабочий стол, Загрузки и Документы достаточно доступа к выбранным папкам. Полный доступ к диску для них не нужен.</p></details>
         <details name="renvert-faq"><summary>Подойдёт для моего Mac?</summary><p>Нужна macOS 14 или новее. Universal Binary работает на Apple Silicon и Intel. Интерфейс доступен на русском и английском.</p></details>
         <details name="renvert-faq"><summary>Почему macOS предупреждает при запуске?</summary><p>Сборка подписана ad-hoc и не нотарифицирована Apple. При первом запуске macOS может заблокировать открытие. Информация о сборке и запуске есть в <a href="https://github.com/ArduRadioKot/RenVert#build" target="_blank" rel="noreferrer">README проекта</a>.</p></details>
+        <details name="renvert-faq"><summary>Можно отключить формат?</summary><p>В разделе «Форматы» есть поиск и выключатели по одному и группами. Выключенный формат при переименовании не меняется. Старые настройки без этого раздела по-прежнему открываются.</p></details>
         <details name="renvert-faq"><summary>Почему блокнот Jupyter не конвертируется?</summary><p>Renvert больше не срабатывает на файлы .ipynb при сохранении в Jupyter и VS Code.</p></details>
         <details name="renvert-faq"><summary>Как Renvert связан с Consul?</summary><p>Renvert независимо реализует идею переименования для конвертации. В проекте нет кода, ресурсов или проверок лицензий Consul. Поддержка форматов описана в таблице возможностей Renvert.</p></details>
       </div>
