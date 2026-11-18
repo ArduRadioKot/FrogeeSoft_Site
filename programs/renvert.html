@@ -30,71 +30,167 @@
 
   <main id="main">
     <section class="hero" aria-labelledby="title">
-      <h1 id="title"><span class="hero-line"><span>Переименуй.</span></span><span class="hero-line"><span>И файл конвертируется сам</span></span></h1>
-      <div class="hero-bottom">
-        <div class="hero-copy">
-          <p>Renvert 1.2 конвертирует файлы на Mac, когда вы меняете расширение в Finder. Среди новых направлений — треки, контакты, письма, Base64 и QR.</p>
-          <a class="button" id="get-main" data-release-download="renvert" href="https://github.com/ArduRadioKot/RenVert/releases/latest">Скачать для macOS</a>
-          <p>Бесплатно. Всё происходит на вашем компьютере.</p>
-        </div>
-        <figure class="hero-image">
-          <a class="app-capture" href="../assets/products/renvert/settings-general.jpg" target="_blank" rel="noreferrer" aria-label="Открыть скриншот общих настроек Renvert"><img src="../assets/products/renvert/settings-general.jpg" width="1440" height="1000" alt="Общие настройки Renvert: автозапуск, отслеживание папок, режим подтверждения и язык" fetchpriority="high" decoding="async"></a>
-          <figcaption>Интерфейс Renvert. Нажмите, чтобы рассмотреть.</figcaption>
-        </figure>
-        <div class="hero-meta">
-          <strong>macOS 14+</strong>
-          <p>Apple Silicon и Intel<br>Версия <span data-release-version="renvert">1.2.0</span> · 19,5 МБ</p>
-
-        </div>
+      <h1 id="title"><span class="hero-line"><span>Переименуй.</span></span><span class="hero-line"><span>И файл готов</span></span></h1>
+      <div class="hero-flow" aria-hidden="true" data-i18n-ignore>
+        <div class="doc doc--from"><span class="doc-sheet"><span class="doc-ext" data-flow-from-ext>heic</span></span></div>
+        <span class="flow-line"><span class="flow-dot"></span></span>
+        <span class="hero-mark"><img src="../assets/products/renvert/icon.png" width="96" height="96" alt=""></span>
+        <span class="flow-line flow-line--out"><span class="flow-dot"></span></span>
+        <div class="doc doc--to"><span class="doc-sheet"><span class="doc-ext" data-flow-to-ext>jpg</span></span></div>
       </div>
+      <p class="hero-lead">Renvert 1.2 конвертирует файлы на Mac, когда вы меняете расширение в Finder. Среди новых направлений — треки, контакты, письма, Base64 и QR.</p>
+      <div class="hero-actions">
+        <a class="button" id="get-main" data-release-download="renvert" href="https://github.com/ArduRadioKot/RenVert/releases/latest">Скачать для macOS</a>
+        <a class="button button--soft" href="#try">Попробовать</a>
+      </div>
+      <ul class="hero-facts">
+        <li>macOS 14+</li>
+        <li>Apple Silicon и Intel</li>
+        <li>Версия <span data-release-version="renvert">1.2.0</span></li>
+        <li>Бесплатно</li>
+      </ul>
     </section>
 
-    <section class="band demo-band" id="try" aria-labelledby="try-title">
-      <div class="section-intro">
-        <h2 id="try-title" class="demo-heading">Попробуйте имя</h2>
+    <section class="band try" id="try" aria-labelledby="try-title">
+      <div class="section-head">
+        <h2 id="try-title">Попробуйте имя</h2>
         <p>Выберите исходный файл и поменяйте расширение. Короткие пометки вроде +q80 задают параметры конвертации.</p>
       </div>
-      <div class="desk" data-ui>
-        <div class="source-choices">
-          <p class="group-label" id="src-label">Возьмите файл</p>
-          <div class="sources" role="group" aria-labelledby="src-label">
-            <button type="button" data-src="heic" aria-pressed="true">отпуск.heic</button>
-            <button type="button" data-src="docx" aria-pressed="false">договор.docx</button>
-            <button type="button" data-src="wav" aria-pressed="false">интервью.wav</button>
-            <button type="button" data-src="mov" aria-pressed="false">запись.mov</button>
-            <button type="button" data-src="xlsx" aria-pressed="false">бюджет.xlsx</button>
-          </div>
+      <div class="desk">
+      <div class="source-choices">
+        <p class="group-label" id="src-label">Возьмите файл</p>
+        <div class="sources" role="group" aria-labelledby="src-label">
+          <button type="button" data-src="heic" aria-pressed="true">отпуск.heic</button>
+          <button type="button" data-src="docx" aria-pressed="false">договор.docx</button>
+          <button type="button" data-src="wav" aria-pressed="false">интервью.wav</button>
+          <button type="button" data-src="mov" aria-pressed="false">запись.mov</button>
+          <button type="button" data-src="xlsx" aria-pressed="false">бюджет.xlsx</button>
         </div>
-        <div class="rename-area">
-          <form class="rename" autocomplete="off">
-            <label for="name">Имя файла</label>
-            <div class="rename-controls">
-              <input id="name" name="name" value="отпуск.heic" spellcheck="false" aria-describedby="rename-hint">
-              <button class="rename-submit" type="submit" aria-label="Проверить новое имя"><svg viewBox="0 0 32 32" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M25 6v13H7m7-7-7 7 7 7"/></svg></button>
-            </div>
-          </form>
-          <p class="hint" id="rename-hint">Допишите новое расширение и нажмите <kbd>Enter</kbd>, как в Finder</p>
-          <div class="tries" role="group" aria-label="Попробовать">
-            <button type="button" data-try=".jpg">.jpg</button>
-            <button type="button" data-try="+q80.jpg">+q80.jpg</button>
-            <button type="button" data-try=".jpg!">.jpg!</button>
-            <button type="button" data-try=".mp3">.mp3</button>
-          </div>
-        </div>
+      </div>
+      <div class="rename-area">
         <div class="file" aria-hidden="true">
           <svg viewBox="0 0 132 164"><path d="M8 4h82l38 38v114a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V8a4 4 0 0 1 4-4Z" style="fill:var(--file)"/><path d="M90 4v34a4 4 0 0 0 4 4h34" style="fill:var(--chip)"/></svg>
           <span class="badge">heic</span>
         </div>
+        <form class="rename" autocomplete="off">
+          <label for="name">Имя файла</label>
+          <div class="rename-controls">
+            <input id="name" name="name" value="отпуск.heic" spellcheck="false" aria-describedby="rename-hint">
+            <button class="rename-submit" type="submit" aria-label="Проверить новое имя"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 5v7a3 3 0 0 1-3 3H5m4-4-4 4 4 4"/></svg></button>
+          </div>
+        </form>
+        <p class="hint" id="rename-hint">Допишите новое расширение и нажмите <kbd>Enter</kbd>, как в Finder</p>
+        <div class="tries" role="group" aria-label="Попробовать">
+          <button type="button" data-try=".jpg">.jpg</button>
+          <button type="button" data-try="+q80.jpg">+q80.jpg</button>
+          <button type="button" data-try=".jpg!">.jpg!</button>
+          <button type="button" data-try=".mp3">.mp3</button>
+        </div>
         <p class="result" aria-live="polite">Это фото с iPhone. Попробуйте назвать его <b>отпуск.jpg</b>.</p>
+      </div>
       </div>
       <p class="demo-note">Это демонстрация команды в браузере. Файлы сюда загружать не нужно; конвертацию выполняет установленный Renvert.</p>
       <noscript><p class="demo-note">Пример: переименуйте photo.heic в photo+q80.jpg, чтобы получить JPEG с качеством 80%. Интерактивный пример работает с JavaScript.</p></noscript>
     </section>
 
+    <section class="band formats-band" id="formats" aria-labelledby="pairs-title">
+      <div class="section-head">
+        <h2 id="pairs-title">Одно имя, много форматов</h2>
+        <p>Фото, документы, таблицы, треки, почта и архивы. Ниже примеры версии 1.2.0, а не обещание поддержать любое расширение.</p>
+      </div>
+      <div class="bento">
+        <article class="tile tile--photo tile--wide">
+          <div class="tile-copy">
+            <h3>Фото и картинки</h3>
+            <ul class="pairs">
+              <li><b>HEIC</b><svg class="arrow" viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 8h10.5M9 4l4 4-4 4"/></svg><strong>JPEG, PNG, PDF</strong><span>Фото с iPhone для сайтов и документов</span></li>
+              <li><b>PNG, JPEG</b><svg class="arrow" viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 8h10.5M9 4l4 4-4 4"/></svg><strong>WebP, TIFF, PDF</strong><span>Картинки между собой. Для записи WebP может понадобиться ImageMagick.</span></li>
+            </ul>
+          </div>
+          <figure class="tile-art tile-shot">
+            <a class="app-capture" href="../assets/products/renvert/settings-conversions.jpg" target="_blank" rel="noreferrer"><img src="../assets/products/renvert/settings-conversions.jpg" width="1440" height="1000" alt="Настройки Renvert: качество JPEG и WebP, сохранение метаданных и аппаратное ускорение" loading="lazy" decoding="async"></a>
+          </figure>
+        </article>
+        <article class="tile tile--docs">
+          <h3>Документы и таблицы</h3>
+          <ul class="pairs">
+            <li><b>DOCX, DOC</b><svg class="arrow" viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 8h10.5M9 4l4 4-4 4"/></svg><strong>PDF, TXT, HTML</strong><span>Текст, таблицы и базовое оформление. Печатная вёрстка может отличаться.</span></li>
+            <li><b>XLSX, CSV</b><svg class="arrow" viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 8h10.5M9 4l4 4-4 4"/></svg><strong>CSV, PDF, SQLite</strong><span>Структура сохраняется. SQLite и JSON Lines собирают несколько таблиц из одного файла.</span></li>
+            <li><b>PDF</b><svg class="arrow" viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 8h10.5M9 4l4 4-4 4"/></svg><strong>PNG, TXT</strong><span>Страницы как картинки, текст и распознавание сканов на Mac</span></li>
+          </ul>
+        </article>
+        <article class="tile tile--media">
+          <h3>Видео и звук</h3>
+          <ul class="pairs">
+            <li><b>MOV</b><svg class="arrow" viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 8h10.5M9 4l4 4-4 4"/></svg><strong>MP4</strong><span>Записи экрана и видео с камеры</span></li>
+            <li><b>WAV, M4A</b><svg class="arrow" viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 8h10.5M9 4l4 4-4 4"/></svg><strong>M4A, MP3</strong><span>Для записи MP3 нужен ffmpeg в сборке или в системе.</span></li>
+          </ul>
+        </article>
+        <article class="tile tile--text tile--wide">
+          <div class="tile-copy">
+            <h3>Почта, QR и Base64</h3>
+            <ul class="pairs">
+              <li><b>EML</b><svg class="arrow" viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 8h10.5M9 4l4 4-4 4"/></svg><strong>PDF, TXT, HTML</strong><span>Заголовки и текст письма. EMLX только читается.</span></li>
+              <li><b>Файл</b><svg class="arrow" viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 8h10.5M9 4l4 4-4 4"/></svg><strong>Base64, QR</strong><span>Любой файл в Base64 и обратно. Пометка +qr рисует код из текста и читает QR на картинке или в PDF.</span></li>
+            </ul>
+          </div>
+          <div class="tile-art qr-art" aria-hidden="true"><svg viewBox="0 0 21 21" shape-rendering="crispEdges"><path d="M0 0h7v7H0zM14 0h7v7h-7zM0 14h7v7H0z" fill="currentColor"/><path d="M1 1h5v5H1zM15 1h5v5h-5zM1 15h5v5H1z" fill="var(--ground)"/><path d="M2 2h3v3H2zM16 2h3v3h-3zM2 16h3v3H2zM8 0h1v2H8zM10 1h2v1h-2zM9 3h2v2H9zM8 6h1v2H8zM12 4h1v3h-1zM0 8h2v1H0zM3 8h3v1H3zM8 9h3v2H8zM12 8h2v1h-2zM15 8h2v2h-2zM18 9h3v1h-3zM1 10h2v2H1zM5 10h2v2H5zM10 12h2v2h-2zM13 11h2v2h-2zM17 11h2v1h-2zM8 13h1v3H8zM14 14h2v2h-2zM18 13h3v1h-3zM10 16h3v1h-3zM17 16h2v3h-2zM8 18h2v3H8zM12 18h3v1h-3zM14 20h2v1h-2zM20 18h1v3h-1z" fill="currentColor"/></svg></div>
+        </article>
+        <article class="tile tile--geo">
+          <h3>Треки и контакты</h3>
+          <ul class="pairs">
+            <li><b>GPX, KML</b><svg class="arrow" viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 8h10.5M9 4l4 4-4 4"/></svg><strong>GeoJSON, CSV</strong><span>Точки трека сохраняют имя, высоту и время. Также TCX, NMEA и IGC.</span></li>
+            <li><b>vCard, ICS</b><svg class="arrow" viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 8h10.5M9 4l4 4-4 4"/></svg><strong>CSV, JSON</strong><span>Контакты и события календаря, в обе стороны</span></li>
+          </ul>
+        </article>
+        <article class="tile tile--archive">
+          <h3>Архивы и конфиги</h3>
+          <ul class="pairs">
+            <li><b>Папка, ZIP</b><svg class="arrow" viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 8h10.5M9 4l4 4-4 4"/></svg><strong>ZIP, NPZ, PT</strong><span>Архив одним переименованием. NPZ и PT — байты для NumPy и PyTorch. RAR только читается.</span></li>
+            <li><b>JSON</b><svg class="arrow" viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 8h10.5M9 4l4 4-4 4"/></svg><strong>YAML, XML, TOML</strong><span>Конфиги, а также INI, ENV и .editorconfig</span></li>
+          </ul>
+        </article>
+        <figure class="tile tile--shot">
+          <a class="app-capture" href="../assets/products/renvert/settings-formats.jpg" target="_blank" rel="noreferrer"><img src="../assets/products/renvert/settings-formats.jpg" width="1440" height="1000" alt="Раздел «Форматы» в Renvert: поиск, включение всех форматов и список изображений" loading="lazy" decoding="async"></a>
+          <figcaption>В настройках можно выключить формат или целую группу. Сохранение .ipynb в Jupyter и VS Code конвертацию не запускает. Полный список и ограничения есть в <a href="https://github.com/ArduRadioKot/RenVert/blob/main/docs/capabilities.md" target="_blank" rel="noreferrer">таблице возможностей</a>.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="band commands-band" aria-labelledby="grammar-title">
+      <div class="section-head">
+        <h2 id="grammar-title">Команды в имени</h2>
+        <p>Пометка после знака плюс или после расширения меняет результат. Renvert читает её в папках, за которыми следит.</p>
+      </div>
+      <div class="table-card">
+        <table class="grammar" aria-labelledby="grammar-title">
+          <thead><tr><th scope="col">Новое имя</th><th scope="col">Что получится</th></tr></thead>
+          <tbody>
+            <tr><td><code>photo.jpg</code></td><td>Фото HEIC станет JPEG. Формат определяется по содержимому, а не по старому расширению.</td></tr>
+            <tr><td><code>photo+q80.jpg</code></td><td>JPEG с качеством 80%.</td></tr>
+            <tr><td><code>photo+min.png</code></td><td>Самый маленький файл, который ещё хорошо выглядит.</td></tr>
+            <tr><td><code>clip+mute.mp4</code></td><td>Видео без звуковой дорожки.</td></tr>
+            <tr><td><code>book+page2-5.png</code></td><td>Только страницы со 2-й по 5-ю из PDF.</td></tr>
+            <tr><td><code>photo.png,webp</code></td><td>Сразу два файла: PNG и WebP.</td></tr>
+            <tr><td><code>Photos.folder,zip</code></td><td>Папка превратится в ZIP-архив.</td></tr>
+            <tr><td><code>budget.pdf</code></td><td>Таблица XLSX, CSV или TSV станет PDF. Структура таблицы сохраняется.</td></tr>
+            <tr><td><code>scan+ocr.txt</code></td><td>Текст со скана PDF или картинки. Распознавание идёт на Mac.</td></tr>
+            <tr><td><code>note+qr.png</code></td><td>Текст файла станет QR-кодом. Та же пометка на картинке или PDF читает QR и штрихкоды.</td></tr>
+            <tr><td><code>photo.b64</code></td><td>Файл станет текстом Base64. Обратное переименование вернёт исходные байты.</td></tr>
+            <tr><td><code>photo.jpg!</code></td><td>Конвертировать сразу, даже если включён режим «Сначала спросить».</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
     <section class="band workflow" aria-labelledby="flow-title">
-      <div class="section-intro">
+      <div class="workflow-lead">
         <h2 id="flow-title">Начните в Finder</h2>
         <p>Renvert работает из строки меню. Обычное переименование запускает конвертацию, а настройки определяют, когда спрашивать разрешение.</p>
+        <figure class="menu-shot">
+          <a class="app-capture app-capture--menu" href="../assets/products/renvert/menu-bar.png" target="_blank" rel="noreferrer"><img src="../assets/products/renvert/menu-bar.png" width="630" height="506" alt="Меню Renvert в строке меню: отслеживание папок включено, два документа DOCX сконвертированы в PDF, у каждого кнопка отмены" loading="lazy" decoding="async"></a>
+          <figcaption>Меню в строке меню: отслеживание папок, последние конвертации и отмена у каждой.</figcaption>
+        </figure>
       </div>
       <ol class="steps">
         <li><strong>Запустите Renvert</strong><p>Программа появится в строке меню. Отдельной иконки в Dock нет.</p></li>
@@ -105,8 +201,8 @@
       </ol>
     </section>
 
-    <section class="band" id="screens" aria-labelledby="screens-title">
-      <div class="section-intro">
+    <section class="band screens-band" id="screens" aria-labelledby="screens-title">
+      <div class="section-head">
         <h2 id="screens-title">Ваши настройки</h2>
         <p>В версии 1.2.0 появился раздел «Форматы»: поиск и выключение форматов по одному или целыми группами. Выключенный формат при переименовании не конвертируется.</p>
       </div>
@@ -121,73 +217,37 @@
         <div class="screen-panels">
           <figure class="screen-panel" id="screen-general" role="tabpanel" aria-labelledby="tab-general" tabindex="0">
             <a class="app-capture" href="../assets/products/renvert/settings-general.jpg" target="_blank" rel="noreferrer"><img src="../assets/products/renvert/settings-general.jpg" width="1440" height="1000" alt="Общие настройки Renvert: автозапуск, отслеживание папок, режим подтверждения и язык" loading="lazy" decoding="async"></a>
-            <figcaption><strong>Автоматически или с подтверждением</strong><p>Выберите режим конвертации, включите уведомления и запуск вместе с системой. Отслеживание папок можно приостановить.</p><span>Настройки → Основные</span></figcaption>
+            <figcaption><strong>Автоматически или с подтверждением</strong><p>Выберите режим конвертации, включите уведомления и запуск вместе с системой. Отслеживание папок можно приостановить.</p><span class="crumb"><span>Настройки</span><svg class="arrow" viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 8h10.5M9 4l4 4-4 4"/></svg><span>Основные</span></span></figcaption>
           </figure>
           <figure class="screen-panel" id="screen-conversions" role="tabpanel" aria-labelledby="tab-conversions" tabindex="0">
             <a class="app-capture" href="../assets/products/renvert/settings-conversions.jpg" target="_blank" rel="noreferrer"><img src="../assets/products/renvert/settings-conversions.jpg" width="1440" height="1000" alt="Настройки Renvert: качество JPEG и WebP, сохранение метаданных и аппаратное ускорение" loading="lazy" decoding="async"></a>
-            <figcaption><strong>Качество, которое подходит вам</strong><p>Задайте качество JPEG и WebP по умолчанию. Отдельно настраиваются сохранение метаданных и аппаратное ускорение.</p><span>Настройки → Конвертация</span></figcaption>
+            <figcaption><strong>Качество, которое подходит вам</strong><p>Задайте качество JPEG и WebP по умолчанию. Отдельно настраиваются сохранение метаданных и аппаратное ускорение.</p><span class="crumb"><span>Настройки</span><svg class="arrow" viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 8h10.5M9 4l4 4-4 4"/></svg><span>Конвертация</span></span></figcaption>
           </figure>
           <figure class="screen-panel" id="screen-formats" role="tabpanel" aria-labelledby="tab-formats" tabindex="0">
             <a class="app-capture" href="../assets/products/renvert/settings-formats.jpg" target="_blank" rel="noreferrer"><img src="../assets/products/renvert/settings-formats.jpg" width="1440" height="1000" alt="Раздел «Форматы» в Renvert: поиск, включение всех форматов и список изображений" loading="lazy" decoding="async"></a>
-            <figcaption><strong>Только нужные форматы</strong><p>Найдите формат или выключите целую группу. Выключенный формат при переименовании не конвертируется.</p><span>Настройки → Форматы</span></figcaption>
+            <figcaption><strong>Только нужные форматы</strong><p>Найдите формат или выключите целую группу. Выключенный формат при переименовании не конвертируется.</p><span class="crumb"><span>Настройки</span><svg class="arrow" viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 8h10.5M9 4l4 4-4 4"/></svg><span>Форматы</span></span></figcaption>
           </figure>
           <figure class="screen-panel" id="screen-performance" role="tabpanel" aria-labelledby="tab-performance" tabindex="0">
             <a class="app-capture" href="../assets/products/renvert/settings-performance.jpg" target="_blank" rel="noreferrer"><img src="../assets/products/renvert/settings-performance.jpg" width="1440" height="1000" alt="Настройки производительности Renvert: уровень нагрузки и число параллельных конвертаций" loading="lazy" decoding="async"></a>
-            <figcaption><strong>Нагрузка под контролем</strong><p>Выберите уровень нагрузки на Mac. На снимке высокий режим: семь параллельных конвертаций.</p><span>Настройки → Производительность</span></figcaption>
+            <figcaption><strong>Нагрузка под контролем</strong><p>Выберите уровень нагрузки на Mac. На снимке высокий режим: семь параллельных конвертаций.</p><span class="crumb"><span>Настройки</span><svg class="arrow" viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 8h10.5M9 4l4 4-4 4"/></svg><span>Производительность</span></span></figcaption>
           </figure>
           <figure class="screen-panel" id="screen-about" role="tabpanel" aria-labelledby="tab-about" tabindex="0">
             <a class="app-capture" href="../assets/products/renvert/about.jpg" target="_blank" rel="noreferrer"><img src="../assets/products/renvert/about.jpg" width="1440" height="1000" alt="О программе Renvert 1.2.0: версия, авторы FrogeeSoft и проверка обновлений" loading="lazy" decoding="async"></a>
-            <figcaption><strong>Renvert от FrogeeSoft</strong><p>Версия 1.2.0, авторы FrogeeSoft. Обновления приходят из выпусков на GitHub, язык интерфейса переключается в разделе «Основные».</p><span>Настройки → О программе</span></figcaption>
+            <figcaption><strong>Renvert от FrogeeSoft</strong><p>Версия 1.2.0, авторы FrogeeSoft. Обновления приходят из выпусков на GitHub, язык интерфейса переключается в разделе «Основные».</p><span class="crumb"><span>Настройки</span><svg class="arrow" viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 8h10.5M9 4l4 4-4 4"/></svg><span>О программе</span></span></figcaption>
           </figure>
         </div>
       </div>
     </section>
 
-    <section class="band formats-band" id="formats" aria-labelledby="pairs-title">
-      <div class="section-intro">
-        <h2 id="pairs-title">Форматы</h2>
-        <p>Фото, документы, таблицы, треки, почта и архивы. Ниже примеры версии 1.2.0, а не обещание поддержать любое расширение.</p>
-      </div>
-      <ul class="format-list">
-        <li><b>HEIC</b><strong>JPEG, PNG, PDF</strong><span>Фото с iPhone для сайтов и документов</span></li>
-        <li><b>PNG, JPEG</b><strong>WebP, TIFF, PDF</strong><span>Картинки между собой. Для записи WebP может понадобиться ImageMagick.</span></li>
-        <li><b>PDF</b><strong>PNG, TXT</strong><span>Страницы как картинки, текст и распознавание сканов на Mac</span></li>
-        <li><b>DOCX, DOC</b><strong>PDF, TXT, HTML</strong><span>Текст, таблицы и базовое оформление. Печатная вёрстка может отличаться.</span></li>
-        <li><b>XLSX, CSV</b><strong>CSV, PDF, SQLite</strong><span>Структура сохраняется. SQLite и JSON Lines собирают несколько таблиц из одного файла.</span></li>
-        <li><b>JSON</b><strong>YAML, XML, TOML</strong><span>Конфиги, а также INI, ENV и .editorconfig</span></li>
-        <li><b>GPX, KML</b><strong>GeoJSON, CSV</strong><span>Точки трека сохраняют имя, высоту и время. Также TCX, NMEA и IGC.</span></li>
-        <li><b>vCard, ICS</b><strong>CSV, JSON</strong><span>Контакты и события календаря, в обе стороны</span></li>
-        <li><b>EML</b><strong>PDF, TXT, HTML</strong><span>Заголовки и текст письма. EMLX только читается.</span></li>
-        <li><b>Файл</b><strong>Base64, QR</strong><span>Любой файл в Base64 и обратно. Пометка +qr рисует код из текста и читает QR на картинке или в PDF.</span></li>
-        <li><b>MOV</b><strong>MP4</strong><span>Записи экрана и видео с камеры</span></li>
-        <li><b>WAV, M4A</b><strong>M4A, MP3</strong><span>Для записи MP3 нужен ffmpeg в сборке или в системе.</span></li>
-        <li><b>Папка, ZIP</b><strong>ZIP, NPZ, PT</strong><span>Архив одним переименованием. NPZ и PT — байты для NumPy и PyTorch. RAR только читается.</span></li>
-      </ul>
-      <p class="formats-note">В настройках можно выключить формат или целую группу. Сохранение .ipynb в Jupyter и VS Code конвертацию не запускает. Полный список и ограничения есть в <a href="https://github.com/ArduRadioKot/RenVert/blob/main/docs/capabilities.md" target="_blank" rel="noreferrer">таблице возможностей</a>.</p>
-      <table class="grammar">
-        <caption>Команды в имени</caption>
-        <thead><tr><th scope="col">Новое имя</th><th scope="col">Что получится</th></tr></thead>
-        <tbody>
-          <tr><td><code>photo.jpg</code></td><td>Фото HEIC станет JPEG. Формат определяется по содержимому, а не по старому расширению.</td></tr>
-          <tr><td><code>photo+q80.jpg</code></td><td>JPEG с качеством 80%.</td></tr>
-          <tr><td><code>photo+min.png</code></td><td>Самый маленький файл, который ещё хорошо выглядит.</td></tr>
-          <tr><td><code>clip+mute.mp4</code></td><td>Видео без звуковой дорожки.</td></tr>
-          <tr><td><code>book+page2-5.png</code></td><td>Только страницы со 2-й по 5-ю из PDF.</td></tr>
-          <tr><td><code>photo.png,webp</code></td><td>Сразу два файла: PNG и WebP.</td></tr>
-          <tr><td><code>Photos.folder,zip</code></td><td>Папка превратится в ZIP-архив.</td></tr>
-          <tr><td><code>budget.pdf</code></td><td>Таблица XLSX, CSV или TSV станет PDF. Структура таблицы сохраняется.</td></tr>
-          <tr><td><code>scan+ocr.txt</code></td><td>Текст со скана PDF или картинки. Распознавание идёт на Mac.</td></tr>
-          <tr><td><code>note+qr.png</code></td><td>Текст файла станет QR-кодом. Та же пометка на картинке или PDF читает QR и штрихкоды.</td></tr>
-          <tr><td><code>photo.b64</code></td><td>Файл станет текстом Base64. Обратное переименование вернёт исходные байты.</td></tr>
-          <tr><td><code>photo.jpg!</code></td><td>Конвертировать сразу, даже если включён режим «Сначала спросить».</td></tr>
-        </tbody>
-      </table>
-    </section>
-
     <section class="band faq-band" aria-labelledby="faq-title">
-      <div class="section-intro">
+      <div class="faq-lead">
         <h2 id="faq-title">Перед запуском</h2>
         <p>Что происходит с файлами и какие разрешения нужны программе.</p>
+        <a class="text-link" href="mailto:frogeesoft.team@gmail.com?subject=Renvert">Написать нам</a>
+        <figure class="faq-shot">
+          <a class="app-capture" href="../assets/products/renvert/menu-recent.jpg" target="_blank" rel="noreferrer"><img src="../assets/products/renvert/menu-recent.jpg" width="712" height="692" alt="Меню Renvert в строке меню: отслеживание папок включено, в списке «Недавние» конвертированные фото HEIC с кнопками «Вернуть»" loading="lazy" decoding="async"></a>
+          <figcaption>Кнопка «Вернуть» возвращает исходный файл из резервной копии.</figcaption>
+        </figure>
       </div>
       <div class="faq-stack">
         <details name="renvert-faq" open><summary>Куда отправляются файлы?</summary><p>Вся конвертация идёт локально. Ничего не загружается в облако.</p></details>
@@ -197,20 +257,23 @@
         <details name="renvert-faq"><summary>Почему macOS предупреждает при запуске?</summary><p>Сборка подписана ad-hoc и не нотарифицирована Apple. При первом запуске macOS может заблокировать открытие. Информация о сборке и запуске есть в <a href="https://github.com/ArduRadioKot/RenVert#build" target="_blank" rel="noreferrer">README проекта</a>.</p></details>
         <details name="renvert-faq"><summary>Можно отключить формат?</summary><p>В разделе «Форматы» есть поиск и выключатели по одному и группами. Выключенный формат при переименовании не меняется. Старые настройки без этого раздела по-прежнему открываются.</p></details>
         <details name="renvert-faq"><summary>Почему блокнот Jupyter не конвертируется?</summary><p>Renvert больше не срабатывает на файлы .ipynb при сохранении в Jupyter и VS Code.</p></details>
-        <details name="renvert-faq"><summary>Как Renvert связан с Consul?</summary><p>Renvert независимо реализует идею переименования для конвертации. В проекте нет кода, ресурсов или проверок лицензий Consul. Поддержка форматов описана в таблице возможностей Renvert.</p></details>
       </div>
     </section>
 
-    <section class="download-band" id="download" aria-label="Скачать Renvert">
-      <a class="download-link" data-release-download="renvert" href="https://github.com/ArduRadioKot/RenVert/releases/latest">
-        <span><span>Renvert для macOS. Бесплатно.</span><svg viewBox="0 0 48 48" width="48" height="48" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 36 36 12M12 12h24v24"/></svg></span>
-        <strong>Скачать</strong>
-      </a>
+    <section class="band download-band" id="download" aria-labelledby="download-title">
+      <div class="download-card">
+        <h2 id="download-title">Скачать Renvert</h2>
+        <p>Renvert для macOS. Бесплатно.</p>
+        <a class="button download-link" data-release-download="renvert" href="https://github.com/ArduRadioKot/RenVert/releases/latest">Скачать</a>
+        <figure class="download-shot">
+          <a class="app-capture" href="../assets/products/renvert/about-window.webp" target="_blank" rel="noreferrer"><img src="../assets/products/renvert/about-window.webp" width="1452" height="1012" alt="Окно «О программе» Renvert: авторы FrogeeSoft, обновления из выпусков GitHub и автоматическая проверка обновлений" loading="lazy" decoding="async"></a>
+        </figure>
+        <div class="download-notes">
+          <div id="dl-list" data-release-list="renvert"><a class="dl" href="https://github.com/ArduRadioKot/RenVert/releases/latest"><span class="dl-label">macOS 14+, Apple Silicon и Intel</span><span class="dl-file">Последний GitHub Release</span><span class="dl-size"></span></a></div>
+          <div><p>Бесплатно. Исходный код на GitHub, программа написана на Swift.</p><p>Собрать самостоятельно: <code>./scripts/build.sh</code> или Xcode. <a href="https://github.com/ArduRadioKot/RenVert" target="_blank" rel="noreferrer">Открыть репозиторий</a></p></div>
+        </div>
+      </div>
     </section>
-    <div class="download-notes">
-      <div id="dl-list" data-release-list="renvert"><a class="dl" href="https://github.com/ArduRadioKot/RenVert/releases/latest"><span class="dl-label">macOS 14+, Apple Silicon и Intel</span><span class="dl-file">Последний GitHub Release</span><span class="dl-size"></span></a></div>
-      <div><p>Бесплатно. Исходный код на GitHub, программа написана на Swift.</p><p>Собрать самостоятельно: <code>./scripts/build.sh</code> или Xcode. <a href="https://github.com/ArduRadioKot/RenVert" target="_blank" rel="noreferrer">Открыть репозиторий</a></p></div>
-    </div>
   </main>
 
   <footer class="footer">
@@ -238,6 +301,7 @@
         mov: { base: 'запись', kind: 'видео', badge: '#c2410c', to: { mp4: 'MP4' } },
         xlsx: { base: 'бюджет', kind: 'таблица Excel', badge: '#1d7044', to: { csv: 'CSV', pdf: 'PDF', docx: 'DOCX', html: 'HTML' } },
       };
+      const ARROW = '<svg class="arrow" viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 8h10.5M9 4l4 4-4 4"/></svg>';
       const BADGES = { jpg: '#12899c', jpeg: '#12899c', png: '#12899c', webp: '#12899c', pdf: '#b91c1c', mp3: '#12899c', m4a: '#12899c', mp4: '#12899c', csv: '#12899c' };
       const MODS = {
         q: (v) => t('качество {value}%', { value: v }),
@@ -318,12 +382,13 @@
         const bad = wanted.filter((e) => !s.to[e]);
 
         if (!ok.length) {
-          say(t('Такой пары пока нет: <b>{pair}</b>. Renvert оставит файл как есть.', { pair: src.toUpperCase() + ' → ' + esc(bad.join(', ').toUpperCase()) }), true);
+          say(t('Такой пары пока нет: <b>{pair}</b>. Renvert оставит файл как есть.', { pair: src.toUpperCase() + ARROW + esc(bad.join(', ').toUpperCase()) }), true);
           return;
         }
         if (animate) { file.classList.remove('is-converting'); void file.offsetWidth; file.classList.add('is-converting'); }
         const updateBadge = () => {
           badge.textContent = ok[0];
+          if (animate) { badge.classList.remove('is-new'); void badge.offsetWidth; badge.classList.add('is-new'); }
           file.style.setProperty('--badge', BADGES[ok[0]] || '#12899c');
         };
         if (animate) setTimeout(updateBadge, 260); else updateBadge();
@@ -331,7 +396,7 @@
         const extra = mods.length ? `, ${mods.join(', ')}` : '';
         const skipped = bad.length ? ' ' + t('{formats} пока не поддерживается.', { formats: esc(bad.join(', ').toUpperCase()) }) : '';
         const when = t(now ? 'Сразу, без вопроса.' : 'Оригинал сохранён в резервной копии, отменить можно из строки меню.');
-        say(`<b>${src.toUpperCase()} → ${target}</b>${esc(extra)}. ${when}${skipped}`);
+        say(`<b class="pair">${src.toUpperCase()}${ARROW}${target}</b>${esc(extra)}. ${when}${skipped}`);
       }
 
       document.querySelector('.sources').addEventListener('click', (e) => {

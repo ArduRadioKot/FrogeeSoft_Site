@@ -1,13 +1,4 @@
 (() => {
-  document.querySelectorAll('.hero-line').forEach((line) => {
-    const settle = () => line.classList.add('is-settled');
-    const span = line.firstElementChild;
-    if (!span) return;
-    span.addEventListener('animationend', settle);
-    span.addEventListener('animationcancel', settle);
-    if (getComputedStyle(span).animationName === 'none') settle();
-  });
-
   const gallery = document.querySelector('.gallery-layout');
   if (gallery) {
     const tablist = gallery.querySelector('[role="tablist"]');
@@ -40,28 +31,55 @@
     });
   }
 
-  // Already-visible blocks stay put. Entering blocks fade in, then release
-  // the animation so hover transforms and list markers are not stuck.
-  if (!('IntersectionObserver' in window) || !Element.prototype.animate || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  const targets = document.querySelectorAll('.hero-copy, .hero-image, .hero-meta, .section-intro > *, .source-choices, .rename-area, .steps li, .gallery-layout, .format-list li, .grammar, .faq-stack, .download-link');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      observer.unobserve(entry.target);
-      const opacityOnly = entry.target.matches('.steps li, .download-link');
-      const animation = entry.target.animate(opacityOnly
-        ? [{ opacity: 0 }, { opacity: 1 }]
-        : [{ opacity: 0, transform: 'translateY(22px)' }, { opacity: 1, transform: 'translateY(0)' }],
-      { duration: 650, easing: 'cubic-bezier(.2,.7,.2,1)', fill: 'both' });
-      const release = () => animation.cancel();
-      animation.onfinish = release;
-      animation.oncancel = release;
+  // Hero loop: the rename the page is about, one pair at a time.
+  const flow = document.querySelector('.hero-flow');
+  if (flow && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const pairs = [['heic', 'jpg'], ['docx', 'pdf'], ['wav', 'mp3'], ['mov', 'mp4'], ['xlsx', 'csv']];
+    const fromExt = flow.querySelector('[data-flow-from-ext]');
+    const toExt = flow.querySelector('[data-flow-to-ext]');
+    let index = 0, landTimer;
+    const showFrom = () => { fromExt.textContent = pairs[index][0]; };
+    const showTo = () => { toExt.textContent = pairs[index][1]; };
+    showFrom(); showTo();
+    const sheet = flow.querySelector('.doc--to .doc-sheet');
+    sheet.addEventListener('animationiteration', () => {
+      index = (index + 1) % pairs.length;
+      showFrom();
+      clearTimeout(landTimer);
+      landTimer = setTimeout(showTo, 3600 * 0.45);
     });
-  }, { threshold: .12, rootMargin: '0px 0px -8% 0px' });
-  const viewBottom = window.innerHeight * 0.92;
+    setTimeout(() => flow.classList.add('is-looping'), 900);
+  }
+
+  // Blocks already on screen stay put. Blocks below the fold are hidden up
+  // front and rise in once as they enter, part by part, so nothing flashes
+  // from visible to transparent mid-scroll.
+  if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const targets = document.querySelectorAll('.section-head > *, .mac-window, .tile, .table-card, .workflow-lead > *, .steps li, .gallery-layout, .faq-lead > *, .faq-stack details, .download-card');
+  const release = (element) => {
+    element.classList.remove('reveal-in');
+    element.style.removeProperty('--reveal-delay');
+  };
+  const reveal = (element, order) => {
+    element.style.setProperty('--reveal-delay', `${Math.min(order, 6) * 70}ms`);
+    element.classList.add('reveal-in');
+    element.classList.remove('reveal-wait');
+    element.addEventListener('transitionend', (event) => { if (event.target === element) release(element); });
+    setTimeout(() => release(element), 1400 + Math.min(order, 6) * 70);
+  };
+  const observer = new IntersectionObserver((entries) => {
+    entries.filter((entry) => entry.isIntersecting)
+      .map((entry) => entry.target)
+      .sort((a, b) => (a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1))
+      .forEach((element, order) => { observer.unobserve(element); reveal(element, order); });
+  }, { threshold: 0, rootMargin: '0px 0px -6% 0px' });
+  const viewBottom = window.innerHeight;
   targets.forEach((element) => {
-    const rect = element.getBoundingClientRect();
-    if (rect.top < viewBottom && rect.bottom > 0) return;
+    if (element.getBoundingClientRect().top < viewBottom) return;
+    element.classList.add('reveal-wait');
     observer.observe(element);
+  });
+  window.addEventListener('beforeprint', () => {
+    document.querySelectorAll('.reveal-wait').forEach((element) => element.classList.remove('reveal-wait'));
   });
 })();

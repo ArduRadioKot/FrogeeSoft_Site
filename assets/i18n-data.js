@@ -1,5 +1,65 @@
 // Shared Russian and English interface copy. Keep both languages for each entry.
 window.FROGEE_TRANSLATIONS = {
+  "Меню Renvert в строке меню: отслеживание папок включено, два документа DOCX сконвертированы в PDF, у каждого кнопка отмены": {
+    "ru": "Меню Renvert в строке меню: отслеживание папок включено, два документа DOCX сконвертированы в PDF, у каждого кнопка отмены",
+    "en": "Renvert’s menu bar menu: folder watching is on, and two DOCX documents were converted to PDF, each with an Undo button"
+  },
+  "Меню в строке меню: отслеживание папок, последние конвертации и отмена у каждой.": {
+    "ru": "Меню в строке меню: отслеживание папок, последние конвертации и отмена у каждой.",
+    "en": "The menu bar menu: folder watching, recent conversions and Undo for each."
+  },
+  "Кнопка «Вернуть» возвращает исходный файл из резервной копии.": {
+    "ru": "Кнопка «Вернуть» возвращает исходный файл из резервной копии.",
+    "en": "The Revert button restores the original file from its backup."
+  },
+  "Окно «О программе» Renvert: авторы FrogeeSoft, обновления из выпусков GitHub и автоматическая проверка обновлений": {
+    "ru": "Окно «О программе» Renvert: авторы FrogeeSoft, обновления из выпусков GitHub и автоматическая проверка обновлений",
+    "en": "Renvert’s About window: authors FrogeeSoft, updates from GitHub releases and automatic update checks"
+  },
+  "Производительность": {
+    "ru": "Производительность",
+    "en": "Performance"
+  },
+  "Загрузки": {
+    "ru": "Загрузки",
+    "en": "Downloads"
+  },
+  "Одно имя, много форматов": {
+    "ru": "Одно имя, много форматов",
+    "en": "One name, many formats"
+  },
+  "Фото и картинки": {
+    "ru": "Фото и картинки",
+    "en": "Photos and images"
+  },
+  "Документы и таблицы": {
+    "ru": "Документы и таблицы",
+    "en": "Documents and spreadsheets"
+  },
+  "Видео и звук": {
+    "ru": "Видео и звук",
+    "en": "Video and audio"
+  },
+  "Почта, QR и Base64": {
+    "ru": "Почта, QR и Base64",
+    "en": "Mail, QR and Base64"
+  },
+  "Треки и контакты": {
+    "ru": "Треки и контакты",
+    "en": "Tracks and contacts"
+  },
+  "Архивы и конфиги": {
+    "ru": "Архивы и конфиги",
+    "en": "Archives and configs"
+  },
+  "Пометка после знака плюс или после расширения меняет результат. Renvert читает её в папках, за которыми следит.": {
+    "ru": "Пометка после знака плюс или после расширения меняет результат. Renvert читает её в папках, за которыми следит.",
+    "en": "A tag after a plus sign or after the extension changes the result. Renvert reads it in the folders it watches."
+  },
+  "Написать нам": {
+    "ru": "Написать нам",
+    "en": "Write to us"
+  },
   "FrogeeSoft - IT-компания и комьюнити с 2023 года. Бесплатные программы для macOS, Windows и Linux, трекер для сноуборда FG-Track, ИИ-репетитор Ясно и образовательный проект S.I.T Education.": {
     "ru": "FrogeeSoft - IT-компания и комьюнити с 2023 года. Бесплатные программы для macOS, Windows и Linux, трекер для сноуборда FG-Track, ИИ-репетитор Ясно и образовательный проект S.I.T Education.",
     "en": "FrogeeSoft is a software studio and community founded in 2023. Free apps for macOS, Windows and Linux, the FG-Track snowboard tracker, Yasno AI tutor and S.I.T Education."
@@ -1171,10 +1231,6 @@ window.FROGEE_TRANSLATIONS = {
   "Архив одним переименованием": {
     "ru": "Архив одним переименованием",
     "en": "Archive a folder by renaming it"
-  },
-  "Renvert — независимая реализация идеи Consul 2.x. В нём нет кода, ресурсов и проверок лицензий Consul, и он не обещает все его 5211 пар: только те, что работают.": {
-    "ru": "Renvert — независимая реализация идеи Consul 2.x. В нём нет кода, ресурсов и проверок лицензий Consul, и он не обещает все его 5211 пар: только те, что работают.",
-    "en": "Renvert is an independent implementation of the Consul 2.x idea. It contains no Consul code, assets or licence checks, and does not claim to support all 5,211 conversion pairs, only the ones implemented here."
   },
   "Как начать": {
     "ru": "Как начать",
@@ -2692,14 +2748,6 @@ window.FROGEE_TRANSLATIONS = {
     "ru": "README проекта",
     "en": "project README"
   },
-  "Как Renvert связан с Consul?": {
-    "ru": "Как Renvert связан с Consul?",
-    "en": "How is Renvert related to Consul?"
-  },
-  "Renvert независимо реализует идею переименования для конвертации. В проекте нет кода, ресурсов или проверок лицензий Consul. Поддержка форматов описана в таблице возможностей Renvert.": {
-    "ru": "Renvert независимо реализует идею переименования для конвертации. В проекте нет кода, ресурсов или проверок лицензий Consul. Поддержка форматов описана в таблице возможностей Renvert.",
-    "en": "Renvert independently implements the rename-to-convert idea. It contains no Consul code, assets or license checks. Supported formats are listed in Renvert’s capability matrix."
-  },
   "Renvert для macOS. Бесплатно.": {
     "ru": "Renvert для macOS. Бесплатно.",
     "en": "Renvert for macOS. Free."
@@ -2927,6 +2975,18 @@ window.FROGEE_TRANSLATIONS = {
   "Файл станет текстом Base64. Обратное переименование вернёт исходные байты.": {
     "ru": "Файл станет текстом Base64. Обратное переименование вернёт исходные байты.",
     "en": "The file becomes Base64 text. Renaming it back restores the original bytes."
+  },
+  "И файл готов": {
+    "ru": "И файл готов",
+    "en": "And it’s converted"
+  },
+  "Меню в строке меню: последние конвертации и кнопка «Вернуть» у каждой.": {
+    "ru": "Меню в строке меню: последние конвертации и кнопка «Вернуть» у каждой.",
+    "en": "The menu bar menu: recent conversions, each with a Revert button."
+  },
+  "Меню Renvert в строке меню: отслеживание папок включено, в списке «Недавние» конвертированные фото HEIC с кнопками «Вернуть»": {
+    "ru": "Меню Renvert в строке меню: отслеживание папок включено, в списке «Недавние» конвертированные фото HEIC с кнопками «Вернуть»",
+    "en": "Renvert’s menu bar menu: folder watching is on, and the Recent list shows converted HEIC photos with Revert buttons"
   },
   "И файл конвертируется сам": {
     "ru": "И файл конвертируется сам",
